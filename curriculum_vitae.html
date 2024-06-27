@@ -15,7 +15,7 @@
         }
         .container {
             width: 90%;
-            max-width: 800px;
+            max-width: 1000px;
             margin: auto;
             padding: 20px;
         }
@@ -32,12 +32,20 @@
         nav {
             margin-top: 15px;
         }
-        nav a {
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
             color: #2c3e50;
             text-decoration: none;
             font-weight: bold;
         }
-        nav a:hover {
+        nav ul li a:hover {
             text-decoration: underline;
         }
         .content {
@@ -46,36 +54,45 @@
             padding: 30px;
             border: 1px solid #ddd;
         }
-        .section {
-            margin-bottom: 30px;
+        .content-table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .section h2 {
+        .content-table td {
+            vertical-align: top;
+            padding: 10px;
+        }
+        .image-contact {
+            width: 25%;
+        }
+        .image-contact img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .text {
+            width: 75%;
+        }
+        h2 {
             color: #2c3e50;
             border-bottom: 1px solid #2c3e50;
             padding-bottom: 5px;
         }
-        .education-item {
-            margin-bottom: 20px;
-        }
-        .education-item h3 {
-            margin-bottom: 5px;
-            font-style: italic;
-        }
-        .education-item p {
-            margin: 5px 0;
-        }
-        .center-text {
-            text-align: center;
-            margin: 30px 0;
-            font-size: 1em;
-        }
-        .center-text a {
-            color: #2c3e50;
+        a {
+            color: #1a73e8; /* Blue color for links */
             text-decoration: none;
-            font-weight: bold;
         }
-        .center-text a:hover {
+        a:hover {
             text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .content-table, .content-table tbody, .content-table tr, .content-table td {
+                display: block;
+                width: 100%;
+            }
+            .image-contact, .text {
+                width: 100%;
+            }
         }
     </style>
 </head>
