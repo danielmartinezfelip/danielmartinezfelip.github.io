@@ -13,7 +13,8 @@
             background-color: #f4f4f4;
         }
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: auto;
             overflow: hidden;
             padding: 20px;
@@ -43,52 +44,72 @@
             text-decoration: none;
         }
         .content {
-            display: flex;
             margin-top: 20px;
             background: white;
             padding: 20px;
             border-radius: 5px;
         }
-        .content img {
-            margin-right: 20px;
-            border-radius: 5px;
-            max-width: 200px;
-            max-height: 200px;
+        .content-table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .content .text {
-            flex: 1;
+        .content-table td {
+            vertical-align: top;
+            padding: 10px;
+        }
+        .image-contact {
+            width: 25%;
+        }
+        .image-contact img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .text {
+            width: 75%;
+        }
+        @media (max-width: 768px) {
+            .content-table, .content-table tbody, .content-table tr, .content-table td {
+                display: block;
+                width: 100%;
+            }
+            .image-contact, .text {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-             <h1>Daniel Martínez Felip</h1>
+            <h1>Daniel Martínez Felip</h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="curriculum_vitae.html">Curriculum Vitae</a></li>
                 </ul>
-            </nav> 
+            </nav>
         </div>
     </header>
-
     <div class="container">
         <div class="content">
-            <img src="me.jpg">
-            <div class="text">
-                <h2>About Me</h2>
-                <p>Welcome to my personal webpage! Currently, I am a PhD Candidate in the <a href="https://research-repository.uwa.edu.au/en/persons/daniel-martinez-felip">Department of Agricultural and Resource Economics at the UWA</a>.
-                I am interested in the economics and underpinnings of voluntary cooperation, and the effectiveness of social incentives as a lever for aligning personal interests with collective interests. My research focuses on studying the role of social norms in enhancing the effects of financial incentives on cooperative behaviour and how social norm enforcement mechanisms should be designed to trigger cooperative normative change.</p>
-              
-                <h2>Research Interests</h2>
-                <p>Behavioural and Experimental economics · Collective action problems · Climate change · Social norms</p>
-                
-                <h2>Contact</h2>
-                <p>Email: daniel.martinezfelip@research.uwa.edu.au</p>
-                <p><a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">My Google Scholar profile</a></p>
-                <p><a href="http://www.linkedin.com/in/daniel-mart%C3%ADnez-felip-9744001a4">My LinkedIn Profile</a></p>
-            </div>
+            <table class="content-table">
+                <tr>
+                    <td class="image-contact">
+                        <img src="me.jpg" alt="Daniel Martínez Felip">
+                        <h2>Contact</h2>
+                        <p>Email: daniel.martinezfelip@research.uwa.edu.au</p>
+                        <p><a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">My Google Scholar profile</a></p>
+                        <p><a href="http://www.linkedin.com/in/daniel-mart%C3%ADnez-felip-9744001a4">My LinkedIn Profile</a></p>
+                    </td>
+                    <td class="text">
+                        <h2>About Me</h2>
+                        <p>Welcome to my personal webpage! Currently, I am a PhD Candidate in the <a href="https://research-repository.uwa.edu.au/en/persons/daniel-martinez-felip">Department of Agricultural and Resource Economics at the UWA</a>. I am interested in the economics and underpinnings of voluntary cooperation, and the effectiveness of social incentives as a lever for aligning personal interests with collective interests. My research focuses on studying the role of social norms in enhancing the effects of financial incentives on cooperative behaviour and how social norm enforcement mechanisms should be designed to trigger cooperative normative change.</p>
+                        <h2>Research Interests</h2>
+                        <p>Behavioural and Experimental economics · Collective action problems · Climate change · Social norms</p>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </body>
