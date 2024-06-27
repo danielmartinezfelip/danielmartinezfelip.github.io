@@ -6,48 +6,53 @@
     <title>Daniel Martínez Felip - About</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Cambria', 'Times New Roman', serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f8f8f8;
+            color: #333;
         }
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: auto;
-            overflow: hidden;
             padding: 20px;
         }
         header {
-            background: #35424a;
-            color: white;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #e8491d 3px solid;
-        }
-        header h1 {
-            margin: 0;
             text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #333;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+            color: #2c3e50;
+        }
+        nav {
+            margin-top: 15px;
         }
         nav ul {
             padding: 0;
             list-style: none;
-            text-align: center;
         }
         nav ul li {
             display: inline;
             margin: 0 15px;
         }
         nav ul li a {
-            color: white;
+            color: #2c3e50;
             text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
         }
         .content {
-            margin-top: 20px;
+            margin-top: 30px;
             background: white;
-            padding: 20px;
-            border-radius: 5px;
+            padding: 30px;
+            border: 1px solid #ddd;
         }
         .content-table {
             width: 100%;
@@ -68,6 +73,18 @@
         .text {
             width: 75%;
         }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 1px solid #2c3e50;
+            padding-bottom: 5px;
+        }
+        a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
         @media (max-width: 768px) {
             .content-table, .content-table tbody, .content-table tr, .content-table td {
                 display: block;
@@ -80,8 +97,8 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
+    <div class="container">
+        <header>
             <h1>Daniel Martínez Felip</h1>
             <nav>
                 <ul>
@@ -89,9 +106,7 @@
                     <li><a href="curriculum_vitae.html">Curriculum Vitae</a></li>
                 </ul>
             </nav>
-        </div>
-    </header>
-    <div class="container">
+        </header>
         <div class="content">
             <table class="content-table">
                 <tr>
