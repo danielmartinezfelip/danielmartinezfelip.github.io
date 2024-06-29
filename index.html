@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Martínez Felip - About</title>
+    
+    <!-------------------------------------------------------------------------------------------------------------------------------->
+    <!-------------------------------------------------------- Styles Section -------------------------------------------------------->
+    <!-------------------------------------------------------------------------------------------------------------------------------->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Cambria', 'Times New Roman', serif;
@@ -69,7 +75,7 @@
             max-width: 80%;
             height: 90%;
             border-radius: 5px;
-            object-fit: contain; /* Ensure the image scales down properly */
+            object-fit: contain;
         }
         .text {
             width: 75%;
@@ -80,11 +86,19 @@
             padding-bottom: 5px;
         }
         a {
-            color: #1a73e8; /* Blue color for links */
+            color: #1a73e8;
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
+        }
+        .contact-info a {
+            display: flex;
+            align-items: center;
+        }
+        .contact-info i {
+            margin-right: 8px;
+            color: #2c3e50;
         }
         @media (max-width: 768px) {
             .content-table, .content-table tbody, .content-table tr, .content-table td {
@@ -96,15 +110,25 @@
             }
         }
     </style>
-</head>
+    
+    <!-------------------------------------------------------------------------------------------------------------------------------->
+    <!---------------------------------------------------- End of Styles Section ----------------------------------------------------->
+    <!-------------------------------------------------------------------------------------------------------------------------------->
+
+   </head>
 <body>
-    <div class="container">
+    
+    <!-------------------------------------------------------------------------------------------------------------------------------->
+    <!--------------------------------------------------------- Page Content --------------------------------------------------------->
+    <!-------------------------------------------------------------------------------------------------------------------------------->
+
+       <div class="container">
         <header>
             <h1>Daniel Martínez Felip</h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">Reserach</a></li>
+                    <li><a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">Research</a></li>
                     <li><a href="curriculum_vitae.html">Curriculum Vitae</a></li>
                 </ul>
             </nav>
@@ -115,9 +139,19 @@
                     <td class="image-contact">
                         <img src="me.jpg" alt="Daniel Martínez Felip">
                         <h2>Contact</h2>
-                        <p>Email: <a href="daniel.martinezfelip@research.uwa.edu.au">daniel.martinezfelip@research.uwa.edu.au</a></p>
+                        <p class="contact-info">
+                            <a href="mailto:daniel.martinezfelip@research.uwa.edu.au">
+                                <i class="fas fa-envelope"></i>
+                                daniel.martinezfelip@research.uwa.edu.au
+                            </a>
+                        </p>
                         <p><a href="https://research-repository.uwa.edu.au/en/persons/daniel-martinez-felip">My UWA profile</a></p>
-                        <p><a href="http://www.linkedin.com/in/daniel-mart%C3%ADnez-felip-9744001a4">My LinkedIn Profile</a></p>
+                        <p class="contact-info">
+                            <a href="http://www.linkedin.com/in/daniel-mart%C3%ADnez-felip-9744001a4">
+                                <i class="fab fa-linkedin"></i>
+                                My LinkedIn Profile
+                            </a>
+                        </p>
                         <h2>Useful Open Source Software</h2>
                         <p><a href="https://www.otree.org/">oTree</a></p>
                         <p><a href="https://cran.r-project.org/">R Project</a> & <a href="https://posit.co/">R Studio</a></p>
@@ -137,5 +171,10 @@
             </table>
         </div>
     </div>
-</body>
+    
+    <!-------------------------------------------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------- End of Page Content ------------------------------------------------------>
+    <!-------------------------------------------------------------------------------------------------------------------------------->
+
+  </body>
 </html>
