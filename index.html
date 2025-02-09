@@ -1,148 +1,122 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Daniel Martínez Felip - About</title>
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Daniel Martínez Felip - PhD Candidate at UWA. Research in behavioral and experimental economics, social norms, and collective action.">
-    <meta name="keywords" content="Daniel Martínez Felip, behavioral economics, experimental economics, social norms, cooperation, UWA, environmental policy">
-    <meta name="author" content="Daniel Martínez Felip">
-    <link rel="canonical" href="https://danielmartinezfelip.github.io/personal-website/">
-
-    <!-- Open Graph Meta Tags (For Social Media Sharing) -->
-    <meta property="og:title" content="Daniel Martínez Felip - Behavioral & Experimental Economics">
-    <meta property="og:description" content="PhD Candidate at UWA researching behavioral and experimental economics, social norms, and collective action.">
-    <meta property="og:image" content="https://danielmartinezfelip.github.io/personal-website/me.jpg">
-    <meta property="og:url" content="https://danielmartinezfelip.github.io/personal-website/">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Daniel Martínez Felip - Behavioral & Experimental Economics">
-    <meta name="twitter:description" content="PhD Candidate at UWA researching behavioral and experimental economics, social norms, and collective action.">
-    <meta name="twitter:image" content="https://danielmartinezfelip.github.io/personal-website/me.jpg">
-
-    <!-- Schema.org Structured Data (Google Knowledge Graph) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Daniel Martínez Felip",
-      "jobTitle": "PhD Candidate",
-      "affiliation": {
-        "@type": "Organization",
-        "name": "University of Western Australia"
-      },
-      "url": "https://danielmartinezfelip.github.io/personal-website/",
-      "sameAs": [
-        "https://orcid.org/0009-0000-6979-904X",
-        "https://www.linkedin.com/in/daniel-mart%C3%ADnez-felip-9744001a4",
-        "https://scholar.google.com/citations?user=IZFSPNoAAAAJ",
-        "https://research-repository.uwa.edu.au/en/persons/daniel-martinez-felip"
-      ]
+    <title>Daniel Martínez Felip - About</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    body {
+        font-family: 'Cambria', 'Times New Roman', serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
-    </script>
-
-    <!-- Styles -->
-    <meta name="theme-color" content="#2c3e50">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <style>
-        body {
-            font-family: 'Cambria', 'Times New Roman', serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
-            flex-grow: 1;
-        }
-        header {
-            text-align: center;
-            padding: 20px 0;
-            border-bottom: 2px solid #333;
-        }
-        h1 {
-            font-size: 2em;
-            margin: 0;
-            color: #2c3e50;
-        }
-        nav ul {
-            padding: 0;
-            list-style: none;
-            text-align: center;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-        .content {
-            margin-top: 30px;
-            background: white;
-            padding: 30px;
-            border: 1px solid #ddd;
-        }
-        .content-table {
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+        flex-grow: 1;
+    }
+    header {
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 2px solid #333;
+    }
+    h1 {
+        font-size: 2em;
+        margin: 0;
+        color: #2c3e50;
+    }
+    nav {
+        margin-top: 15px;
+    }
+    nav ul {
+        padding: 0;
+        list-style: none;
+    }
+    nav ul li {
+        display: inline;
+        margin: 0 15px;
+    }
+    nav ul li a {
+        color: #2c3e50;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    nav ul li a:hover {
+        text-decoration: underline;
+    }
+    .content {
+        margin-top: 30px;
+        background: white;
+        padding: 30px;
+        border: 1px solid #ddd;
+    }
+    .content-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .content-table td {
+        vertical-align: top;
+        padding: 10px;
+    }
+    .image-contact {
+        width: 25%;
+    }
+    .image-contact img {
+        max-width: 80%;
+        height: auto;
+        border-radius: 5px;
+        object-fit: contain;
+    }
+    .text {
+        width: 75%;
+    }
+    h2 {
+        color: #2c3e50;
+        border-bottom: 1px solid #2c3e50;
+        padding-bottom: 5px;
+    }
+    a {
+        color: #1a73e8;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    .contact-footer {
+        background-color: #2c3e50;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+    }
+    .contact-footer a {
+        color: white;
+        display: inline-flex;
+        align-items: center;
+        margin: 5px 10px;
+    }
+    .contact-footer i {
+        margin-right: 8px;
+    }
+    @media (max-width: 768px) {
+        .content-table, .content-table tbody, .content-table tr, .content-table td {
+            display: block;
             width: 100%;
-            border-collapse: collapse;
         }
-        .content-table td {
-            vertical-align: top;
-            padding: 10px;
+        .image-contact, .text {
+            width: 100%;
         }
-        .image-contact {
-            width: 25%;
-        }
-        .image-contact img {
-            max-width: 80%;
-            height: auto;
-            border-radius: 5px;
-            object-fit: contain;
-        }
-        .text {
-            width: 75%;
-        }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 1px solid #2c3e50;
-            padding-bottom: 5px;
-        }
-        .contact-footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-        .contact-footer a {
-            color: white;
-            display: inline-flex;
-            align-items: center;
-            margin: 5px 10px;
-        }
-        .contact-footer i {
-            margin-right: 8px;
-        }
-    </style>
+    }
+</style>
+
 </head>
 <body>
     <div class="container">
@@ -160,41 +134,64 @@
                 <tr>
                     <td class="image-contact">
                         <img src="me.jpg" alt="Daniel Martínez Felip">
-                    </td>
-                    <td class="text">
-                        <h2>About Me</h2>
-                        <p>Currently, I am a PhD Candidate in the <a href="https://www.uwaceep.org/research-students">Center for Environmental Economics & Policy</a> at the UWA School of Agriculture and Environment. My research focuses on behavioral economics, social norms, and cooperation.</p>
-                        <h2>Research Interests</h2>
-                        <p>Behavioral and Experimental Economics · Collective Action Problems · Climate Change · Social Norms</p>
-                        <h2>Research Profiles</h2>
-                        <ul>
-                            <li><a href="https://osf.io/3fycp/">OSF</a></li>
-                            <li><a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">Google Scholar</a></li>
-                            <li><a href="https://www.researchgate.net/profile/Daniel-Martinez-Felip">ResearchGate</a></li>
-                            <li><a href="https://ideas.repec.org/f/pma3358.html">RePEc</a></li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </div>
+                         <h2>Research</h2>
+                        <p class="contact-info"> 
+                            <a 
+                            href="https://osf.io/3fycp/">
+                        </p>
+                                OSF
+                            </a>
+                        <p class="contact-info"> 
+                             <a 
+href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">
+                                Google Scholar
+                            </a>
+                        </p>
+                        <p class="contact-info">
+                            <a 
+href="https://www.researchgate.net/profile/Daniel-Martinez-Felip">
+              ResearchGate
+                            </a>
+                        </p>
+<p class="contact-info">
+                            <a 
+href="https://ideas.repec.org/f/pma3358.html">
+              RePEc
+                            </a>
+                        </p>
+                        <h2>Useful Open Source Software</h2>
+                        <p><a href="https://www.otree.org/">oTree</a></p>
+                        <p><a href="https://cran.r-project.org/">R Project</a> & <a href="https://posit.co/">R Studio</a></p>
+                        <p><a href="https://www.latex-project.org/get/">LaTeX Project</a> & <a href="https://www.texstudio.org/">TeX Studio</a></p>
+                        <p><a href="https://pandoc.org/">Pandoc</a></p></td>
+                <td class="text">
+                    <h2>About Me</h2>
+                    <p>Currently, I am a PhD Candidate in the <a href="https://www.uwaceep.org/research-students">Center for Environmental Economics & Policy</a> at the UWA School of Agriculture and Environment. I am interested in the economics and underpinnings of voluntary cooperation, and the effectiveness of social incentives as a lever for aligning personal interests with collective interests. My research focuses on studying the role of social norms in enhancing the effects of financial incentives on cooperative behaviour and how social norm enforcement mechanisms should be designed to trigger cooperative normative change.</p>
+                    <h2>Research Interests</h2>
+                    <p>Behavioural and Experimental economics · Collective action problems · Climate change · Social norms</p>
+                </td>
+            </tr>
+        </table>
     </div>
-    <footer class="contact-footer">
-        <a href="mailto:daniel.martinezfelip@research.uwa.edu.au">
-            <i class="fas fa-envelope"></i>
-            daniel.martinezfelip@research.uwa.edu.au
-        </a>
-        <a href="https://research-repository.uwa.edu.au/en/persons/daniel-martinez-felip">
-            <i class="fas fa-graduation-cap"></i>
-            My UWA Profile
-        </a>
-        <a href="https://orcid.org/0009-0000-6979-904X">
-            <i class="fab fa-orcid"></i>
-            My ORCiD Profile
-        </a>
-        <a href="http://www.linkedin.com/in/daniel-mart%C3%ADnez-felip-9744001a4">
-            <i class="fab fa-linkedin"></i>
-            My LinkedIn Profile
-        </a>
-    </footer>
+</div>
+<footer class="contact-footer">
+    <a href="mailto:daniel.martinezfelip@research.uwa.edu.au">
+        <i class="fas fa-envelope"></i>
+        daniel.martinezfelip@research.uwa.edu.au
+    </a>
+    <a href="https://research-repository.uwa.edu.au/en/persons/daniel-martinez-felip">
+        <i class="fas fa-graduation-cap"></i>
+        My UWA Profile
+    </a>
+    <a href="https://orcid.org/0009-0000-6979-904X">
+        <i class="fab fa-orcid"></i>
+        My ORCiD Profile
+    </a>
+    <a href="http://www.linkedin.com/in/daniel-mart%C3%ADnez-felip-9744001a4">
+        <i class="fab fa-linkedin"></i>
+        My LinkedIn Profile
+    </a>
+</footer>
+
 </body>
 </html>
