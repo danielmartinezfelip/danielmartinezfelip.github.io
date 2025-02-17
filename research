@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Martínez Felip - Curriculum Vitae</title>
+    <style>
+        body {
+            font-family: 'Cambria', 'Times New Roman', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #333;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+            color: #2c3e50;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            margin-top: 30px;
+            background: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+        }
+        .content-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .content-table td {
+            vertical-align: top;
+            padding: 10px;
+        }
+        .image-contact {
+            width: 25%;
+        }
+        .image-contact img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .text {
+            width: 75%;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 1px solid #2c3e50;
+            padding-bottom: 5px;
+        }
+        a {
+            color: #1a73e8; /* Blue color for links */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .content-table, .content-table tbody, .content-table tr, .content-table td {
+                display: block;
+                width: 100%;
+            }
+            .image-contact, .text {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Daniel Martínez Felip</h1>
+            <h2>Curriculum Vitae</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        
+        <div class="content">
+            <div class="section">
+                <h2>Working papers</h2>
+                "How does experienced behavior change normative expectations regarding socially beneficial actions?" With Steven G.M. Schilizzi and Chi Nguyen
+            </div>
+        </div>
+    </div>
+</body>
+</html>
