@@ -29,6 +29,11 @@
             margin: 0;
             color: #2c3e50;
         }
+        header h2 {
+            border-bottom: none;
+            color: #555;
+            margin-top: 5px;
+        }
         nav {
             margin-top: 15px;
         }
@@ -53,6 +58,7 @@
             background: white;
             padding: 30px;
             border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .content-table {
             width: 100%;
@@ -79,11 +85,32 @@
             padding-bottom: 5px;
         }
         a {
-            color: #1a73e8; /* Blue color for links */
+            color: #1a73e8;
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
+        }
+        .teaching-entry {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        .teaching-entry:last-child {
+            border-bottom: none;
+        }
+        .course-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        .course-description {
+            margin-left: 20px;
+            font-style: italic;
+        }
+        .course-responsibilities {
+            margin-left: 20px;
+            margin-top: 8px;
         }
         @media (max-width: 768px) {
             .content-table, .content-table tbody, .content-table tr, .content-table td {
