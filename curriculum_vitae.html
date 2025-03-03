@@ -12,17 +12,24 @@
             padding: 0;
             background-color: #f8f8f8;
             color: #333;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column;
         }
         .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         header {
             text-align: center;
-            padding: 20px 0;
+            padding: 15px 0;
             border-bottom: 2px solid #333;
+            background-color: white;
         }
         h1 {
             font-size: 2em;
@@ -33,13 +40,15 @@
             border-bottom: none;
             color: #555;
             margin-top: 5px;
+            margin-bottom: 10px;
         }
         nav {
-            margin-top: 15px;
+            margin-top: 10px;
         }
         nav ul {
             padding: 0;
             list-style: none;
+            margin: 0;
         }
         nav ul li {
             display: inline;
@@ -53,31 +62,22 @@
         nav ul li a:hover {
             text-decoration: underline;
         }
-        .content {
-            margin-top: 30px;
-            background: white;
-            padding: 30px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .content-table {
+        .pdf-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
-            border-collapse: collapse;
+            height: calc(100vh - 120px); /* Full height minus header */
+            padding: 0;
+            margin: 0;
+            background: white;
         }
-        .content-table td {
-            vertical-align: top;
-            padding: 10px;
-        }
-        .image-contact {
-            width: 25%;
-        }
-        .image-contact img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        .text {
-            width: 75%;
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
         }
         h2 {
             color: #2c3e50;
@@ -91,34 +91,12 @@
         a:hover {
             text-decoration: underline;
         }
-        .teaching-entry {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #ddd;
-        }
-        .teaching-entry:last-child {
-            border-bottom: none;
-        }
-        .course-title {
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 8px;
-        }
-        .course-description {
-            margin-left: 20px;
-            font-style: italic;
-        }
-        .course-responsibilities {
-            margin-left: 20px;
-            margin-top: 8px;
-        }
         @media (max-width: 768px) {
-            .content-table, .content-table tbody, .content-table tr, .content-table td {
-                display: block;
-                width: 100%;
+            header {
+                padding: 10px 0;
             }
-            .image-contact, .text {
-                width: 100%;
+            .pdf-container {
+                height: calc(100vh - 100px);
             }
         }
     </style>
@@ -137,8 +115,8 @@
             </nav>
         </header>
         
-        <div class="center-text">
-            <iframe src="https://drive.google.com/file/d/1VFevzamH9eSKpcbqwsBEgjsAApjxVlVs/preview"></iframe>
+        <div class="pdf-container">
+            <iframe src="https://drive.google.com/file/d/1VFevzamH9eSKpcbqwsBEgjsAApjxVlVs/preview" allowfullscreen></iframe>
         </div>
     </div>
 </body>
