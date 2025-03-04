@@ -12,14 +12,14 @@
             padding: 0;
             background-color: #f8f8f8;
             color: #333;
-            min-height: 100vh;
+            height: 100vh; /* Full viewport height */
             display: flex;
             flex-direction: column;
         }
         .container {
             width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin: 0;
             padding: 0;
             flex: 1;
             display: flex;
@@ -30,23 +30,20 @@
             padding: 15px 0;
             border-bottom: 2px solid #333;
             background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
         }
         h1 {
-            font-size: 1.8em;
+            font-size: 2em;
             margin: 0;
             color: #2c3e50;
         }
         header h2 {
             border-bottom: none;
             color: #555;
-            margin-top: 3px;
-            margin-bottom: 8px;
-            font-size: 1.3em;
+            margin-top: 5px;
+            margin-bottom: 10px;
         }
         nav {
-            margin-top: 6px;
+            margin-top: 10px;
         }
         nav ul {
             padding: 0;
@@ -69,15 +66,12 @@
             flex: 1;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            width: 90%;
-            max-width: 1000px;
-            margin: 0 auto 20px auto;
+            align-items: center;
+            width: 100%;
+            height: calc(100vh - 120px); /* Full height minus header */
+            padding: 0;
+            margin: 0;
             background: white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            height: 90vh; /* Increased height to show more of the document */
         }
         iframe {
             width: 100%;
@@ -102,22 +96,7 @@
                 padding: 10px 0;
             }
             .pdf-container {
-                width: 95%;
-                height: 85vh;
-            }
-            h1 {
-                font-size: 1.6em;
-            }
-            header h2 {
-                font-size: 1.2em;
-                margin-top: 2px;
-                margin-bottom: 5px;
-            }
-        }
-        @media (min-width: 1600px) {
-            .pdf-container {
-                height: 92vh;
-                max-width: 1200px;
+                height: calc(100vh - 100px);
             }
         }
     </style>
