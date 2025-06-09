@@ -91,20 +91,28 @@
     a:hover {
         text-decoration: underline;
     }
-    .contact-footer {
-        background-color: #2c3e50;
-        color: white;
-        padding: 20px 0;
+    .contact-icons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 10px;
+    }
+    .contact-icons a {
+        color: #2c3e50;
+        font-size: 1.2em;
+        transition: color 0.3s ease;
+    }
+    .contact-icons a:hover {
+        color: #1a73e8;
+    }
+    .contact-icons i {
+        width: 20px;
+        height: 20px;
         text-align: center;
     }
-    .contact-footer a {
-        color: white;
-        display: inline-flex;
-        align-items: center;
-        margin: 5px 10px;
-    }
-    .contact-footer i {
-        margin-right: 8px;
+    .bluesky-icon {
+        width: 20px;
+        height: 20px;
     }
     @media (max-width: 768px) {
         .content-table, .content-table tbody, .content-table tr, .content-table td {
@@ -136,22 +144,39 @@
                 <tr>
                     <td class="image-contact">
                         <img src="me.jpg" alt="Daniel Martínez Felip">
-                         <h2>Research</h2>
+                        <div class="contact-icons">
+                            <a href="mailto:daniel.martinezfelip@research.uwa.edu.au" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://research-repository.uwa.edu.au/en/persons/daniel-martinez-felip" title="UWA Profile">
+                                <i class="fas fa-graduation-cap"></i>
+                            </a>
+                            <a href="https://orcid.org/0009-0000-6979-904X" title="ORCiD">
+                                <i class="fab fa-orcid"></i>
+                            </a>
+                            <a href="http://www.linkedin.com/in/daniel-mart%C3%ADnez-felip-9744001a4" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://bsky.app/profile/dmartinezfelip.bsky.social" title="Bluesky">
+                                <svg class="bluesky-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.06-.138.017-.276.036-.415.06-2.670.296-5.568-.628-6.383-3.364C.378 9.418 0 4.458 0 3.768c0-.688.139-1.86.902-2.203C1.561 1.266 2.566.944 5.202 2.805 7.954 4.747 10.913 8.686 12 10.8zm0 0c1.087-2.114 4.046-6.053 6.798-7.995C21.434.944 22.439 1.266 23.098 1.565c.763.343.902 1.515.902 2.203 0 .69-.378 5.65-.624 6.479-.815 2.736-3.713 3.66-6.383 3.364-.136-.02-.275-.039-.415-.06.138.017.276.036.415.06 2.670.296 5.568-.628 6.383-3.364.246-.829.624-5.789.624-6.479 0-.688-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <h2>Research</h2>
                         <p class="contact-info"> 
-                             <a 
-href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">
+                             <a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">
                                 Google Scholar
                             </a>
                         </p>
                         <p class="contact-info">
-                            <a 
-href="https://www.researchgate.net/profile/Daniel-Martinez-Felip">
+                            <a href="https://www.researchgate.net/profile/Daniel-Martinez-Felip">
               ResearchGate
                             </a>
                         </p>
-<p class="contact-info">
-                            <a 
-href="https://ideas.repec.org/f/pma3358.html">
+                        <p class="contact-info">
+                            <a href="https://ideas.repec.org/f/pma3358.html">
               RePEc
                             </a>
                         </p>
@@ -170,24 +195,6 @@ href="https://ideas.repec.org/f/pma3358.html">
         </table>
     </div>
 </div>
-<footer class="contact-footer">
-    <a href="mailto:daniel.martinezfelip@research.uwa.edu.au">
-        <i class="fas fa-envelope"></i>
-        daniel.martinezfelip@research.uwa.edu.au
-    </a>
-    <a href="https://research-repository.uwa.edu.au/en/persons/daniel-martinez-felip">
-        <i class="fas fa-graduation-cap"></i>
-        My UWA Profile
-    </a>
-    <a href="https://orcid.org/0009-0000-6979-904X">
-        <i class="fab fa-orcid"></i>
-        My ORCiD Profile
-    </a>
-    <a href="http://www.linkedin.com/in/daniel-mart%C3%ADnez-felip-9744001a4">
-        <i class="fab fa-linkedin"></i>
-        My LinkedIn Profile
-    </a>
-</footer>
 
 </body>
 </html>
