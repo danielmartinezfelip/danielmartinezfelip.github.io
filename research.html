@@ -116,6 +116,16 @@
             color: var(--text);
             border-bottom: 1px solid var(--border);
             padding-bottom: 6px;
+            margin-top: 24px;
+        }
+        h3 {
+            color: var(--text);
+            font-size: 1.1em;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         a {
             color: var(--accent);
@@ -129,25 +139,22 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
+            padding: 4px 10px;
             border-radius: 999px;
-            font-size: 0.8em;
+            font-size: 0.75em;
             font-weight: 700;
-            background: rgba(122, 211, 198, 0.25);
-            color: #92400e;
-            border: 1.5px solid rgba(122, 211, 198, 0.6);
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
         .badge-review {
-            background: rgba(106, 167, 255, 0.18);
-            border-color: rgba(106, 167, 255, 0.4);
-            color: var(--accent);
+            background: rgba(59, 130, 246, 0.15);
+            border: 1.5px solid rgba(59, 130, 246, 0.5);
+            color: #1e40af;
         }
         .badge-prep {
-            background: rgba(255, 200, 120, 0.18);
-            border-color: rgba(255, 200, 120, 0.4);
-            color: #334155;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1.5px solid rgba(245, 158, 11, 0.5);
+            color: #92400e;
         }
         .site-footer {
             margin-top: 32px;
@@ -248,30 +255,37 @@
         
         <div class="content card">
     <div class="section">
-        <h2>Working Papers</h2>
-
+        <h2>Ongoing Work</h2>
+        
+        <h3>Under Review <span class="badge badge-review">Under Review</span></h3>
         <p>
             <a href="https://doi.org/10.31235/osf.io/vy6z2_v5">
                 How does experienced behavior change normative expectations regarding socially beneficial actions?
             </a><br>
             <em>with Steven G.M. Schilizzi and Chi Nguyen</em><br>
-            <span class="badge badge-review">Revise and resubmit</span> at the <em>Journal of Behavioral and Experimental Economics</em>.
+            Revise and resubmit at the <em>Journal of Behavioral and Experimental Economics</em>.
         </p>
 
+        <h3>Work in Progress <span class="badge badge-prep">Work in Progress</span></h3>
         <p>
             <a href="https://doi.org/10.31235/osf.io/j7usg_v1">
                 From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviors
             </a><br>
             <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-            <span class="badge">Being revised</span> for resubmission.
+            Being revised for resubmission.
         </p>
 
         <p>
             Norm Heterogeneity and the Emergence of Cooperation: A Spatial Agent-Based Model of Conditional Cooperation
             <br>
             <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-            <span class="badge badge-prep">In preparation</span>.
+            In preparation.
         </p>
+    </div>
+
+    <div class="section">
+        <h2>Peer-Reviewed Publications</h2>
+        <p style="color: var(--muted); font-style: italic;">Coming soon...</p>
     </div>
 </div>
     <footer class="site-footer card">
