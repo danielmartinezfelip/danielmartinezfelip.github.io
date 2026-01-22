@@ -7,16 +7,16 @@
     <style>
         :root {
             color-scheme: light dark;
-            --background: #e5e7eb;
-            --surface: #ffffff;
-            --surface-alt: #f3f4f6;
-            --text: #1f2937;
-            --muted: #4b5563;
-            --accent: #2563eb;
-            --accent-strong: #1d4ed8;
-            --border: rgba(15, 23, 42, 0.12);
-            --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-            --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
+            --background: #131519;
+            --surface: #1c2026;
+            --surface-alt: #242a33;
+            --text: #e9edf2;
+            --muted: #c6ced9;
+            --accent: #6aa7ff;
+            --accent-strong: #8cb8ff;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+            --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.4);
             --radius: 26px;
         }
         @media (prefers-color-scheme: dark) {
@@ -99,6 +99,8 @@
             width: 100%;
             height: calc(100vh - 180px); /* Full height minus desktop header; mobile override below. */
             padding: 24px 0 0;
+            height: calc(100vh - 120px); /* Full height minus desktop header; mobile override below. */
+            padding: 0;
             margin: 0;
         }
         .card {
@@ -185,6 +187,7 @@
             }
             .site-footer {
                 border-radius: 24px;
+                height: calc(100vh - 100px); /* Full height minus compact mobile header. */
             }
         }
     </style>
