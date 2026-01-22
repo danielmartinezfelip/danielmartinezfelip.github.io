@@ -7,16 +7,16 @@
     <style>
         :root {
             color-scheme: light dark;
-            --background: #131519;
-            --surface: #1c2026;
-            --surface-alt: #242a33;
-            --text: #e9edf2;
-            --muted: #c6ced9;
-            --accent: #6aa7ff;
-            --accent-strong: #8cb8ff;
-            --border: rgba(255, 255, 255, 0.08);
-            --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-            --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.4);
+            --background: #e5e7eb;
+            --surface: #ffffff;
+            --surface-alt: #f3f4f6;
+            --text: #1f2937;
+            --muted: #4b5563;
+            --accent: #2563eb;
+            --accent-strong: #1d4ed8;
+            --border: rgba(15, 23, 42, 0.12);
+            --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+            --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
             --radius: 26px;
         }
         @media (prefers-color-scheme: dark) {
@@ -128,7 +128,7 @@
             text-decoration: none;
         }
         a:hover {
-            color: var(--accent-strong);
+            color: var(--accent);
             text-decoration: underline;
         }
         .teaching-entry {
@@ -177,7 +177,8 @@
             text-decoration: none;
         }
         .footer-links a:hover {
-            color: var(--accent-strong);
+            color: var(--muted);
+            text-decoration: underline;
         }
         @keyframes gradientShift {
             0% {
