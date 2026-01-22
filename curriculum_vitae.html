@@ -5,40 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Martínez-Felip - Curriculum Vitae</title>
     <style>
+        :root {
+            color-scheme: light dark;
+            --background: #e5e7eb;
+            --surface: #ffffff;
+            --surface-alt: #f3f4f6;
+            --text: #1f2937;
+            --muted: #4b5563;
+            --accent: #2563eb;
+            --accent-strong: #1d4ed8;
+            --border: rgba(15, 23, 42, 0.12);
+            --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+            --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
+            --radius: 26px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --accent: #7ad3c6;
+                --accent-strong: #a1e7de;
+            }
+        }
         body {
             font-family: 'Cambria', 'Times New Roman', serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
-            height: 100vh; /* Full viewport height */
+            background-color: var(--background);
+            color: var(--text);
+            height: 100vh;
             display: flex;
             flex-direction: column;
         }
         .container {
-            width: 100%;
-            max-width: 100%;
-            margin: 0;
-            padding: 0;
+            width: min(1200px, 94%);
+            margin: 0 auto;
+            padding: 32px 0 48px;
             flex: 1;
             display: flex;
             flex-direction: column;
         }
         header {
             text-align: center;
-            padding: 15px 0;
-            border-bottom: 2px solid #333;
-            background-color: white;
+            padding: 20px 24px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+            background-size: 180% 180%;
+            box-shadow: var(--shadow);
+            animation: gradientShift 12s ease infinite;
         }
         h1 {
-            font-size: 2em;
+            font-size: 2.1em;
             margin: 0;
-            color: #2c3e50;
+            color: var(--text);
         }
         header h2 {
             border-bottom: none;
-            color: #555;
+            color: var(--muted);
             margin-top: 5px;
             margin-bottom: 10px;
         }
@@ -55,12 +78,18 @@
             margin: 0 15px;
         }
         nav ul li a {
-            color: #2c3e50;
+            color: var(--muted);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
         }
         nav ul li a:hover {
-            text-decoration: underline;
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
         }
         .pdf-container {
             flex: 1;
@@ -68,42 +97,101 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            height: calc(100vh - 120px); /* Full height minus header */
-            padding: 0;
+            height: calc(100vh - 180px); /* Full height minus desktop header; mobile override below. */
+            padding: 24px 0 0;
             margin: 0;
-            background: white;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
         iframe {
             width: 100%;
             height: 100%;
-            border: none;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
             display: block;
+            background: var(--surface);
+            box-shadow: var(--shadow);
         }
         h2 {
-            color: #2c3e50;
-            border-bottom: 1px solid #2c3e50;
-            padding-bottom: 5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
         }
         a {
-            color: #1a73e8;
+            color: var(--accent);
             text-decoration: none;
         }
         a:hover {
+            color: var(--accent-strong);
             text-decoration: underline;
+        }
+        .site-footer {
+            margin-top: 24px;
+            padding: 18px 24px;
+            border-radius: 999px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9em;
+            color: var(--muted);
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--accent-strong);
+        }
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header {
+                animation: none;
+            }
+            .card {
+                transition: none;
+            }
         }
         @media (max-width: 768px) {
             header {
-                padding: 10px 0;
+                padding: 16px 18px;
             }
             .pdf-container {
-                height: calc(100vh - 100px);
+                height: calc(100vh - 160px); /* Full height minus compact mobile header. */
+            }
+            .site-footer {
+                border-radius: 24px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
+        <header class="card">
             <h1>Daniel Martínez-Felip</h1>
             <h2>Curriculum Vitae</h2>
             <nav>
@@ -118,6 +206,15 @@
         <div class="pdf-container">
             <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" allowfullscreen></iframe>
         </div>
+        <footer class="site-footer card">
+            <div class="footer-links">
+                <a href="mailto:martinezfelipd@gmail.com">Email</a>
+                <a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">Google Scholar</a>
+                <a href="https://orcid.org/0009-0000-6979-904X">ORCID</a>
+                <a href="https://bsky.app/profile/dmartinezfelip.bsky.social">Bluesky</a>
+            </div>
+            <div>© 2025 Daniel Martínez-Felip</div>
+        </footer>
     </div>
 </body>
 </html>
