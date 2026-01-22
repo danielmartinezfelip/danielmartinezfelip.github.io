@@ -6,33 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Martínez-Felip - About</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
+    :root {
+        color-scheme: light dark;
+        --background: #131519;
+        --surface: #1c2026;
+        --surface-alt: #242a33;
+        --text: #e9edf2;
+        --muted: #c6ced9;
+        --accent: #6aa7ff;
+        --accent-strong: #8cb8ff;
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+        --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.4);
+        --radius: 26px;
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --accent: #7ad3c6;
+            --accent-strong: #a1e7de;
+        }
+    }
     body {
         font-family: 'Cambria', 'Times New Roman', serif;
         line-height: 1.6;
         margin: 0;
         padding: 0;
-        background-color: #f8f8f8;
-        color: #333;
+        background-color: var(--background);
+        color: var(--text);
         display: flex;
         flex-direction: column;
         min-height: 100vh;
     }
     .container {
-        width: 90%;
-        max-width: 1000px;
+        width: min(1100px, 92%);
         margin: auto;
-        padding: 20px;
+        padding: 32px 0 48px;
         flex-grow: 1;
     }
     header {
         text-align: center;
-        padding: 20px 0;
-        border-bottom: 2px solid #333;
+        padding: 24px 28px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+        background-size: 180% 180%;
+        box-shadow: var(--shadow);
+        animation: gradientShift 12s ease infinite;
     }
     h1 {
-        font-size: 2em;
+        font-size: 2.1em;
         margin: 0;
-        color: #2c3e50;
+        color: var(--text);
     }
     nav {
         margin-top: 15px;
@@ -46,14 +70,33 @@
         margin: 0 15px;
     }
     nav ul li a {
-        color: #2c3e50;
+        color: var(--muted);
         text-decoration: none;
-        font-weight: bold;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
     }
     nav ul li a:hover {
-        text-decoration: underline;
+        color: var(--text);
+        border-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.05);
     }
     .content {
+        margin-top: 32px;
+        background: var(--surface);
+        padding: 32px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+    }
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-hover);
         margin-top: 30px;
         background: white;
         padding: 30px;
@@ -74,22 +117,24 @@
     .image-contact img {
         max-width: 100%;
         height: auto;
-        border-radius: 5px;
+        border-radius: 18px;
         object-fit: contain;
+        border: 1px solid var(--border);
     }
     .text {
         width: 75%;
     }
     h2 {
-        color: #2c3e50;
-        border-bottom: 1px solid #2c3e50;
-        padding-bottom: 5px;
+        color: var(--text);
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 6px;
     }
     a {
-        color: #1a73e8;
+        color: var(--accent);
         text-decoration: none;
     }
     a:hover {
+        color: var(--accent-strong);
         text-decoration: underline;
     }
     .contact-icons {
@@ -103,12 +148,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        color: #2c3e50 !important;
+        color: var(--muted) !important;
         text-decoration: none;
         transition: color 0.3s ease;
     }
     .contact-link:hover {
-        color: #1a73e8 !important;
+        color: var(--accent-strong) !important;
     }
     .contact-link i {
         font-size: 1em;
@@ -124,6 +169,77 @@
         text-align: center;
         white-space: nowrap;
     }
+    .quick-facts {
+        margin: 18px 0 24px;
+        padding: 18px 20px;
+        border-radius: 18px;
+        background: var(--surface-alt);
+        border: 1px solid var(--border);
+    }
+    .quick-facts h3 {
+        margin: 0 0 10px;
+        font-size: 1em;
+        color: var(--text);
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
+    .quick-facts ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 6px;
+        color: var(--muted);
+    }
+    .quick-facts strong {
+        color: var(--text);
+    }
+    .site-footer {
+        margin-top: 32px;
+        padding: 18px 24px;
+        border-radius: 999px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.9em;
+        color: var(--muted);
+    }
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+    .footer-links a {
+        color: var(--muted);
+        text-decoration: none;
+    }
+    .footer-links a:hover {
+        color: var(--accent-strong);
+    }
+    @keyframes gradientShift {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        header {
+            animation: none;
+        }
+        .card {
+            transition: none;
+        }
+    }
     @media (max-width: 768px) {
         .content-table, .content-table tbody, .content-table tr, .content-table td {
             display: block;
@@ -132,13 +248,16 @@
         .image-contact, .text {
             width: 100%;
         }
+        .site-footer {
+            border-radius: 24px;
+        }
     }
 </style>
 
 </head>
 <body>
     <div class="container">
-        <header>
+        <header class="card">
             <h1>Daniel Martínez-Felip</h1>
             <nav>
                 <ul>
@@ -149,7 +268,7 @@
                 </ul>
             </nav>
         </header>
-        <div class="content">
+        <div class="content card">
             <table class="content-table">
                 <tr>
                     <td class="image-contact">
@@ -199,6 +318,14 @@
                         <p><a href="https://pandoc.org/">Pandoc</a></p></td>
                 <td class="text">
                     <h2>About Me</h2>
+                    <div class="quick-facts card">
+                        <h3>Quick Facts</h3>
+                        <ul>
+                            <li><strong>Location:</strong> Perth, Western Australia</li>
+                            <li><strong>Research Focus:</strong> Social norms, cooperation, and incentives</li>
+                            <li><strong>Affiliation:</strong> UWA Centre for Environmental Economics & Policy</li>
+                        </ul>
+                    </div>
                     <p>Currently, I am a PhD Candidate in the <a href="https://www.uwaceep.org/research-students">Center for Environmental Economics & Policy</a> at the UWA School of Agriculture and Environment. I am interested in the economics and underpinnings of voluntary cooperation, and the effectiveness of social incentives as a lever for aligning personal interests with collective interests. My research focuses on studying the role of social norms in enhancing the effects of financial incentives on cooperative behaviour and how social norm enforcement mechanisms should be designed to trigger cooperative normative change.</p>
                     <h2>Research Interests</h2>
                     <p>Behavioural and experimental economics · Collective action problems · Norms · Institutions</p>
@@ -206,6 +333,15 @@
             </tr>
         </table>
     </div>
+    <footer class="site-footer card">
+        <div class="footer-links">
+            <a href="mailto:martinezfelipd@gmail.com">Email</a>
+            <a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">Google Scholar</a>
+            <a href="https://orcid.org/0009-0000-6979-904X">ORCID</a>
+            <a href="https://bsky.app/profile/dmartinezfelip.bsky.social">Bluesky</a>
+        </div>
+        <div>© 2025 Daniel Martínez-Felip</div>
+    </footer>
 </div>
 
 </body>
