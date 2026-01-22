@@ -5,33 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Martínez-Felip - Research</title>
     <style>
+        :root {
+            color-scheme: light dark;
+            --background: #e5e7eb;
+            --surface: #ffffff;
+            --surface-alt: #f3f4f6;
+            --text: #1f2937;
+            --muted: #4b5563;
+            --accent: #2563eb;
+            --accent-strong: #1d4ed8;
+            --border: rgba(15, 23, 42, 0.12);
+            --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+            --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
+            --radius: 26px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --accent: #7ad3c6;
+                --accent-strong: #a1e7de;
+            }
+        }
         body {
             font-family: 'Cambria', 'Times New Roman', serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
+            background-color: var(--background);
+            color: var(--text);
         }
         .container {
-            width: 90%;
-            max-width: 1000px;
+            width: min(1100px, 92%);
             margin: auto;
-            padding: 20px;
+            padding: 32px 0 48px;
         }
         header {
             text-align: center;
-            padding: 20px 0;
-            border-bottom: 2px solid #333;
+            padding: 24px 28px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+            background-size: 180% 180%;
+            box-shadow: var(--shadow);
+            animation: gradientShift 12s ease infinite;
         }
         h1 {
-            font-size: 2em;
+            font-size: 2.1em;
             margin: 0;
-            color: #2c3e50;
+            color: var(--text);
         }
         header h2 {
             border-bottom: none;
-            color: #555;
+            color: var(--muted);
             margin-top: 5px;
         }
         nav {
@@ -46,19 +70,33 @@
             margin: 0 15px;
         }
         nav ul li a {
-            color: #2c3e50;
+            color: var(--muted);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
         }
         nav ul li a:hover {
-            text-decoration: underline;
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
         }
         .content {
-            margin-top: 30px;
-            background: white;
-            padding: 30px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 32px;
+            background: var(--surface);
+            padding: 32px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
         .content-table {
             width: 100%;
@@ -74,27 +112,100 @@
         .image-contact img {
             max-width: 100%;
             height: auto;
-            border-radius: 5px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
         }
         .text {
             width: 75%;
         }
         h2 {
-            color: #2c3e50;
-            border-bottom: 1px solid #2c3e50;
-            padding-bottom: 5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
         }
         a {
-            color: #1a73e8;
+            color: var(--accent);
             text-decoration: none;
         }
         a:hover {
+            color: var(--accent);
             text-decoration: underline;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.75em;
+            font-weight: 600;
+            background: rgba(122, 211, 198, 0.16);
+            color: var(--accent-strong);
+            border: 1px solid rgba(122, 211, 198, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .badge-review {
+            background: rgba(106, 167, 255, 0.18);
+            border-color: rgba(106, 167, 255, 0.4);
+            color: var(--accent);
+        }
+        .badge-prep {
+            background: rgba(255, 200, 120, 0.18);
+            border-color: rgba(255, 200, 120, 0.4);
+            color: #ffcb8b;
+        }
+        .site-footer {
+            margin-top: 32px;
+            padding: 18px 24px;
+            border-radius: 999px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9em;
+            color: var(--muted);
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--muted);
+            text-decoration: underline;
+        }
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header {
+                animation: none;
+            }
+            .card {
+                transition: none;
+            }
         }
         .teaching-entry {
             margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 1px dashed #ddd;
+            border-bottom: 1px dashed var(--border);
         }
         .teaching-entry:last-child {
             border-bottom: none;
@@ -120,12 +231,15 @@
             .image-contact, .text {
                 width: 100%;
             }
+            .site-footer {
+                border-radius: 24px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
+        <header class="card">
             <h1>Daniel Martínez-Felip</h1>
             <h2>Research</h2>
             <nav>
@@ -138,7 +252,7 @@
         </header>
         
         
-        <div class="content">
+        <div class="content card">
     <div class="section">
         <h2>Working Papers</h2>
 
@@ -147,7 +261,7 @@
                 How does experienced behavior change normative expectations regarding socially beneficial actions?
             </a><br>
             <em>with Steven G.M. Schilizzi and Chi Nguyen</em><br>
-            <strong>Revise and resumbit</strong> at the <em>Journal of Behavioral and Experimental Economics</em>.
+            <span class="badge badge-review">Revise and resubmit</span> at the <em>Journal of Behavioral and Experimental Economics</em>.
         </p>
 
         <p>
@@ -155,13 +269,25 @@
                 From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviors
             </a><br>
             <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-            <strong>Being revised for resubmission</strong>.
+            <span class="badge">Being revised</span> for resubmission.
         </p>
 
         <p>
-                Norm Heterogeneity and the Emergence of Cooperation: A Spatial Agent-Based Model of Conditional Cooperation
+            Norm Heterogeneity and the Emergence of Cooperation: A Spatial Agent-Based Model of Conditional Cooperation
             <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-            <strong>In preparation</strong>.
+            <span class="badge badge-prep">In preparation</span>.
         </p>
     </div>
 </div>
+    <footer class="site-footer card">
+        <div class="footer-links">
+            <a href="mailto:martinezfelipd@gmail.com">Email</a>
+            <a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">Google Scholar</a>
+            <a href="https://orcid.org/0009-0000-6979-904X">ORCID</a>
+            <a href="https://bsky.app/profile/dmartinezfelip.bsky.social">Bluesky</a>
+        </div>
+        <div>© 2025 Daniel Martínez-Felip</div>
+    </footer>
+    </div>
+</body>
+</html>
