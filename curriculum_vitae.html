@@ -68,7 +68,7 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            height: calc(100vh - 120px); /* Full height minus header */
+            height: calc(100vh - 120px); /* Full height minus desktop header; mobile override below. */
             padding: 0;
             margin: 0;
             background: white;
@@ -96,7 +96,7 @@
                 padding: 10px 0;
             }
             .pdf-container {
-                height: calc(100vh - 100px);
+                height: calc(100vh - 100px); /* Full height minus compact mobile header. */
             }
         }
     </style>
