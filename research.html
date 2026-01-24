@@ -184,6 +184,83 @@
             color: var(--muted);
             text-decoration: underline;
         }
+        .cv-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease;
+            z-index: 1000;
+        }
+        .cv-modal {
+            position: fixed;
+            inset: 6% 6%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+            z-index: 1001;
+        }
+        .cv-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface-alt);
+            border-top-left-radius: var(--radius);
+            border-top-right-radius: var(--radius);
+        }
+        .cv-modal-title {
+            margin: 0;
+            font-size: 1.1em;
+            color: var(--text);
+        }
+        .cv-close {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 6px 14px;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .cv-modal-body {
+            flex: 1;
+            padding: 16px;
+            display: flex;
+        }
+        .cv-modal-body iframe {
+            flex: 1;
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+        body.cv-modal-open {
+            overflow: hidden;
+        }
+        body.cv-modal-open .container {
+            filter: blur(4px);
+            pointer-events: none;
+            user-select: none;
+        }
+        body.cv-modal-open .cv-backdrop,
+        body.cv-modal-open .cv-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
         @keyframes gradientShift {
             0% {
                 background-position: 0% 50%;
@@ -235,6 +312,15 @@
             .site-footer {
                 border-radius: 24px;
             }
+            .cv-modal {
+                inset: 4% 4%;
+            }
+            .cv-modal-header {
+                padding: 12px 16px;
+            }
+            .cv-modal-body {
+                padding: 12px;
+            }
         }
     </style>
 </head>
@@ -247,7 +333,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
-                    <li><a href="curriculum_vitae.html">CV</a></li>
+                    <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
                 </ul>
             </nav>
         </header>
@@ -297,5 +383,55 @@
         <div>© 2025 Daniel Martínez-Felip</div>
     </footer>
     </div>
+    <div class="cv-backdrop" data-cv-close></div>
+    <div class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+        <div class="cv-modal-header">
+            <h2 class="cv-modal-title" id="cv-modal-title">Curriculum Vitae</h2>
+            <button class="cv-close" type="button" data-cv-close>Close</button>
+        </div>
+        <div class="cv-modal-body">
+            <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" title="Curriculum Vitae" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+    <script>
+        (() => {
+            const triggers = document.querySelectorAll('[data-cv-trigger]');
+            const modal = document.querySelector('.cv-modal');
+            const backdrop = document.querySelector('.cv-backdrop');
+            const body = document.body;
+
+            if (!triggers.length || !modal || !backdrop) {
+                return;
+            }
+
+            const closeButtons = modal.querySelectorAll('[data-cv-close]');
+
+            const openModal = () => {
+                body.classList.add('cv-modal-open');
+            };
+
+            const closeModal = () => {
+                body.classList.remove('cv-modal-open');
+            };
+
+            triggers.forEach((trigger) => {
+                trigger.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    openModal();
+                });
+            });
+
+            backdrop.addEventListener('click', closeModal);
+            closeButtons.forEach((button) => {
+                button.addEventListener('click', closeModal);
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
+                    closeModal();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
