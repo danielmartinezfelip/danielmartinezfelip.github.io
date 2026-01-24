@@ -408,6 +408,18 @@
             .cv-modal-body {
                 padding: 12px;
             }
+            .motion-toggle {
+                width: 100%;
+            }
+            .cv-modal {
+                inset: 4% 4%;
+            }
+            .cv-modal-header {
+                padding: 12px 16px;
+            }
+            .cv-modal-body {
+                padding: 12px;
+            }
         }
     </style>
 </head>
@@ -423,6 +435,7 @@
                     <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
                 </ul>
             </nav>
+            <button class="motion-toggle" type="button" data-motion-toggle>Reduce motion</button>
         </header>
         
         
@@ -468,16 +481,16 @@
             <button class="abstract-button" type="button" data-abstract="Abstract coming soon.">View abstract</button>
         </div>
     </div>
-</div>
-    <footer class="site-footer card">
-        <div class="footer-links">
-            <a href="mailto:martinezfelipd@gmail.com">Email</a>
-            <a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">Google Scholar</a>
-            <a href="https://orcid.org/0009-0000-6979-904X">ORCID</a>
-            <a href="https://bsky.app/profile/dmartinezfelip.bsky.social">Bluesky</a>
+
+    <div class="cv-backdrop" data-cv-close></div>
+    <div class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+        <div class="cv-modal-header">
+            <h2 class="cv-modal-title" id="cv-modal-title">Curriculum Vitae</h2>
+            <button class="cv-close" type="button" data-cv-close>Close</button>
         </div>
-        <div>© 2025 Daniel Martínez-Felip</div>
-    </footer>
+        <div class="cv-modal-body">
+            <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" title="Curriculum Vitae" allowfullscreen loading="lazy"></iframe>
+        </div>
     </div>
     <div class="abstract-backdrop" data-abstract-close></div>
     <div class="abstract-modal" role="dialog" aria-modal="true" aria-labelledby="abstract-modal-title">
