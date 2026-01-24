@@ -134,11 +134,10 @@
         }
         .teaching-entry {
             margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed var(--border);
+            padding-bottom: 25px;
         }
-        .teaching-entry:last-child {
-            border-bottom: none;
+        .teaching-entry:not(:last-child) {
+            border-bottom: 2px dashed var(--border);
         }
         .course-title {
             font-weight: bold;
@@ -380,7 +379,6 @@
                     }
                 });
             }
-
         })();
     </script>
 </body>
