@@ -17,7 +17,8 @@
             --border: rgba(15, 23, 42, 0.12);
             --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
             --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
-            --radius: 26px;
+            --radius: 16px;
+            --radius-soft: 12px;
         }
         body {
             font-family: 'Cambria', 'Times New Roman', serif;
@@ -68,7 +69,7 @@
             text-decoration: none;
             font-weight: 600;
             padding: 6px 14px;
-            border-radius: 999px;
+            border-radius: 12px;
             border: 1px solid transparent;
             transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
         }
@@ -89,7 +90,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             box-shadow: var(--shadow-hover);
         }
         .content-table {
@@ -106,7 +107,7 @@
         .image-contact img {
             max-width: 100%;
             height: auto;
-            border-radius: 18px;
+            border-radius: 12px;
             border: 1px solid var(--border);
         }
         .text {
@@ -129,7 +130,7 @@
         button:focus-visible {
             outline: 2px solid var(--accent);
             outline-offset: 3px;
-            border-radius: 999px;
+            border-radius: var(--radius-soft);
         }
         .teaching-entry {
             margin-bottom: 25px;
@@ -155,7 +156,7 @@
         .site-footer {
             margin-top: 32px;
             padding: 18px 24px;
-            border-radius: 999px;
+            border-radius: var(--radius-soft);
             background: var(--surface);
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
@@ -179,20 +180,6 @@
         .footer-links a:hover {
             color: var(--muted);
             text-decoration: underline;
-        }
-        .motion-toggle {
-            margin-top: 16px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            padding: 6px 16px;
-            color: var(--muted);
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .motion-toggle:hover {
-            color: var(--text);
-            border-color: rgba(15, 23, 42, 0.2);
         }
         .cv-backdrop {
             position: fixed;
@@ -238,7 +225,7 @@
         .cv-close {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 999px;
+            border-radius: var(--radius-soft);
             padding: 6px 14px;
             color: var(--muted);
             font-weight: 600;
@@ -253,7 +240,7 @@
             flex: 1;
             width: 100%;
             border: 1px solid var(--border);
-            border-radius: 18px;
+            border-radius: 12px;
             background: var(--surface);
             box-shadow: var(--shadow);
         }
@@ -270,15 +257,6 @@
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
-        }
-        body.motion-reduced header,
-        body.motion-reduced .card {
-            animation: none;
-            transition: none;
-        }
-        body.motion-reduced .card:hover {
-            transform: none;
-            box-shadow: var(--shadow);
         }
         @keyframes gradientShift {
             0% {
@@ -308,7 +286,16 @@
                 width: 100%;
             }
             .site-footer {
-                border-radius: 24px;
+                border-radius: 18px;
+            }
+            .cv-modal {
+                inset: 4% 4%;
+            }
+            .cv-modal-header {
+                padding: 12px 16px;
+            }
+            .cv-modal-body {
+                padding: 12px;
             }
             .motion-toggle {
                 width: 100%;
@@ -415,37 +402,6 @@
                 });
             }
 
-            const motionToggle = document.querySelector('[data-motion-toggle]');
-            if (motionToggle) {
-                const storageKey = 'prefers-reduced-motion';
-
-                const updateLabel = () => {
-                    const reduced = body.classList.contains('motion-reduced');
-                    motionToggle.textContent = reduced ? 'Enable motion' : 'Reduce motion';
-                    motionToggle.setAttribute('aria-pressed', reduced);
-                };
-
-                const applyPreference = (reduceMotion) => {
-                    if (reduceMotion) {
-                        body.classList.add('motion-reduced');
-                    } else {
-                        body.classList.remove('motion-reduced');
-                    }
-                };
-
-                const stored = localStorage.getItem(storageKey);
-                if (stored !== null) {
-                    applyPreference(stored === 'true');
-                }
-                updateLabel();
-
-                motionToggle.addEventListener('click', () => {
-                    const reduceMotion = !body.classList.contains('motion-reduced');
-                    applyPreference(reduceMotion);
-                    localStorage.setItem(storageKey, String(reduceMotion));
-                    updateLabel();
-                });
-            }
         })();
     </script>
 </body>
