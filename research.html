@@ -17,7 +17,8 @@
             --border: rgba(15, 23, 42, 0.12);
             --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
             --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
-            --radius: 26px;
+            --radius: 16px;
+            --radius-soft: 12px;
         }
         body {
             font-family: 'Cambria', 'Times New Roman', serif;
@@ -68,7 +69,7 @@
             text-decoration: none;
             font-weight: 600;
             padding: 6px 14px;
-            border-radius: 999px;
+            border-radius: 12px;
             border: 1px solid transparent;
             transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
         }
@@ -89,7 +90,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-1px);
             box-shadow: var(--shadow-hover);
         }
         .content-table {
@@ -106,7 +107,7 @@
         .image-contact img {
             max-width: 100%;
             height: auto;
-            border-radius: 18px;
+            border-radius: 12px;
             border: 1px solid var(--border);
         }
         .text {
@@ -135,12 +136,18 @@
             color: var(--accent);
             text-decoration: underline;
         }
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: var(--radius-soft);
+        }
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
             padding: 4px 10px;
-            border-radius: 999px;
+            border-radius: var(--radius-soft);
             font-size: 0.75em;
             font-weight: 700;
             text-transform: uppercase;
@@ -156,10 +163,16 @@
             border: 1.5px solid rgba(245, 158, 11, 0.5);
             color: #92400e;
         }
+        .paper-entry {
+            margin-bottom: 18px;
+        }
+        .paper-entry p {
+            margin: 0;
+        }
         .site-footer {
             margin-top: 32px;
             padding: 18px 24px;
-            border-radius: 999px;
+            border-radius: var(--radius-soft);
             background: var(--surface);
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
@@ -183,6 +196,157 @@
         .footer-links a:hover {
             color: var(--muted);
             text-decoration: underline;
+        }
+        .cv-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease;
+            z-index: 1000;
+        }
+        .cv-modal {
+            position: fixed;
+            inset: 6% 6%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+            z-index: 1001;
+        }
+        .cv-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface-alt);
+            border-top-left-radius: var(--radius);
+            border-top-right-radius: var(--radius);
+        }
+        .cv-modal-title {
+            margin: 0;
+            font-size: 1.1em;
+            color: var(--text);
+        }
+        .cv-close {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-soft);
+            padding: 6px 14px;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .cv-modal-body {
+            flex: 1;
+            padding: 16px;
+            display: flex;
+        }
+        .cv-modal-body iframe {
+            flex: 1;
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+        body.cv-modal-open {
+            overflow: hidden;
+        }
+        body.cv-modal-open .container {
+            filter: blur(4px);
+            pointer-events: none;
+            user-select: none;
+        }
+        body.cv-modal-open .cv-backdrop,
+        body.cv-modal-open .cv-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .abstract-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease;
+            z-index: 1002;
+        }
+        .abstract-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: min(560px, 92%);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, -50%) scale(0.98);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+            z-index: 1003;
+        }
+        .abstract-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface-alt);
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+        }
+        .abstract-modal-title {
+            margin: 0;
+            font-size: 1.05em;
+            color: var(--text);
+        }
+        .abstract-modal-body {
+            padding: 16px 18px 20px;
+            color: var(--muted);
+        }
+        .abstract-close {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-soft);
+            padding: 6px 12px;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .abstract-button {
+            margin-top: 10px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-soft);
+            padding: 6px 14px;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .abstract-button:hover {
+            color: var(--text);
+            border-color: rgba(15, 23, 42, 0.2);
+        }
+        body.abstract-modal-open .abstract-backdrop,
+        body.abstract-modal-open .abstract-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
         }
         @keyframes gradientShift {
             0% {
@@ -233,7 +397,16 @@
                 width: 100%;
             }
             .site-footer {
-                border-radius: 24px;
+                border-radius: 18px;
+            }
+            .cv-modal {
+                inset: 4% 4%;
+            }
+            .cv-modal-header {
+                padding: 12px 16px;
+            }
+            .cv-modal-body {
+                padding: 12px;
             }
         }
     </style>
@@ -247,7 +420,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
-                    <li><a href="curriculum_vitae.html">CV</a></li>
+                    <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
                 </ul>
             </nav>
         </header>
@@ -262,29 +435,38 @@
         <h2>Ongoing work</h2>
         
         <h3><span class="badge badge-review">Under Review</span></h3>
-        <p>
-            <a href="https://doi.org/10.31235/osf.io/vy6z2_v5">
-                How does experienced behavior change normative expectations regarding socially beneficial actions?
-            </a><br>
-            <em>with Steven G.M. Schilizzi and Chi Nguyen</em><br>
-            <strong>Revise and resubmit at the <em>Journal of Behavioral and Experimental Economics</em>.</strong>
-        </p>
+        <div class="paper-entry">
+            <p>
+                <a href="https://doi.org/10.31235/osf.io/vy6z2_v5">
+                    How does experienced behavior change normative expectations regarding socially beneficial actions?
+                </a><br>
+                <em>with Steven G.M. Schilizzi and Chi Nguyen</em><br>
+                <strong>Revise and resubmit at the <em>Journal of Behavioral and Experimental Economics</em>.</strong>
+            </p>
+            <button class="abstract-button" type="button" data-abstract="Abstract coming soon.">View abstract</button>
+        </div>
 
         <h3><span class="badge badge-prep">Work in progress</span></h3>
-        <p>
-            <a href="https://doi.org/10.31235/osf.io/j7usg_v1">
-                From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviors
-            </a><br>
-            <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-            <strong>Being revised for resubmission.</strong>
-        </p>
+        <div class="paper-entry">
+            <p>
+                <a href="https://doi.org/10.31235/osf.io/j7usg_v1">
+                    From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviors
+                </a><br>
+                <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
+                <strong>Being revised for resubmission.</strong>
+            </p>
+            <button class="abstract-button" type="button" data-abstract="Abstract coming soon.">View abstract</button>
+        </div>
 
-        <p>
-            Norm Heterogeneity and the Emergence of Cooperation: A Spatial Agent-Based Model of Conditional Cooperation
-            <br>
-            <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-            <strong>In preparation.</strong>
-        </p>
+        <div class="paper-entry">
+            <p>
+                Norm Heterogeneity and the Emergence of Cooperation: A Spatial Agent-Based Model of Conditional Cooperation
+                <br>
+                <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
+                <strong>In preparation.</strong>
+            </p>
+            <button class="abstract-button" type="button" data-abstract="Abstract coming soon.">View abstract</button>
+        </div>
     </div>
 </div>
     <footer class="site-footer card">
@@ -297,5 +479,99 @@
         <div>© 2025 Daniel Martínez-Felip</div>
     </footer>
     </div>
+    <div class="abstract-backdrop" data-abstract-close></div>
+    <div class="abstract-modal" role="dialog" aria-modal="true" aria-labelledby="abstract-modal-title">
+        <div class="abstract-modal-header">
+            <h2 class="abstract-modal-title" id="abstract-modal-title">Abstract</h2>
+            <button class="abstract-close" type="button" data-abstract-close>Close</button>
+        </div>
+        <div class="abstract-modal-body" data-abstract-content></div>
+    </div>
+    <div class="cv-backdrop" data-cv-close></div>
+    <div class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+        <div class="cv-modal-header">
+            <h2 class="cv-modal-title" id="cv-modal-title">Curriculum Vitae</h2>
+            <button class="cv-close" type="button" data-cv-close>Close</button>
+        </div>
+        <div class="cv-modal-body">
+            <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" title="Curriculum Vitae" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+    <script>
+        (() => {
+            const body = document.body;
+
+            const cvTriggers = document.querySelectorAll('[data-cv-trigger]');
+            const cvModal = document.querySelector('.cv-modal');
+            const cvBackdrop = document.querySelector('.cv-backdrop');
+
+            if (cvTriggers.length && cvModal && cvBackdrop) {
+                const cvCloseButtons = cvModal.querySelectorAll('[data-cv-close]');
+
+                const openCvModal = () => {
+                    body.classList.add('cv-modal-open');
+                };
+
+                const closeCvModal = () => {
+                    body.classList.remove('cv-modal-open');
+                };
+
+                cvTriggers.forEach((trigger) => {
+                    trigger.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        openCvModal();
+                    });
+                });
+
+                cvBackdrop.addEventListener('click', closeCvModal);
+                cvCloseButtons.forEach((button) => {
+                    button.addEventListener('click', closeCvModal);
+                });
+
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
+                        closeCvModal();
+                    }
+                });
+            }
+
+            const abstractButtons = document.querySelectorAll('[data-abstract]');
+            const abstractModal = document.querySelector('.abstract-modal');
+            const abstractBackdrop = document.querySelector('.abstract-backdrop');
+            const abstractContent = document.querySelector('[data-abstract-content]');
+
+            if (abstractButtons.length && abstractModal && abstractBackdrop && abstractContent) {
+                const abstractCloseButtons = abstractModal.querySelectorAll('[data-abstract-close]');
+
+                const openAbstractModal = (text) => {
+                    abstractContent.textContent = text;
+                    body.classList.add('abstract-modal-open');
+                };
+
+                const closeAbstractModal = () => {
+                    body.classList.remove('abstract-modal-open');
+                };
+
+                abstractButtons.forEach((button) => {
+                    button.addEventListener('click', () => {
+                        const text = button.dataset.abstract || 'Abstract coming soon.';
+                        openAbstractModal(text);
+                    });
+                });
+
+                abstractBackdrop.addEventListener('click', closeAbstractModal);
+                abstractCloseButtons.forEach((button) => {
+                    button.addEventListener('click', closeAbstractModal);
+                });
+
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape' && body.classList.contains('abstract-modal-open')) {
+                        closeAbstractModal();
+                    }
+                });
+            }
+
+        })();
+    </script>
 </body>
 </html>
