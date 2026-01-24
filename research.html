@@ -89,7 +89,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-hover);
         }
         .content-table {
@@ -135,6 +135,12 @@
             color: var(--accent);
             text-decoration: underline;
         }
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 999px;
+        }
         .badge {
             display: inline-flex;
             align-items: center;
@@ -155,6 +161,12 @@
             background: rgba(245, 158, 11, 0.15);
             border: 1.5px solid rgba(245, 158, 11, 0.5);
             color: #92400e;
+        }
+        .paper-entry {
+            margin-bottom: 18px;
+        }
+        .paper-entry p {
+            margin: 0;
         }
         .site-footer {
             margin-top: 32px;
@@ -183,6 +195,20 @@
         .footer-links a:hover {
             color: var(--muted);
             text-decoration: underline;
+        }
+        .motion-toggle {
+            margin-top: 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 6px 16px;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .motion-toggle:hover {
+            color: var(--text);
+            border-color: rgba(15, 23, 42, 0.2);
         }
         .cv-backdrop {
             position: fixed;
@@ -261,6 +287,89 @@
             visibility: visible;
             transform: translateY(0);
         }
+        .abstract-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease;
+            z-index: 1002;
+        }
+        .abstract-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: min(560px, 92%);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, -50%) scale(0.98);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+            z-index: 1003;
+        }
+        .abstract-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface-alt);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        .abstract-modal-title {
+            margin: 0;
+            font-size: 1.05em;
+            color: var(--text);
+        }
+        .abstract-modal-body {
+            padding: 16px 18px 20px;
+            color: var(--muted);
+        }
+        .abstract-close {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 6px 12px;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .abstract-button {
+            margin-top: 10px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 6px 14px;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .abstract-button:hover {
+            color: var(--text);
+            border-color: rgba(15, 23, 42, 0.2);
+        }
+        body.abstract-modal-open .abstract-backdrop,
+        body.abstract-modal-open .abstract-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        body.motion-reduced header,
+        body.motion-reduced .card {
+            animation: none;
+            transition: none;
+        }
+        body.motion-reduced .card:hover {
+            transform: none;
+            box-shadow: var(--shadow);
+        }
         @keyframes gradientShift {
             0% {
                 background-position: 0% 50%;
@@ -312,6 +421,9 @@
             .site-footer {
                 border-radius: 24px;
             }
+            .motion-toggle {
+                width: 100%;
+            }
             .cv-modal {
                 inset: 4% 4%;
             }
@@ -336,6 +448,7 @@
                     <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
                 </ul>
             </nav>
+            <button class="motion-toggle" type="button" data-motion-toggle>Reduce motion</button>
         </header>
         
         
@@ -348,29 +461,38 @@
         <h2>Ongoing work</h2>
         
         <h3><span class="badge badge-review">Under Review</span></h3>
-        <p>
-            <a href="https://doi.org/10.31235/osf.io/vy6z2_v5">
-                How does experienced behavior change normative expectations regarding socially beneficial actions?
-            </a><br>
-            <em>with Steven G.M. Schilizzi and Chi Nguyen</em><br>
-            <strong>Revise and resubmit at the <em>Journal of Behavioral and Experimental Economics</em>.</strong>
-        </p>
+        <div class="paper-entry">
+            <p>
+                <a href="https://doi.org/10.31235/osf.io/vy6z2_v5">
+                    How does experienced behavior change normative expectations regarding socially beneficial actions?
+                </a><br>
+                <em>with Steven G.M. Schilizzi and Chi Nguyen</em><br>
+                <strong>Revise and resubmit at the <em>Journal of Behavioral and Experimental Economics</em>.</strong>
+            </p>
+            <button class="abstract-button" type="button" data-abstract="Social norms, understood as shared expectations of appropriate behaviour, can help resolve collective action problems by making salient collectively beneficial equilibria. However, achieving long-lasting behaviour of this type remains challenging, partly because how different social contexts shape individuals’ normative expectations is not well understood. This study uses a controlled laboratory experiment to collect panel data on how individuals’ normative expectations regarding public good (PG) contributions evolve across two sequential social contexts. Using Krupka and Weber’s (2013) method, we elicited expectations at three points: before a repeated PG game, after it, and after a subsequent PG game in which group members can convey a normative signal through a social exclusion mechanism. Participants first experienced declining contributions in the Baseline PG game, followed by higher contributions when the exclusion mechanism was introduced. After the initial decline, participants’ norm profiles in uncooperative scenarios clustered around lower contributions. Conversely, after experiencing higher contributions under the exclusion mechanism—which provided a cooperative normative signal—normative expectations shifted toward favouring greater contributions. This effect was strongest among participants who initially perceived loose norms. Our findings highlight heterogeneity in how norms are perceived and change, offering experimental evidence on the factors that drive beneficial normative change.">View abstract</button>
+        </div>
 
         <h3><span class="badge badge-prep">Work in progress</span></h3>
-        <p>
-            <a href="https://doi.org/10.31235/osf.io/j7usg_v1">
-                From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviors
-            </a><br>
-            <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-            <strong>Being revised for resubmission.</strong>
-        </p>
+        <div class="paper-entry">
+            <p>
+                <a href="https://doi.org/10.31235/osf.io/j7usg_v1">
+                    From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviors
+                </a><br>
+                <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
+                <strong>Being revised for resubmission.</strong>
+            </p>
+            <button class="abstract-button" type="button" data-abstract="In analysing potential policy responses to improve outcomes in collective-action problems, economists often focus on financial disincentives to reduce the expected gains from free-riding and thereby promote within-group cooperation. In this study, we investigate the potential for groups to develop non-financial disincentives to free riding, thereby promoting convergence towards collectively beneficial actions. Using a within-subjects laboratory experiment, participants play two multi-period public goods games sequentially: without and then with non-financial incentives activated by allowing for the endogenous formation of a social exclusion mechanism. Participants can assign exclusion tickets at a personal cost after observing contributions, and the member(s) who accumulate the most tickets are excluded from a valued group activity that involves no monetary payoffs and is not linked to the main game. We show that the threat of exclusion, and later the experience of it, act as non-financial social disincentives to free ride. Lower contributors receive more exclusion tickets, and the presence of the exclusion mechanism reverses the typical decline in contributions observed in the Baseline game. Exclusion is experienced by individuals who consistently contribute less, and this experience amplifies the effectiveness of the subsequent exclusion threat. Willingness to incur personal costs to strengthen the threat of exclusion increases over time and is shaped by cooperative normative expectations, particularly among individuals who perceive norms as tight when contributions become more dispersed. In the absence of financial disincentives, these patterns show how non-financial incentives, shaped by more cooperative normative expectations, can foster group coordination and higher public-good contributions.">View abstract</button>
+        </div>
 
-        <p>
-            Norm Heterogeneity and the Emergence of Cooperation: A Spatial Agent-Based Model of Conditional Cooperation
-            <br>
-            <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-            <strong>In preparation.</strong>
-        </p>
+        <div class="paper-entry">
+            <p>
+                Norm Heterogeneity and the Emergence of Cooperation: A Spatial Agent-Based Model of Conditional Cooperation
+                <br>
+                <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
+                <strong>In preparation.</strong>
+            </p>
+            <button class="abstract-button" type="button" data-abstract="The resolution of collective-action problems often depends on social norms and pressure to conform to group behaviour, yet individuals typically differ in how strongly they perceive and internalise these norms. While existing models of norm change and social tipping often assume homogeneous and static normative expectations, recent evidence suggests substantial heterogeneity in the perceived norm strength. We study how different compositions of such heterogeneity within a community shape the emergence and internalisation of cooperative behaviour. We develop a spatial agent-based model in which agents follow a conditional-cooperation norm but differ in norm strength, characterised as either tight or loose. Agents interact locally and update their cooperation thresholds endogenously through a combination of payoff-driven learning and social learning from experienced group behaviour. Our results show that introducing a moderate share of loose-norm individuals into otherwise tight-dominated communities can facilitate the emergence of cooperative tipping points by enabling cooperation to seed and spread locally, even when agents place zero weight on social relative to financial learning. However, whether cooperation becomes internalised and persists depends critically on the balance between social and financial learning. A higher weight on social learning amplifies local behavioural feedbacks, sharpens tipping dynamics, and allows tight agents to internalise cooperation such that it can be sustained with fewer cooperating group members. Once cooperation spreads, conformity pressure stabilises cooperative behaviour among loose agents. Taken together, our findings highlight the importance of community composition and norm-strength heterogeneity for collective-action dynamics, and show how heterogeneity in perceived norm strength can generate abrupt and persistent transitions in cooperative behaviour.">View abstract</button>
+        </div>
     </div>
 </div>
     <footer class="site-footer card">
@@ -382,6 +504,14 @@
         </div>
         <div>© 2025 Daniel Martínez-Felip</div>
     </footer>
+    </div>
+    <div class="abstract-backdrop" data-abstract-close></div>
+    <div class="abstract-modal" role="dialog" aria-modal="true" aria-labelledby="abstract-modal-title">
+        <div class="abstract-modal-header">
+            <h2 class="abstract-modal-title" id="abstract-modal-title">Abstract</h2>
+            <button class="abstract-close" type="button" data-abstract-close>Close</button>
+        </div>
+        <div class="abstract-modal-body" data-abstract-content></div>
     </div>
     <div class="cv-backdrop" data-cv-close></div>
     <div class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
@@ -395,42 +525,109 @@
     </div>
     <script>
         (() => {
-            const triggers = document.querySelectorAll('[data-cv-trigger]');
-            const modal = document.querySelector('.cv-modal');
-            const backdrop = document.querySelector('.cv-backdrop');
             const body = document.body;
 
-            if (!triggers.length || !modal || !backdrop) {
-                return;
+            const cvTriggers = document.querySelectorAll('[data-cv-trigger]');
+            const cvModal = document.querySelector('.cv-modal');
+            const cvBackdrop = document.querySelector('.cv-backdrop');
+
+            if (cvTriggers.length && cvModal && cvBackdrop) {
+                const cvCloseButtons = cvModal.querySelectorAll('[data-cv-close]');
+
+                const openCvModal = () => {
+                    body.classList.add('cv-modal-open');
+                };
+
+                const closeCvModal = () => {
+                    body.classList.remove('cv-modal-open');
+                };
+
+                cvTriggers.forEach((trigger) => {
+                    trigger.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        openCvModal();
+                    });
+                });
+
+                cvBackdrop.addEventListener('click', closeCvModal);
+                cvCloseButtons.forEach((button) => {
+                    button.addEventListener('click', closeCvModal);
+                });
+
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
+                        closeCvModal();
+                    }
+                });
             }
 
-            const closeButtons = modal.querySelectorAll('[data-cv-close]');
+            const abstractButtons = document.querySelectorAll('[data-abstract]');
+            const abstractModal = document.querySelector('.abstract-modal');
+            const abstractBackdrop = document.querySelector('.abstract-backdrop');
+            const abstractContent = document.querySelector('[data-abstract-content]');
 
-            const openModal = () => {
-                body.classList.add('cv-modal-open');
-            };
+            if (abstractButtons.length && abstractModal && abstractBackdrop && abstractContent) {
+                const abstractCloseButtons = abstractModal.querySelectorAll('[data-abstract-close]');
 
-            const closeModal = () => {
-                body.classList.remove('cv-modal-open');
-            };
+                const openAbstractModal = (text) => {
+                    abstractContent.textContent = text;
+                    body.classList.add('abstract-modal-open');
+                };
 
-            triggers.forEach((trigger) => {
-                trigger.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    openModal();
+                const closeAbstractModal = () => {
+                    body.classList.remove('abstract-modal-open');
+                };
+
+                abstractButtons.forEach((button) => {
+                    button.addEventListener('click', () => {
+                        const text = button.dataset.abstract || 'Abstract coming soon.';
+                        openAbstractModal(text);
+                    });
                 });
-            });
 
-            backdrop.addEventListener('click', closeModal);
-            closeButtons.forEach((button) => {
-                button.addEventListener('click', closeModal);
-            });
+                abstractBackdrop.addEventListener('click', closeAbstractModal);
+                abstractCloseButtons.forEach((button) => {
+                    button.addEventListener('click', closeAbstractModal);
+                });
 
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
-                    closeModal();
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape' && body.classList.contains('abstract-modal-open')) {
+                        closeAbstractModal();
+                    }
+                });
+            }
+
+            const motionToggle = document.querySelector('[data-motion-toggle]');
+            if (motionToggle) {
+                const storageKey = 'prefers-reduced-motion';
+
+                const updateLabel = () => {
+                    const reduced = body.classList.contains('motion-reduced');
+                    motionToggle.textContent = reduced ? 'Enable motion' : 'Reduce motion';
+                    motionToggle.setAttribute('aria-pressed', reduced);
+                };
+
+                const applyPreference = (reduceMotion) => {
+                    if (reduceMotion) {
+                        body.classList.add('motion-reduced');
+                    } else {
+                        body.classList.remove('motion-reduced');
+                    }
+                };
+
+                const stored = localStorage.getItem(storageKey);
+                if (stored !== null) {
+                    applyPreference(stored === 'true');
                 }
-            });
+                updateLabel();
+
+                motionToggle.addEventListener('click', () => {
+                    const reduceMotion = !body.classList.contains('motion-reduced');
+                    applyPreference(reduceMotion);
+                    localStorage.setItem(storageKey, String(reduceMotion));
+                    updateLabel();
+                });
+            }
         })();
     </script>
 </body>

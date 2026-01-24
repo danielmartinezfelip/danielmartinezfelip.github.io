@@ -89,7 +89,7 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .card:hover {
-        transform: translateY(-4px);
+        transform: translateY(-2px);
         box-shadow: var(--shadow-hover);
     }
     .content-table {
@@ -110,6 +110,15 @@
         object-fit: contain;
         border: 1px solid var(--border);
     }
+    .profile-photo {
+        margin: 0;
+    }
+    .photo-caption {
+        margin-top: 8px;
+        font-size: 0.85em;
+        color: var(--muted);
+        text-align: center;
+    }
     .text {
         width: 75%;
     }
@@ -129,6 +138,12 @@
     a:hover {
         color: var(--accent);
         text-decoration: underline;
+    }
+    a:focus-visible,
+    button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 999px;
     }
     .contact-icons {
         display: flex;
@@ -222,6 +237,20 @@
         color: var(--muted);
         text-decoration: underline;
     }
+    .motion-toggle {
+        margin-top: 16px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 6px 16px;
+        color: var(--muted);
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .motion-toggle:hover {
+        color: var(--text);
+        border-color: rgba(15, 23, 42, 0.2);
+    }
     .cv-backdrop {
         position: fixed;
         inset: 0;
@@ -299,6 +328,15 @@
         visibility: visible;
         transform: translateY(0);
     }
+    body.motion-reduced header,
+    body.motion-reduced .card {
+        animation: none;
+        transition: none;
+    }
+    body.motion-reduced .card:hover {
+        transform: none;
+        box-shadow: var(--shadow);
+    }
     @keyframes gradientShift {
         0% {
             background-position: 0% 50%;
@@ -329,6 +367,9 @@
         .site-footer {
             border-radius: 24px;
         }
+        .motion-toggle {
+            width: 100%;
+        }
         .cv-modal {
             inset: 4% 4%;
         }
@@ -353,12 +394,16 @@
                     <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
                 </ul>
             </nav>
+            <button class="motion-toggle" type="button" data-motion-toggle>Reduce motion</button>
         </header>
         <div class="content card">
             <table class="content-table">
                 <tr>
                     <td class="image-contact">
-                        <img src="Daniel_MartinezFelip.jpg" alt="Daniel Martínez Felip">
+                        <figure class="profile-photo">
+                            <img src="Daniel_MartinezFelip.jpg" alt="Daniel Martínez Felip">
+                            <figcaption class="photo-caption">PhD Candidate · UWA Centre for Environmental Economics & Policy</figcaption>
+                        </figure>
                         
                         <div class="contact-icons">
                             <a href="mailto:martinezfelipd@gmail.com" class="contact-link">
@@ -431,37 +476,67 @@
             const backdrop = document.querySelector('.cv-backdrop');
             const body = document.body;
 
-            if (!triggers.length || !modal || !backdrop) {
-                return;
+            if (triggers.length && modal && backdrop) {
+                const closeButtons = modal.querySelectorAll('[data-cv-close]');
+
+                const openModal = () => {
+                    body.classList.add('cv-modal-open');
+                };
+
+                const closeModal = () => {
+                    body.classList.remove('cv-modal-open');
+                };
+
+                triggers.forEach((trigger) => {
+                    trigger.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        openModal();
+                    });
+                });
+
+                backdrop.addEventListener('click', closeModal);
+                closeButtons.forEach((button) => {
+                    button.addEventListener('click', closeModal);
+                });
+
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
+                        closeModal();
+                    }
+                });
             }
 
-            const closeButtons = modal.querySelectorAll('[data-cv-close]');
+            const motionToggle = document.querySelector('[data-motion-toggle]');
+            if (motionToggle) {
+                const storageKey = 'prefers-reduced-motion';
 
-            const openModal = () => {
-                body.classList.add('cv-modal-open');
-            };
+                const updateLabel = () => {
+                    const reduced = body.classList.contains('motion-reduced');
+                    motionToggle.textContent = reduced ? 'Enable motion' : 'Reduce motion';
+                    motionToggle.setAttribute('aria-pressed', reduced);
+                };
 
-            const closeModal = () => {
-                body.classList.remove('cv-modal-open');
-            };
+                const applyPreference = (reduceMotion) => {
+                    if (reduceMotion) {
+                        body.classList.add('motion-reduced');
+                    } else {
+                        body.classList.remove('motion-reduced');
+                    }
+                };
 
-            triggers.forEach((trigger) => {
-                trigger.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    openModal();
-                });
-            });
-
-            backdrop.addEventListener('click', closeModal);
-            closeButtons.forEach((button) => {
-                button.addEventListener('click', closeModal);
-            });
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
-                    closeModal();
+                const stored = localStorage.getItem(storageKey);
+                if (stored !== null) {
+                    applyPreference(stored === 'true');
                 }
-            });
+                updateLabel();
+
+                motionToggle.addEventListener('click', () => {
+                    const reduceMotion = !body.classList.contains('motion-reduced');
+                    applyPreference(reduceMotion);
+                    localStorage.setItem(storageKey, String(reduceMotion));
+                    updateLabel();
+                });
+            }
         })();
     </script>
 </body>
