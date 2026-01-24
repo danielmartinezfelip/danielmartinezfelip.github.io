@@ -169,6 +169,11 @@
         .paper-entry p {
             margin: 0;
         }
+        .section-divider {
+            margin: 30px 0;
+            border: none;
+            border-top: 2px dashed var(--border);
+        }
         .site-footer {
             margin-top: 32px;
             padding: 18px 24px;
@@ -290,6 +295,7 @@
         .preprint-button:hover {
             color: var(--text);
             border-color: rgba(15, 23, 42, 0.2);
+            text-decoration: none;
         }
         @keyframes gradientShift {
             0% {
@@ -360,44 +366,53 @@
             </nav>
         </header>
         
-        
         <div class="content card">
-    <!-- <div class="section">
-        <h2>Peer-Reviewed Publications</h2>
-        <p style="color: var(--muted); font-style: italic;">Coming soon...</p>
-    </div> -->
-    <div class="section">
-        <h2>Ongoing work</h2>
-        
-        <h3><span class="badge badge-review">Under Review</span></h3>
-        <div class="paper-entry">
-            <p>
-                <strong>How does experienced behavior change normative expectations regarding socially beneficial actions?</strong><br>
-                <em>with Steven G.M. Schilizzi and Chi Nguyen</em><br>
-                Revise and resubmit at the <em>Journal of Behavioral and Experimental Economics</em>.
-            </p>
-            <a class="preprint-button" href="https://doi.org/10.31235/osf.io/vy6z2_v5">Preprint</a>
+            <div class="section">
+                <h2>Ongoing work</h2>
+                
+                <h3><span class="badge badge-review">Under Review</span></h3>
+                <div class="paper-entry">
+                    <p>
+                        <strong>How does experienced behavior change normative expectations regarding socially beneficial actions?</strong><br>
+                        <em>with Steven G.M. Schilizzi and Chi Nguyen</em><br>
+                        Revise and resubmit at the <em>Journal of Behavioral and Experimental Economics</em>.
+                    </p>
+                    <a class="preprint-button" href="https://doi.org/10.31235/osf.io/vy6z2_v5">Preprint</a>
+                </div>
+
+                <hr class="section-divider">
+
+                <h3><span class="badge badge-prep">Work in progress</span></h3>
+                <div class="paper-entry">
+                    <p>
+                        <strong>From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviors</strong><br>
+                        <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
+                        Being revised for resubmission.
+                    </p>
+                    <a class="preprint-button" href="https://doi.org/10.31235/osf.io/j7usg_v1">Preprint</a>
+                </div>
+
+                <div class="paper-entry">
+                    <p>
+                        <strong>Norm Heterogeneity and the Emergence of Cooperation: A Spatial Agent-Based Model of Conditional Cooperation</strong><br>
+                        <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
+                        In preparation.
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <h3><span class="badge badge-prep">Work in progress</span></h3>
-        <div class="paper-entry">
-            <p>
-                <strong>From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviors</strong><br>
-                <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-                Being revised for resubmission.
-            </p>
-            <a class="preprint-button" href="https://doi.org/10.31235/osf.io/j7usg_v1">Preprint</a>
-        </div>
-
-        <div class="paper-entry">
-            <p>
-                <strong>Norm Heterogeneity and the Emergence of Cooperation: A Spatial Agent-Based Model of Conditional Cooperation</strong>
-                <br>
-                <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-                In preparation.
-            </p>
-        </div>
+        <footer class="site-footer card">
+            <div class="footer-links">
+                <a href="mailto:martinezfelipd@gmail.com">Email</a>
+                <a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">Google Scholar</a>
+                <a href="https://orcid.org/0009-0000-6979-904X">ORCID</a>
+                <a href="https://bsky.app/profile/dmartinezfelip.bsky.social">Bluesky</a>
+            </div>
+            <div>© 2025 Daniel Martínez-Felip</div>
+        </footer>
     </div>
+
     <div class="cv-backdrop" data-cv-close></div>
     <div class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
         <div class="cv-modal-header">
@@ -408,16 +423,7 @@
             <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" title="Curriculum Vitae" allowfullscreen loading="lazy"></iframe>
         </div>
     </div>
-    <div class="cv-backdrop" data-cv-close></div>
-    <div class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
-        <div class="cv-modal-header">
-            <h2 class="cv-modal-title" id="cv-modal-title">Curriculum Vitae</h2>
-            <button class="cv-close" type="button" data-cv-close>Close</button>
-        </div>
-        <div class="cv-modal-body">
-            <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" title="Curriculum Vitae" allowfullscreen loading="lazy"></iframe>
-        </div>
-    </div>
+
     <script>
         (() => {
             const body = document.body;
@@ -455,7 +461,6 @@
                     }
                 });
             }
-
         })();
     </script>
 </body>
