@@ -32,16 +32,20 @@
             width: min(1100px, 92%);
             margin: auto;
             padding: 32px 0 48px;
+            animation: fadeIn 0.45s ease-out both;
         }
         header {
             text-align: center;
             padding: 24px 28px;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
-            background-size: 180% 180%;
+            background: linear-gradient(135deg, #eef2ff 0%, #f0f4ff 40%, #f3f4f6 70%, #e8f0fe 100%);
+            background-size: 300% 300%;
             box-shadow: var(--shadow);
-            animation: gradientShift 12s ease infinite;
+            animation: gradientShift 25s ease-in-out infinite;
+            position: sticky;
+            top: 16px;
+            z-index: 100;
         }
         h1 {
             font-size: 2.1em;
@@ -75,8 +79,13 @@
         }
         nav ul li a:hover {
             color: var(--text);
-            border-color: rgba(255, 255, 255, 0.2);
-            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(15, 23, 42, 0.15);
+            background-color: rgba(37, 99, 235, 0.06);
+        }
+        nav ul li a.nav-active {
+            color: var(--accent);
+            border-color: rgba(37, 99, 235, 0.35);
+            background-color: rgba(37, 99, 235, 0.08);
         }
         .content {
             margin-top: 32px;
@@ -164,10 +173,43 @@
             color: #92400e;
         }
         .paper-entry {
-            margin-bottom: 18px;
+            margin-bottom: 22px;
+            padding: 16px 18px;
+            border-radius: var(--radius-soft);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            background: var(--surface);
         }
         .paper-entry p {
             margin: 0;
+        }
+        .paper-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 0.82em;
+            color: var(--muted);
+        }
+        .paper-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .paper-meta-item::before {
+            content: '·';
+            margin-right: 4px;
+        }
+        .paper-meta-item:first-child::before {
+            content: none;
+        }
+        .paper-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+            align-items: center;
         }
         .section-divider {
             margin: 30px 0;
@@ -280,54 +322,84 @@
             transform: translateY(0);
         }
         .preprint-button {
-            margin-top: 10px;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-soft);
-            padding: 6px 14px;
+            padding: 5px 13px;
             color: var(--muted);
+            font-family: 'Cambria', 'Times New Roman', serif;
+            font-size: 0.9em;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            text-decoration: none;
+            transition: color 0.2s ease, border-color 0.2s ease;
         }
         .preprint-button:hover {
             color: var(--text);
             border-color: rgba(15, 23, 42, 0.2);
             text-decoration: none;
         }
+        .abstract-toggle {
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-soft);
+            padding: 5px 13px;
+            color: var(--muted);
+            font-family: 'Cambria', 'Times New Roman', serif;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+        }
+        .abstract-toggle:hover {
+            color: var(--text);
+            border-color: rgba(15, 23, 42, 0.2);
+            background-color: var(--surface);
+        }
+        .abstract-toggle .toggle-icon {
+            font-size: 0.8em;
+            transition: transform 0.25s ease;
+            display: inline-block;
+        }
+        .abstract-toggle.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+        .abstract-body {
+            display: none;
+            margin-top: 12px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            font-size: 0.93em;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+        .abstract-body.open {
+            display: block;
+            animation: fadeIn 0.2s ease-out both;
+        }
         @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0%   { background-position: 0% 50%; }
+            33%  { background-position: 100% 50%; }
+            66%  { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
         }
-        .teaching-entry {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed var(--border);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
-        .teaching-entry:last-child {
-            border-bottom: none;
-        }
-        .course-title {
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 8px;
-        }
-        .course-description {
-            margin-left: 20px;
-            font-style: italic;
-        }
-        .course-responsibilities {
-            margin-left: 20px;
-            margin-top: 8px;
+        @media (prefers-reduced-motion: reduce) {
+            header { animation: none; }
+            .container { animation: none; }
+            .card { transition: none; }
+            .abstract-toggle .toggle-icon { transition: none; }
         }
         @media (max-width: 768px) {
             .content-table, .content-table tbody, .content-table tr, .content-table td {
@@ -360,24 +432,37 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html" class="nav-active">Research</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
                 </ul>
             </nav>
         </header>
-        
+
         <div class="content card">
             <div class="section">
                 <h2>Ongoing work</h2>
-                
+
                 <h3><span class="badge badge-review">Under Review</span></h3>
                 <div class="paper-entry">
                     <p>
                         <strong>How does experienced behaviour change normative expectations regarding socially beneficial actions?</strong><br>
-                        <em>with Steven G.M. Schilizzi and Chi Nguyen</em><br>
-                        Revise and resubmit at the <em>Journal of Behavioral and Experimental Economics</em>.
+                        <em>with Steven G.M. Schilizzi and Chi Nguyen</em>
                     </p>
-                    <a class="preprint-button" href="https://doi.org/10.31235/osf.io/vy6z2_v5">Preprint</a>
+                    <div class="paper-meta">
+                        <span class="paper-meta-item">Revise &amp; resubmit · <em>Journal of Behavioral and Experimental Economics</em></span>
+                        <span class="paper-meta-item">Submitted 2024</span>
+                    </div>
+                    <div class="paper-actions">
+                        <a class="preprint-button" href="https://doi.org/10.31235/osf.io/vy6z2_v5">Preprint</a>
+                        <button class="abstract-toggle" data-abstract-toggle="abstract-1" type="button">
+                            Abstract <span class="toggle-icon">▾</span>
+                        </button>
+                    </div>
+                    <div class="abstract-body" id="abstract-1">
+                        <!-- Update with your abstract text -->
+                        Abstract available via the preprint linked above.
+                    </div>
                 </div>
 
                 <hr class="section-divider">
@@ -386,18 +471,40 @@
                 <div class="paper-entry">
                     <p>
                         <strong>From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviours</strong><br>
-                        <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-                        Being revised for resubmission.
+                        <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
                     </p>
-                    <a class="preprint-button" href="https://doi.org/10.31235/osf.io/j7usg_v1">Preprint</a>
+                    <div class="paper-meta">
+                        <span class="paper-meta-item">Being revised for resubmission</span>
+                    </div>
+                    <div class="paper-actions">
+                        <a class="preprint-button" href="https://doi.org/10.31235/osf.io/j7usg_v1">Preprint</a>
+                        <button class="abstract-toggle" data-abstract-toggle="abstract-2" type="button">
+                            Abstract <span class="toggle-icon">▾</span>
+                        </button>
+                    </div>
+                    <div class="abstract-body" id="abstract-2">
+                        <!-- Update with your abstract text -->
+                        Abstract available via the preprint linked above.
+                    </div>
                 </div>
 
                 <div class="paper-entry">
                     <p>
                         <strong>Norm Heterogeneity and the Emergence of Cooperation: A Spatial Agent-Based Model of Conditional Cooperation</strong><br>
-                        <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em><br>
-                        In preparation.
+                        <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
                     </p>
+                    <div class="paper-meta">
+                        <span class="paper-meta-item">In preparation</span>
+                    </div>
+                    <div class="paper-actions">
+                        <button class="abstract-toggle" data-abstract-toggle="abstract-3" type="button">
+                            Abstract <span class="toggle-icon">▾</span>
+                        </button>
+                    </div>
+                    <div class="abstract-body" id="abstract-3">
+                        <!-- Update with your abstract text -->
+                        Abstract coming soon.
+                    </div>
                 </div>
             </div>
         </div>
@@ -428,6 +535,7 @@
         (() => {
             const body = document.body;
 
+            // CV modal
             const cvTriggers = document.querySelectorAll('[data-cv-trigger]');
             const cvModal = document.querySelector('.cv-modal');
             const cvBackdrop = document.querySelector('.cv-backdrop');
@@ -435,13 +543,8 @@
             if (cvTriggers.length && cvModal && cvBackdrop) {
                 const cvCloseButtons = cvModal.querySelectorAll('[data-cv-close]');
 
-                const openCvModal = () => {
-                    body.classList.add('cv-modal-open');
-                };
-
-                const closeCvModal = () => {
-                    body.classList.remove('cv-modal-open');
-                };
+                const openCvModal = () => body.classList.add('cv-modal-open');
+                const closeCvModal = () => body.classList.remove('cv-modal-open');
 
                 cvTriggers.forEach((trigger) => {
                     trigger.addEventListener('click', (event) => {
@@ -451,9 +554,7 @@
                 });
 
                 cvBackdrop.addEventListener('click', closeCvModal);
-                cvCloseButtons.forEach((button) => {
-                    button.addEventListener('click', closeCvModal);
-                });
+                cvCloseButtons.forEach((button) => button.addEventListener('click', closeCvModal));
 
                 document.addEventListener('keydown', (event) => {
                     if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
@@ -461,6 +562,19 @@
                     }
                 });
             }
+
+            // Abstract toggles
+            document.querySelectorAll('[data-abstract-toggle]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('data-abstract-toggle');
+                    const abstractBody = document.getElementById(targetId);
+                    if (!abstractBody) return;
+                    const isOpen = abstractBody.classList.contains('open');
+                    abstractBody.classList.toggle('open', !isOpen);
+                    btn.classList.toggle('open', !isOpen);
+                    btn.setAttribute('aria-expanded', String(!isOpen));
+                });
+            });
         })();
     </script>
 </body>

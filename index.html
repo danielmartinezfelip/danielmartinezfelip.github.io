@@ -37,16 +37,20 @@
         margin: auto;
         padding: 32px 0 48px;
         flex-grow: 1;
+        animation: fadeIn 0.45s ease-out both;
     }
     header {
         text-align: center;
         padding: 24px 28px;
         border: 1px solid var(--border);
         border-radius: var(--radius);
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
-        background-size: 180% 180%;
+        background: linear-gradient(135deg, #eef2ff 0%, #f0f4ff 40%, #f3f4f6 70%, #e8f0fe 100%);
+        background-size: 300% 300%;
         box-shadow: var(--shadow);
-        animation: gradientShift 12s ease infinite;
+        animation: gradientShift 25s ease-in-out infinite;
+        position: sticky;
+        top: 16px;
+        z-index: 100;
     }
     h1 {
         font-size: 2.1em;
@@ -75,8 +79,13 @@
     }
     nav ul li a:hover {
         color: var(--text);
-        border-color: rgba(255, 255, 255, 0.2);
-        background-color: rgba(255, 255, 255, 0.05);
+        border-color: rgba(15, 23, 42, 0.15);
+        background-color: rgba(37, 99, 235, 0.06);
+    }
+    nav ul li a.nav-active {
+        color: var(--accent);
+        border-color: rgba(37, 99, 235, 0.35);
+        background-color: rgba(37, 99, 235, 0.08);
     }
     .content {
         margin-top: 32px;
@@ -179,7 +188,7 @@
         white-space: nowrap;
     }
     .quick-facts {
-        margin: 18px 0 24px;
+        margin: 18px 0 18px;
         padding: 18px 20px;
         border-radius: 12px;
         background: var(--surface-alt);
@@ -202,6 +211,33 @@
     }
     .quick-facts strong {
         color: var(--text);
+    }
+    .current-work-banner {
+        margin: 0 0 24px;
+        padding: 14px 18px;
+        border-radius: 12px;
+        background: rgba(37, 99, 235, 0.04);
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        border-left: 4px solid var(--accent);
+    }
+    .current-work-label {
+        font-size: 0.72em;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--accent);
+        margin-bottom: 6px;
+    }
+    .current-work-title {
+        margin: 0 0 4px;
+        font-weight: 600;
+        font-size: 0.95em;
+        color: var(--text);
+    }
+    .current-work-status {
+        margin: 0;
+        font-size: 0.85em;
+        color: var(--muted);
     }
     .sidebar-section {
         margin-bottom: 20px;
@@ -316,15 +352,19 @@
         transform: translateY(0);
     }
     @keyframes gradientShift {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
+        0%   { background-position: 0% 50%; }
+        33%  { background-position: 100% 50%; }
+        66%  { background-position: 50% 100%; }
+        100% { background-position: 0% 50%; }
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        header { animation: none; }
+        .container { animation: none; }
+        .card { transition: none; }
     }
     @media (max-width: 768px) {
         .content-table, .content-table tbody, .content-table tr, .content-table td {
@@ -335,7 +375,7 @@
             width: 100%;
         }
         .site-footer {
-        border-radius: 18px;
+            border-radius: 18px;
         }
         .cv-modal {
             inset: 4% 4%;
@@ -355,7 +395,7 @@
             <h1>Daniel Martínez-Felip</h1>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" class="nav-active">Home</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
@@ -370,7 +410,7 @@
                             <img src="Daniel_MartinezFelip.jpg" alt="Daniel Martínez Felip">
                             <figcaption class="photo-caption">PhD Candidate · UWA Centre for Environmental Economics & Policy</figcaption>
                         </figure>
-                        
+
                         <div class="contact-icons">
                             <a href="mailto:martinezfelipd@gmail.com" class="contact-link">
                                 <i class="fas fa-envelope"></i>
@@ -391,7 +431,7 @@
                                 <span>Bluesky</span>
                             </a>
                         </div>
-                        
+
                         <div class="sidebar-section">
                             <h2>Resources</h2>
                             <p><a href="https://www.otree.org/">oTree</a></p>
@@ -409,6 +449,11 @@
                                 <li><strong>Research interests:</strong> Behavioural and experimental economics · Social norms · Institutions · Collective action problems</li>
                                 <li><strong>Affiliation:</strong> UWA Centre for Environmental Economics & Policy</li>
                             </ul>
+                        </div>
+                        <div class="current-work-banner">
+                            <div class="current-work-label">Currently working on</div>
+                            <p class="current-work-title">How does experienced behaviour change normative expectations regarding socially beneficial actions?</p>
+                            <p class="current-work-status">Revise &amp; resubmit · <em>Journal of Behavioral and Experimental Economics</em></p>
                         </div>
                         <p>Currently, I am a PhD Candidate in the <a href="https://www.uwaceep.org/research-students">Centre for Environmental Economics & Policy</a> at the UWA School of Agriculture and Environment. I am interested in the economics and underpinnings of voluntary cooperation, and the effectiveness of social incentives as a lever for aligning personal interests with collective interests. My research focuses on studying the role of social norms in enhancing the effects of financial incentives on cooperative behaviour and how social norm enforcement mechanisms should be designed to trigger cooperative normative change.</p>
                     </td>

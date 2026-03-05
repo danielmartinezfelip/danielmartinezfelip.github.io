@@ -32,16 +32,20 @@
             width: min(1100px, 92%);
             margin: auto;
             padding: 32px 0 48px;
+            animation: fadeIn 0.45s ease-out both;
         }
         header {
             text-align: center;
             padding: 24px 28px;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
-            background-size: 180% 180%;
+            background: linear-gradient(135deg, #eef2ff 0%, #f0f4ff 40%, #f3f4f6 70%, #e8f0fe 100%);
+            background-size: 300% 300%;
             box-shadow: var(--shadow);
-            animation: gradientShift 12s ease infinite;
+            animation: gradientShift 25s ease-in-out infinite;
+            position: sticky;
+            top: 16px;
+            z-index: 100;
         }
         h1 {
             font-size: 2.1em;
@@ -75,8 +79,13 @@
         }
         nav ul li a:hover {
             color: var(--text);
-            border-color: rgba(255, 255, 255, 0.2);
-            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(15, 23, 42, 0.15);
+            background-color: rgba(37, 99, 235, 0.06);
+        }
+        nav ul li a.nav-active {
+            color: var(--accent);
+            border-color: rgba(37, 99, 235, 0.35);
+            background-color: rgba(37, 99, 235, 0.08);
         }
         .content {
             margin-top: 32px;
@@ -258,15 +267,19 @@
             transform: translateY(0);
         }
         @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0%   { background-position: 0% 50%; }
+            33%  { background-position: 100% 50%; }
+            66%  { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            header { animation: none; }
+            .container { animation: none; }
+            .card { transition: none; }
         }
         @media (max-width: 768px) {
             .content-table, .content-table tbody, .content-table tr, .content-table td {
@@ -300,18 +313,19 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="research.html">Research</a></li>
+                    <li><a href="teaching.html" class="nav-active">Teaching</a></li>
                     <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
                 </ul>
             </nav>
         </header>
-        
+
         <div class="content card">
             <h2>Teaching experience</h2>
             <div class="teaching-entry">
                 <div class="course-title">Business and the Environment (ECON 3323)</div>
                 <div class="course-description">The University of Western Australia (2025)</div>
                 <div class="course-responsibilities">
-                    <p>Collaborated with the unit coordinator (Prof. Steven Schilizzi) to achieve the fifth learning objective of this unit: 
+                    <p>Collaborated with the unit coordinator (Prof. Steven Schilizzi) to achieve the fifth learning objective of this unit:
                         To understand the experimental design principles needed for investigating business behaviour in environmental contexts.</p>
                 </div>
             </div>
@@ -353,13 +367,8 @@
             if (triggers.length && modal && backdrop) {
                 const closeButtons = modal.querySelectorAll('[data-cv-close]');
 
-                const openModal = () => {
-                    body.classList.add('cv-modal-open');
-                };
-
-                const closeModal = () => {
-                    body.classList.remove('cv-modal-open');
-                };
+                const openModal = () => body.classList.add('cv-modal-open');
+                const closeModal = () => body.classList.remove('cv-modal-open');
 
                 triggers.forEach((trigger) => {
                     trigger.addEventListener('click', (event) => {
@@ -369,9 +378,7 @@
                 });
 
                 backdrop.addEventListener('click', closeModal);
-                closeButtons.forEach((button) => {
-                    button.addEventListener('click', closeModal);
-                });
+                closeButtons.forEach((button) => button.addEventListener('click', closeModal));
 
                 document.addEventListener('keydown', (event) => {
                     if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {

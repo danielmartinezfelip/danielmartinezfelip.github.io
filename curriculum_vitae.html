@@ -37,16 +37,20 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            animation: fadeIn 0.45s ease-out both;
         }
         header {
             text-align: center;
             padding: 20px 24px;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
-            background-size: 180% 180%;
+            background: linear-gradient(135deg, #eef2ff 0%, #f0f4ff 40%, #f3f4f6 70%, #e8f0fe 100%);
+            background-size: 300% 300%;
             box-shadow: var(--shadow);
-            animation: gradientShift 12s ease infinite;
+            animation: gradientShift 25s ease-in-out infinite;
+            position: sticky;
+            top: 16px;
+            z-index: 100;
         }
         h1 {
             font-size: 2.1em;
@@ -82,8 +86,13 @@
         }
         nav ul li a:hover {
             color: var(--text);
-            border-color: rgba(255, 255, 255, 0.2);
-            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(15, 23, 42, 0.15);
+            background-color: rgba(37, 99, 235, 0.06);
+        }
+        nav ul li a.nav-active {
+            color: var(--accent);
+            border-color: rgba(37, 99, 235, 0.35);
+            background-color: rgba(37, 99, 235, 0.08);
         }
         .pdf-container {
             flex: 1;
@@ -153,23 +162,19 @@
             text-decoration: underline;
         }
         @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0%   { background-position: 0% 50%; }
+            33%  { background-position: 100% 50%; }
+            66%  { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
         @media (prefers-reduced-motion: reduce) {
-            header {
-                animation: none;
-            }
-            .card {
-                transition: none;
-            }
+            header { animation: none; }
+            .container { animation: none; }
+            .card { transition: none; }
         }
         @media (max-width: 768px) {
             header {
@@ -194,10 +199,11 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="curriculum_vitae.html" class="nav-active">CV</a></li>
                 </ul>
             </nav>
         </header>
-        
+
         <div class="pdf-container">
             <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" allowfullscreen></iframe>
         </div>
@@ -208,7 +214,7 @@
                 <a href="https://orcid.org/0009-0000-6979-904X">ORCID</a>
                 <a href="https://bsky.app/profile/dmartinezfelip.bsky.social">Bluesky</a>
             </div>
-            <div>© 2025 Daniel Martínez-Felip</div>
+            <div>© 2026 Daniel Martínez-Felip</div>
         </footer>
     </div>
 </body>
