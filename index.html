@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Martínez-Felip - About</title>
+    <meta name="description" content="Daniel Martínez-Felip — PhD Candidate at UWA Centre for Environmental Economics & Policy. Research on behavioural economics, social norms, and cooperative behaviour.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
     :root {
@@ -20,6 +21,9 @@
         --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
         --radius: 16px;
         --radius-soft: 12px;
+    }
+    html {
+        scroll-behavior: smooth;
     }
     body {
         font-family: 'Cambria', 'Times New Roman', serif;
@@ -361,6 +365,23 @@
         from { opacity: 0; transform: translateY(6px); }
         to   { opacity: 1; transform: translateY(0); }
     }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --background: #0f172a;
+            --surface: #1e293b;
+            --surface-alt: #273348;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --accent: #60a5fa;
+            --accent-strong: #93c5fd;
+            --border: rgba(255, 255, 255, 0.10);
+            --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+            --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.45);
+        }
+        header {
+            background: linear-gradient(135deg, #1e2740 0%, #1a2035 40%, #1e293b 70%, #1a2040 100%);
+        }
+    }
     @media (prefers-reduced-motion: reduce) {
         header { animation: none; }
         .container { animation: none; }
@@ -429,6 +450,12 @@
                                     <path d="M180 141.964C163.699 110.262 119.308 51.1817 78.0347 22.044C38.4971 -5.86834 23.414 -1.03207 13.526 3.43594C2.08093 8.60755 0 26.1785 0 36.5164C0 46.8542 5.66748 121.272 9.36416 133.694C21.5786 174.738 65.0603 188.607 105.104 184.156C107.151 183.852 109.227 183.572 111.329 183.312C109.267 183.642 107.19 183.924 105.104 184.156C46.4204 192.847 -5.69621 214.233 62.6582 290.33C137.848 368.18 165.705 273.637 180 225.702C194.295 273.637 210.76 364.771 295.995 290.33C360 225.702 313.58 192.85 254.896 184.158C252.81 183.926 250.733 183.645 248.671 183.315C250.773 183.574 252.849 183.855 254.896 184.158C294.94 188.61 338.421 174.74 350.636 133.697C354.333 121.275 360 46.8568 360 36.519C360 26.1811 357.919 8.61012 346.474 3.43851C336.586 -1.02949 321.503 -5.86576 281.965 22.0466C240.692 51.1843 196.301 110.262 180 141.964Z"/>
                                 </svg>
                                 <span>Bluesky</span>
+                            </a>
+                            <a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en" class="contact-link">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" height="1.1em" width="auto" fill="currentColor">
+                                    <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+                                </svg>
+                                <span>Scholar</span>
                             </a>
                         </div>
 
