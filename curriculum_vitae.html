@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Martínez-Felip - Curriculum Vitae</title>
+    <meta name="description" content="Curriculum Vitae of Daniel Martínez-Felip, PhD Candidate in Environmental Economics at the University of Western Australia.">
     <style>
         :root {
             color-scheme: light dark;
@@ -18,6 +19,9 @@
             --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
             --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
             --radius: 26px;
+        }
+        html {
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'Cambria', 'Times New Roman', serif;
@@ -170,6 +174,23 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(6px); }
             to   { opacity: 1; transform: translateY(0); }
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #0f172a;
+                --surface: #1e293b;
+                --surface-alt: #273348;
+                --text: #f1f5f9;
+                --muted: #94a3b8;
+                --accent: #60a5fa;
+                --accent-strong: #93c5fd;
+                --border: rgba(255, 255, 255, 0.10);
+                --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+                --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.45);
+            }
+            header {
+                background: linear-gradient(135deg, #1e2740 0%, #1a2035 40%, #1e293b 70%, #1a2040 100%);
+            }
         }
         @media (prefers-reduced-motion: reduce) {
             header { animation: none; }
