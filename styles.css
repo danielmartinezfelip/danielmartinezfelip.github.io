@@ -1,0 +1,369 @@
+/* ============================================================
+   Shared styles — danielmartinezfelip.github.io
+   ============================================================ */
+
+/* --- Variables -------------------------------------------- */
+:root {
+    color-scheme: light dark;
+    --background: #e5e7eb;
+    --surface: #ffffff;
+    --surface-alt: #f3f4f6;
+    --text: #1f2937;
+    --muted: #4b5563;
+    --accent: #2563eb;
+    --accent-strong: #1d4ed8;
+    --border: rgba(15, 23, 42, 0.12);
+    --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
+    --radius: 16px;
+    --radius-soft: 12px;
+}
+
+/* --- Base -------------------------------------------------- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Cambria', 'Times New Roman', serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: auto;
+    padding: 32px 0 48px;
+    flex-grow: 1;
+    animation: fadeIn 0.45s ease-out both;
+}
+
+/* --- Header / Nav ----------------------------------------- */
+header {
+    text-align: center;
+    padding: 24px 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, #eef2ff 0%, #f0f4ff 40%, #f3f4f6 70%, #e8f0fe 100%);
+    background-size: 300% 300%;
+    box-shadow: var(--shadow);
+    animation: gradientShift 25s ease-in-out infinite;
+    position: sticky;
+    top: 16px;
+    z-index: 100;
+}
+
+h1 {
+    font-size: 2.1em;
+    margin: 0;
+    color: var(--text);
+}
+
+header h2 {
+    border-bottom: none;
+    color: var(--muted);
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+nav {
+    margin-top: 15px;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--text);
+    border-color: rgba(15, 23, 42, 0.15);
+    background-color: rgba(37, 99, 235, 0.06);
+}
+
+nav ul li a.nav-active {
+    color: var(--accent);
+    border-color: rgba(37, 99, 235, 0.35);
+    background-color: rgba(37, 99, 235, 0.08);
+}
+
+/* --- Content / Cards -------------------------------------- */
+.content {
+    margin-top: 32px;
+    background: var(--surface);
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-hover);
+}
+
+.content-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.content-table td {
+    vertical-align: top;
+    padding: 10px;
+}
+
+.image-contact {
+    width: 25%;
+}
+
+.image-contact img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: contain;
+    border: 1px solid var(--border);
+}
+
+.text {
+    width: 75%;
+}
+
+h2 {
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+    margin-top: 24px;
+}
+
+/* --- Links ------------------------------------------------ */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-soft);
+}
+
+/* --- Footer ----------------------------------------------- */
+.site-footer {
+    margin-top: 32px;
+    padding: 18px 24px;
+    border-radius: var(--radius-soft);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9em;
+    color: var(--muted);
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--muted);
+    text-decoration: underline;
+}
+
+/* --- CV Modal --------------------------------------------- */
+.cv-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+    z-index: 1000;
+}
+
+.cv-modal {
+    position: fixed;
+    inset: 6% 6%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    z-index: 1001;
+}
+
+.cv-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-alt);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+}
+
+.cv-modal-title {
+    margin: 0;
+    font-size: 1.1em;
+    color: var(--text);
+}
+
+.cv-close {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-soft);
+    padding: 6px 14px;
+    color: var(--muted);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cv-modal-body {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+}
+
+.cv-modal-body iframe {
+    flex: 1;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+body.cv-modal-open {
+    overflow: hidden;
+}
+
+body.cv-modal-open .container {
+    filter: blur(4px);
+    pointer-events: none;
+    user-select: none;
+}
+
+body.cv-modal-open .cv-backdrop,
+body.cv-modal-open .cv-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --- Animations ------------------------------------------- */
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    33%  { background-position: 100% 50%; }
+    66%  { background-position: 50% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Dark mode -------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-alt: #273348;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+        --accent: #60a5fa;
+        --accent-strong: #93c5fd;
+        --border: rgba(255, 255, 255, 0.10);
+        --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+        --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    header {
+        background: linear-gradient(135deg, #1e2740 0%, #1a2035 40%, #1e293b 70%, #1a2040 100%);
+    }
+}
+
+/* --- Reduced motion --------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    header { animation: none; }
+    .container { animation: none; }
+    .card { transition: none; }
+}
+
+/* --- Responsive ------------------------------------------- */
+@media (max-width: 768px) {
+    .content-table, .content-table tbody, .content-table tr, .content-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .image-contact, .text {
+        width: 100%;
+    }
+
+    .site-footer {
+        border-radius: 18px;
+    }
+
+    .cv-modal {
+        inset: 4% 4%;
+    }
+
+    .cv-modal-header {
+        padding: 12px 16px;
+    }
+
+    .cv-modal-body {
+        padding: 12px;
+    }
+}

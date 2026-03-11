@@ -5,98 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Martínez-Felip - Curriculum Vitae</title>
     <meta name="description" content="Curriculum Vitae of Daniel Martínez-Felip, PhD Candidate in Environmental Economics at the University of Western Australia.">
+    <meta property="og:title" content="CV — Daniel Martínez-Felip">
+    <meta property="og:description" content="Curriculum Vitae of Daniel Martínez-Felip, PhD Candidate in Environmental Economics at the University of Western Australia.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://danielmartinezfelip.github.io/curriculum_vitae.html">
+    <meta property="og:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        :root {
-            color-scheme: light dark;
-            --background: #e5e7eb;
-            --surface: #ffffff;
-            --surface-alt: #f3f4f6;
-            --text: #1f2937;
-            --muted: #4b5563;
-            --accent: #2563eb;
-            --accent-strong: #1d4ed8;
-            --border: rgba(15, 23, 42, 0.12);
-            --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-            --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
-            --radius: 26px;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+        /* --- CV-specific overrides ------------------------------ */
         body {
-            font-family: 'Cambria', 'Times New Roman', serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background);
-            color: var(--text);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+            height: 100vh;         /* exact viewport; no scroll on CV page */
         }
         .container {
             width: min(1200px, 94%);
-            margin: 0 auto;
-            padding: 32px 0 48px;
-            flex: 1;
             display: flex;
             flex-direction: column;
-            animation: fadeIn 0.45s ease-out both;
-        }
-        header {
-            text-align: center;
-            padding: 20px 24px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: linear-gradient(135deg, #eef2ff 0%, #f0f4ff 40%, #f3f4f6 70%, #e8f0fe 100%);
-            background-size: 300% 300%;
-            box-shadow: var(--shadow);
-            animation: gradientShift 25s ease-in-out infinite;
-            position: sticky;
-            top: 16px;
-            z-index: 100;
-        }
-        h1 {
-            font-size: 2.1em;
-            margin: 0;
-            color: var(--text);
         }
         header h2 {
-            border-bottom: none;
-            color: var(--muted);
-            margin-top: 5px;
             margin-bottom: 10px;
-        }
-        nav {
-            margin-top: 10px;
-        }
-        nav ul {
-            padding: 0;
-            list-style: none;
-            margin: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
-        }
-        nav ul li a:hover {
-            color: var(--text);
-            border-color: rgba(15, 23, 42, 0.15);
-            background-color: rgba(37, 99, 235, 0.06);
-        }
-        nav ul li a.nav-active {
-            color: var(--accent);
-            border-color: rgba(37, 99, 235, 0.35);
-            background-color: rgba(37, 99, 235, 0.08);
         }
         .pdf-container {
             flex: 1;
@@ -104,16 +30,8 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            height: calc(100vh - 180px); /* Full height minus desktop header; mobile override below. */
+            height: calc(100vh - 180px);
             padding: 24px 0 0;
-            margin: 0;
-        }
-        .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
         }
         iframe {
             width: 100%;
@@ -124,85 +42,15 @@
             background: var(--surface);
             box-shadow: var(--shadow);
         }
-        h2 {
-            color: var(--text);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 6px;
-        }
-        a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        a:hover {
-            color: var(--accent);
-            text-decoration: underline;
-        }
         .site-footer {
-            margin-top: 24px;
-            padding: 18px 24px;
-            border-radius: 999px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.9em;
-            color: var(--muted);
-        }
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-        .footer-links a {
-            color: var(--muted);
-            text-decoration: none;
-        }
-        .footer-links a:hover {
-            color: var(--muted);
-            text-decoration: underline;
-        }
-        @keyframes gradientShift {
-            0%   { background-position: 0% 50%; }
-            33%  { background-position: 100% 50%; }
-            66%  { background-position: 50% 100%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background: #0f172a;
-                --surface: #1e293b;
-                --surface-alt: #273348;
-                --text: #f1f5f9;
-                --muted: #94a3b8;
-                --accent: #60a5fa;
-                --accent-strong: #93c5fd;
-                --border: rgba(255, 255, 255, 0.10);
-                --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-                --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.45);
-            }
-            header {
-                background: linear-gradient(135deg, #1e2740 0%, #1a2035 40%, #1e293b 70%, #1a2040 100%);
-            }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            header { animation: none; }
-            .container { animation: none; }
-            .card { transition: none; }
+            border-radius: 999px;   /* pill shape on CV page */
         }
         @media (max-width: 768px) {
             header {
                 padding: 16px 18px;
             }
             .pdf-container {
-                height: calc(100vh - 160px); /* Full height minus compact mobile header. */
+                height: calc(100vh - 160px);
             }
             .site-footer {
                 border-radius: 24px;
