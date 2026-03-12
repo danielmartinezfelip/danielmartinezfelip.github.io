@@ -358,7 +358,75 @@ body.cv-modal-open .cv-modal {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Dark mode -------------------------------------------- */
+/* --- Theme toggle button ---------------------------------- */
+header {
+    position: relative;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 1em;
+    line-height: 1;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+.theme-toggle:hover {
+    color: var(--text);
+    border-color: var(--muted);
+    background: var(--surface-alt);
+}
+
+/* icon: show moon (switch to dark) by default in light mode */
+.theme-toggle::before { content: '☽'; }
+
+/* icon: show sun (switch to light) when system is dark but no override */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .theme-toggle::before { content: '☀'; }
+}
+
+/* icon: follow forced theme */
+[data-theme="dark"]  .theme-toggle::before { content: '☀'; }
+[data-theme="light"] .theme-toggle::before { content: '☽'; }
+
+/* --- Paper keywords --------------------------------------- */
+.paper-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.paper-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.keyword-tag {
+    font-size: 0.74em;
+    padding: 2px 9px;
+    border-radius: 99px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: inherit;
+}
+
+/* --- Dark mode (system preference) ------------------------ */
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #0f172a;
@@ -377,6 +445,61 @@ body.cv-modal-open .cv-modal {
         background: linear-gradient(135deg, #1e2740 0%, #1a2035 40%, #1e293b 70%, #1a2040 100%);
     }
 }
+
+/* --- Force light mode (overrides system dark) ------------- */
+[data-theme="light"] {
+    --background: #e5e7eb;
+    --surface: #ffffff;
+    --surface-alt: #f3f4f6;
+    --text: #1f2937;
+    --muted: #4b5563;
+    --accent: #2563eb;
+    --accent-strong: #1d4ed8;
+    --border: rgba(15, 23, 42, 0.12);
+    --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
+}
+
+[data-theme="light"] header {
+    background: linear-gradient(135deg, #eef2ff 0%, #f0f4ff 40%, #f3f4f6 70%, #e8f0fe 100%);
+}
+
+[data-theme="light"] .job-market-banner {
+    background: rgba(22, 163, 74, 0.06);
+    border-color: rgba(22, 163, 74, 0.3);
+    border-left-color: #16a34a;
+}
+
+[data-theme="light"] .job-market-dot { background: #16a34a; }
+[data-theme="light"] .job-market-text strong { color: #16a34a; }
+
+/* --- Force AMOLED dark mode ------------------------------- */
+[data-theme="dark"] {
+    --background: #000000;
+    --surface: #0d0d0d;
+    --surface-alt: #141414;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --accent: #60a5fa;
+    --accent-strong: #93c5fd;
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+    --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.9);
+}
+
+[data-theme="dark"] header {
+    background: #000000;
+    animation: none;
+}
+
+[data-theme="dark"] .job-market-banner {
+    background: rgba(22, 163, 74, 0.08);
+    border-color: rgba(74, 222, 128, 0.3);
+    border-left-color: #4ade80;
+}
+
+[data-theme="dark"] .job-market-dot { background: #4ade80; }
+[data-theme="dark"] .job-market-text strong { color: #4ade80; }
 
 /* --- Reduced motion --------------------------------------- */
 @media (prefers-reduced-motion: reduce) {

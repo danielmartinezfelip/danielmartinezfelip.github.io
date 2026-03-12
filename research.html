@@ -12,6 +12,7 @@
     <meta property="og:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
     <style>
         /* --- Research-specific ---------------------------------- */
         h3 {
@@ -54,6 +55,12 @@
             .badge-prep   { color: #fcd34d; }
             .badge-jmp    { color: #c4b5fd; }
         }
+        [data-theme="dark"] .badge-review { color: #93c5fd; }
+        [data-theme="dark"] .badge-prep   { color: #fcd34d; }
+        [data-theme="dark"] .badge-jmp    { color: #c4b5fd; }
+        [data-theme="light"] .badge-review { color: #1e40af; }
+        [data-theme="light"] .badge-prep   { color: #92400e; }
+        [data-theme="light"] .badge-jmp    { color: #5b21b6; }
         .paper-entry {
             margin-bottom: 22px;
             padding: 16px 18px;
@@ -180,14 +187,18 @@
                     <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
                 </ul>
             </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
         </header>
 
         <div class="content card">
             <div class="section">
                 <h2>Ongoing work</h2>
 
-                <h3><span class="badge badge-jmp">Job Market Paper</span> <span class="badge badge-review">Under Review</span></h3>
                 <div class="paper-entry">
+                    <div class="paper-badges">
+                        <span class="badge badge-jmp">Job Market Paper</span>
+                        <span class="badge badge-review">Under Review</span>
+                    </div>
                     <p>
                         <strong>How does experienced behaviour change normative expectations regarding socially beneficial actions?</strong><br>
                         <em>with Steven G.M. Schilizzi and Chi Nguyen</em>
@@ -205,12 +216,21 @@
                     <div class="abstract-body" id="abstract-1">
                         Social norms, understood as shared expectations of appropriate behaviour, can help resolve collective action problems by making salient collectively beneficial equilibria. However, achieving long-lasting behaviour of this type remains challenging, partly because how different social contexts shape individuals’ normative expectations is not well understood. This study uses a controlled laboratory experiment to collect panel data on how individuals’ normative expectations regarding public good (PG) contributions evolve across two sequential social contexts. Using Krupka and Weber’s (2013) method, we elicited expectations at three points: before a repeated PG game, after it, and after a subsequent PG game in which group members can convey a normative signal through a social exclusion mechanism. Participants first experienced declining contributions in the Baseline PG game, followed by higher contributions when the exclusion mechanism was introduced. After the initial decline, participants’ norm profiles in uncooperative scenarios clustered around lower contributions. Conversely, after experiencing higher contributions under the exclusion mechanism—which provided a cooperative normative signal—normative expectations shifted toward favouring greater contributions. This effect was strongest among participants who initially perceived loose norms. Our findings highlight heterogeneity in how norms are perceived and change, offering experimental evidence on the factors that drive beneficial normative change.
                     </div>
+                    <div class="paper-keywords">
+                        <span class="keyword-tag">social norms</span>
+                        <span class="keyword-tag">normative expectations</span>
+                        <span class="keyword-tag">cooperative behaviour</span>
+                        <span class="keyword-tag">lab experiment</span>
+                        <span class="keyword-tag">behavioural economics</span>
+                    </div>
                 </div>
 
                 <hr class="section-divider">
 
-                <h3><span class="badge badge-prep">Work in progress</span></h3>
                 <div class="paper-entry">
+                    <div class="paper-badges">
+                        <span class="badge badge-prep">Work in progress</span>
+                    </div>
                     <p>
                         <strong>From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviours</strong><br>
                         <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
@@ -227,9 +247,19 @@
                     <div class="abstract-body" id="abstract-2">
                         In analysing potential policy responses to improve outcomes in collective-action problems, economists often focus on financial disincentives to reduce the expected gains from free-riding and thereby promote within-group cooperation. In this study, we investigate the potential for groups to develop non-financial disincentives to free riding, thereby promoting convergence towards collectively beneficial actions. Using a within-subjects laboratory experiment, participants play two multi-period public goods games sequentially: without and then with non-financial incentives activated by allowing for the endogenous formation of a social exclusion mechanism. Participants can choose to bear a personal cost to allow them to assign exclusion tickets to other participants whose contributions to the public good they judge negatively. The member(s) who accumulate the most tickets are excluded from a group activity that involves no monetary payoffs and is not linked to the main game. We show that the threat of exclusion, and later the experience of it, acts as a non-financial social disincentive to free ride. Lower contributors receive more exclusion tickets, and the presence of the exclusion mechanism reverses the typical decline in contributions. Moreover, experiencing exclusion strengthens the effectiveness of the subsequent exclusion threat. Willingness to incur personal costs to assign exclusion tickets increases over time. This pattern is mainly driven by normative expectations, particularly among individuals who perceive low tolerance for deviation as group contributions become more dispersed. In the absence of financial disincentives, these patterns show how non-financial incentives, shaped by more cooperative normative expectations, can foster group coordination and higher public-good contributions.
                     </div>
+                    <div class="paper-keywords">
+                        <span class="keyword-tag">social sanctions</span>
+                        <span class="keyword-tag">endogenous institutions</span>
+                        <span class="keyword-tag">non-financial incentives</span>
+                        <span class="keyword-tag">collective action</span>
+                        <span class="keyword-tag">punishment</span>
+                    </div>
                 </div>
 
                 <div class="paper-entry">
+                    <div class="paper-badges">
+                        <span class="badge badge-prep">Work in progress</span>
+                    </div>
                     <p>
                         <strong>Norm heterogeneity and the emergence of cooperation: A spatial agent-based model of conditional cooperation</strong><br>
                         <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
@@ -245,6 +275,13 @@
                     </div>
                     <div class="abstract-body" id="abstract-3">
                         The resolution of collective-action problems often depends on social norms and pressure to conform to group behaviour, yet individuals typically differ in how strongly they perceive and internalise these norms. While existing models of norm change and social tipping often assume homogeneous and static normative expectations, recent evidence suggests substantial heterogeneity in the perceived norm strength. We study how different compositions of such heterogeneity within a community shape the emergence and internalisation of cooperative behaviour. We develop a spatial agent-based model in which agents follow a conditional-cooperation norm but differ in norm strength, characterised as either tight or loose. Agents interact locally and update their cooperation thresholds endogenously through a combination of payoff-driven learning and social learning from experiencing group behaviour. Our results show that introducing a moderate share of loose-norm individuals into otherwise tight-dominated communities can facilitate the emergence of cooperative tipping points by enabling cooperation to seed and spread locally, even when agents place zero weight on social-relative-to-financial learning. However, whether cooperation becomes internalised and persists depends critically on the relative weight given to social and financial learning. A higher weight on social learning amplifies local behavioural feedbacks, sharpens tipping-point dynamics, and allows agents with tight social norms to internalise cooperation such that it can be sustained with fewer cooperating group members. Once cooperation spreads, conformity pressure stabilises cooperative behaviour among loose-social-norm agents. Taken together, our findings highlight the importance of community composition and norm-strength heterogeneity for collective-action dynamics, and show how heterogeneity in perceived norm strength can generate abrupt and persistent transitions in cooperative behaviour.
+                    </div>
+                    <div class="paper-keywords">
+                        <span class="keyword-tag">agent-based model</span>
+                        <span class="keyword-tag">conditional cooperation</span>
+                        <span class="keyword-tag">norm heterogeneity</span>
+                        <span class="keyword-tag">spatial model</span>
+                        <span class="keyword-tag">emergence of cooperation</span>
                     </div>
                 </div>
             </div>
@@ -301,6 +338,19 @@
                     if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
                         closeCvModal();
                     }
+                });
+            }
+
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                const root = document.documentElement;
+                themeToggle.addEventListener('click', () => {
+                    const isDark = root.getAttribute('data-theme') === 'dark'
+                        || (!root.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                    const next = isDark ? 'light' : 'dark';
+                    root.setAttribute('data-theme', next);
+                    localStorage.setItem('theme', next);
                 });
             }
 
