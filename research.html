@@ -12,6 +12,7 @@
     <meta property="og:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
     <style>
         /* --- Research-specific ---------------------------------- */
         h3 {
@@ -54,6 +55,12 @@
             .badge-prep   { color: #fcd34d; }
             .badge-jmp    { color: #c4b5fd; }
         }
+        [data-theme="dark"] .badge-review { color: #93c5fd; }
+        [data-theme="dark"] .badge-prep   { color: #fcd34d; }
+        [data-theme="dark"] .badge-jmp    { color: #c4b5fd; }
+        [data-theme="light"] .badge-review { color: #1e40af; }
+        [data-theme="light"] .badge-prep   { color: #92400e; }
+        [data-theme="light"] .badge-jmp    { color: #5b21b6; }
         .paper-entry {
             margin-bottom: 22px;
             padding: 16px 18px;
@@ -180,14 +187,18 @@
                     <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
                 </ul>
             </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
         </header>
 
         <div class="content card">
             <div class="section">
                 <h2>Ongoing work</h2>
 
-                <h3><span class="badge badge-jmp">Job Market Paper</span> <span class="badge badge-review">Under Review</span></h3>
                 <div class="paper-entry">
+                    <div class="paper-badges">
+                        <span class="badge badge-jmp">Job Market Paper</span>
+                        <span class="badge badge-review">Under Review</span>
+                    </div>
                     <p>
                         <strong>How does experienced behaviour change normative expectations regarding socially beneficial actions?</strong><br>
                         <em>with Steven G.M. Schilizzi and Chi Nguyen</em>
@@ -205,12 +216,21 @@
                     <div class="abstract-body" id="abstract-1">
                         Abstract available via the preprint linked above.
                     </div>
+                    <div class="paper-keywords">
+                        <span class="keyword-tag">social norms</span>
+                        <span class="keyword-tag">normative expectations</span>
+                        <span class="keyword-tag">cooperative behaviour</span>
+                        <span class="keyword-tag">lab experiment</span>
+                        <span class="keyword-tag">behavioural economics</span>
+                    </div>
                 </div>
 
                 <hr class="section-divider">
 
-                <h3><span class="badge badge-prep">Work in progress</span></h3>
                 <div class="paper-entry">
+                    <div class="paper-badges">
+                        <span class="badge badge-prep">Work in progress</span>
+                    </div>
                     <p>
                         <strong>From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviours</strong><br>
                         <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
@@ -227,9 +247,19 @@
                     <div class="abstract-body" id="abstract-2">
                         Abstract available via the preprint linked above.
                     </div>
+                    <div class="paper-keywords">
+                        <span class="keyword-tag">social sanctions</span>
+                        <span class="keyword-tag">endogenous institutions</span>
+                        <span class="keyword-tag">non-financial incentives</span>
+                        <span class="keyword-tag">collective action</span>
+                        <span class="keyword-tag">punishment</span>
+                    </div>
                 </div>
 
                 <div class="paper-entry">
+                    <div class="paper-badges">
+                        <span class="badge badge-prep">Work in progress</span>
+                    </div>
                     <p>
                         <strong>Norm heterogeneity and the emergence of cooperation: A spatial agent-based model of conditional cooperation</strong><br>
                         <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
@@ -245,6 +275,13 @@
                     </div>
                     <div class="abstract-body" id="abstract-3">
                         Abstract coming soon.
+                    </div>
+                    <div class="paper-keywords">
+                        <span class="keyword-tag">agent-based model</span>
+                        <span class="keyword-tag">conditional cooperation</span>
+                        <span class="keyword-tag">norm heterogeneity</span>
+                        <span class="keyword-tag">spatial model</span>
+                        <span class="keyword-tag">emergence of cooperation</span>
                     </div>
                 </div>
             </div>
@@ -301,6 +338,19 @@
                     if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
                         closeCvModal();
                     }
+                });
+            }
+
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                const root = document.documentElement;
+                themeToggle.addEventListener('click', () => {
+                    const isDark = root.getAttribute('data-theme') === 'dark'
+                        || (!root.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                    const next = isDark ? 'light' : 'dark';
+                    root.setAttribute('data-theme', next);
+                    localStorage.setItem('theme', next);
                 });
             }
 

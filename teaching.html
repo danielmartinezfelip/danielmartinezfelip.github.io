@@ -12,6 +12,7 @@
     <meta property="og:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
     <style>
         /* --- Teaching-specific ---------------------------------- */
         .teaching-entry {
@@ -53,6 +54,7 @@
                     <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
                 </ul>
             </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
         </header>
 
         <div class="content card">
@@ -120,6 +122,19 @@
                     if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
                         closeModal();
                     }
+                });
+            }
+
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                const root = document.documentElement;
+                themeToggle.addEventListener('click', () => {
+                    const isDark = root.getAttribute('data-theme') === 'dark'
+                        || (!root.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                    const next = isDark ? 'light' : 'dark';
+                    root.setAttribute('data-theme', next);
+                    localStorage.setItem('theme', next);
                 });
             }
         })();
