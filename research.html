@@ -210,6 +210,21 @@
         @media (prefers-reduced-motion: reduce) {
             .abstract-toggle .toggle-icon { transition: none; }
         }
+        /* --- Two-column layout --------------------------------- */
+        .research-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 32px;
+            align-items: start;
+        }
+        .pres-col h2 {
+            margin-top: 0;
+        }
+        @media (max-width: 900px) {
+            .research-layout {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -229,6 +244,8 @@
         </header>
 
         <div class="content card">
+            <div class="research-layout">
+            <div class="papers-col">
             <div class="section">
                 <h2>Ongoing work</h2>
 
@@ -319,11 +336,11 @@ class="keyword-tag">laboratory experiments</span>
                     </div>
                 </div>
             </div>
+            </div><!-- /papers-col -->
 
-        <hr class="section-divider">
-
-        <div class="section">
-            <h2>Presentations</h2>
+            <div class="pres-col">
+            <div class="section">
+                <h2>Presentations</h2>
             <ul class="pres-list">
                 <li class="pres-entry">
                     <span class="pres-year">2026</span>
@@ -375,7 +392,9 @@ class="keyword-tag">laboratory experiments</span>
                     </div>
                 </li>
             </ul>
-        </div>
+            </div>
+            </div><!-- /pres-col -->
+            </div><!-- /research-layout -->
         </div>
 
         <footer class="site-footer card">
