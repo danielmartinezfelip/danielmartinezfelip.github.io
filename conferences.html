@@ -14,42 +14,97 @@
     <link rel="stylesheet" href="styles.css">
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
     <style>
-        .pres-list {
+        /* ── Timeline ─────────────────────────────────────────── */
+        .timeline {
             list-style: none;
             padding: 0;
-            margin: 0;
-            display: grid;
-            gap: 14px;
+            margin: 8px 0 0;
+            position: relative;
         }
-        .pres-entry {
-            display: grid;
-            grid-template-columns: 48px 1fr;
-            gap: 0 14px;
-            align-items: baseline;
+
+        /* Vertical connecting line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 51px; /* 40px year col + 11px = centre of 22px dot col */
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: var(--border);
+            border-radius: 1px;
         }
-        .pres-year {
-            font-weight: 700;
-            font-size: 0.88em;
-            color: var(--accent);
+
+        .tl-entry {
+            display: flex;
+            align-items: flex-start;
+            padding-bottom: 28px;
+            position: relative;
+        }
+        .tl-entry:last-child { padding-bottom: 0; }
+
+        /* Year label — only show on first entry of each year */
+        .tl-year {
+            width: 40px;
+            flex-shrink: 0;
             text-align: right;
-            padding-top: 1px;
+            font-size: 0.8em;
+            font-weight: 700;
+            color: var(--accent);
+            padding-top: 3px;
+            line-height: 1;
         }
-        .pres-details {
-            font-size: 0.93em;
-            line-height: 1.55;
-            color: var(--text);
+
+        /* Dot column */
+        .tl-dot-col {
+            width: 22px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            padding-top: 5px;
+            position: relative;
+            z-index: 1;
         }
-        .pres-venue {
+
+        /* Filled dot — presentation */
+        .tl-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--surface);
+            box-shadow: 0 0 0 1.5px var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* Hollow dot — attended only */
+        .tl-dot.attended {
+            background: var(--surface);
+            border: 2px solid var(--muted);
+            box-shadow: 0 0 0 1.5px var(--muted);
+        }
+
+        /* Content */
+        .tl-content {
+            flex: 1;
+            padding-left: 14px;
+        }
+
+        .tl-venue {
+            font-size: 0.94em;
             font-weight: 600;
+            color: var(--text);
+            line-height: 1.45;
         }
-        .pres-location {
+
+        .tl-venue.attended {
+            font-weight: 400;
             color: var(--muted);
-            font-size: 0.88em;
         }
-        .pres-note {
+
+        .tl-meta {
+            font-size: 0.83em;
             color: var(--muted);
-            font-size: 0.88em;
-            font-style: italic;
+            margin-top: 3px;
         }
     </style>
 </head>
@@ -71,56 +126,71 @@
         </header>
 
         <div class="content card">
-            <ul class="pres-list">
-                <li class="pres-entry">
-                    <span class="pres-year">2026</span>
-                    <div class="pres-details">
-                        <span class="pres-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</span>
-                        <span class="pres-location"> · Adelaide, Australia · Feb 2026</span>
+            <ul class="timeline">
+
+                <li class="tl-entry">
+                    <span class="tl-year">2026</span>
+                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                    <div class="tl-content">
+                        <div class="tl-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</div>
+                        <div class="tl-meta">Adelaide, Australia · Feb 2026</div>
                     </div>
                 </li>
-                <li class="pres-entry">
-                    <span class="pres-year">2025</span>
-                    <div class="pres-details">
-                        <span class="pres-venue">Presentation at the Department of Economics, Universitat Jaume I</span>
-                        <span class="pres-location"> · Castellón de la Plana, Spain · Oct 2025</span>
+
+                <li class="tl-entry">
+                    <span class="tl-year">2025</span>
+                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                    <div class="tl-content">
+                        <div class="tl-venue">Presentation at the Department of Economics, Universitat Jaume I</div>
+                        <div class="tl-meta">Castellón de la Plana, Spain · Oct 2025</div>
                     </div>
                 </li>
-                <li class="pres-entry">
-                    <span class="pres-year">2025</span>
-                    <div class="pres-details">
-                        <span class="pres-venue">Presentation at the 14th Behavioral and Experimental Economics Network (BEEN) Meeting</span>
-                        <span class="pres-location"> · University of Cagliari, Italy · Sep 2025</span>
+
+                <li class="tl-entry">
+                    <span class="tl-year"></span>
+                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                    <div class="tl-content">
+                        <div class="tl-venue">Presentation at the 14th Behavioral and Experimental Economics Network (BEEN) Meeting</div>
+                        <div class="tl-meta">University of Cagliari, Italy · Sep 2025</div>
                     </div>
                 </li>
-                <li class="pres-entry">
-                    <span class="pres-year">2025</span>
-                    <div class="pres-details">
-                        <span class="pres-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</span>
-                        <span class="pres-location"> · Brisbane, Australia · Feb 2025</span>
+
+                <li class="tl-entry">
+                    <span class="tl-year"></span>
+                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                    <div class="tl-content">
+                        <div class="tl-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</div>
+                        <div class="tl-meta">Brisbane, Australia · Feb 2025</div>
                     </div>
                 </li>
-                <li class="pres-entry">
-                    <span class="pres-year">2024</span>
-                    <div class="pres-details">
-                        <span class="pres-venue">Presentation at the REECAP Webinar</span>
-                        <span class="pres-location"> · Online · Nov 2024</span>
+
+                <li class="tl-entry">
+                    <span class="tl-year">2024</span>
+                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                    <div class="tl-content">
+                        <div class="tl-venue">Presentation at the REECAP Webinar</div>
+                        <div class="tl-meta">Online · Nov 2024</div>
                     </div>
                 </li>
-                <li class="pres-entry">
-                    <span class="pres-year">2024</span>
-                    <div class="pres-details">
-                        <span class="pres-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</span>
-                        <span class="pres-location"> · Canberra, Australia · Feb 2024</span>
+
+                <li class="tl-entry">
+                    <span class="tl-year"></span>
+                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                    <div class="tl-content">
+                        <div class="tl-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</div>
+                        <div class="tl-meta">Canberra, Australia · Feb 2024</div>
                     </div>
                 </li>
-                <li class="pres-entry">
-                    <span class="pres-year">2022</span>
-                    <div class="pres-details">
-                        <span class="pres-venue">Attended the International Conference on Human Capital Investments</span>
-                        <span class="pres-location"> · Loyola University, Spain · Jun 2022</span>
+
+                <li class="tl-entry">
+                    <span class="tl-year">2022</span>
+                    <div class="tl-dot-col"><span class="tl-dot attended"></span></div>
+                    <div class="tl-content">
+                        <div class="tl-venue attended">Attended the International Conference on Human Capital Investments</div>
+                        <div class="tl-meta">Loyola University, Spain · Jun 2022</div>
                     </div>
                 </li>
+
             </ul>
         </div>
 
