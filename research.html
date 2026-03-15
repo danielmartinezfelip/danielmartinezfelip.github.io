@@ -105,6 +105,44 @@
             border: none;
             border-top: 2px dashed var(--border);
         }
+        /* --- Presentations ------------------------------------ */
+        .pres-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 12px;
+        }
+        .pres-entry {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 0 14px;
+            align-items: baseline;
+        }
+        .pres-year {
+            font-weight: 700;
+            font-size: 0.88em;
+            color: var(--accent);
+            text-align: right;
+            padding-top: 1px;
+        }
+        .pres-details {
+            font-size: 0.93em;
+            line-height: 1.55;
+            color: var(--text);
+        }
+        .pres-venue {
+            font-weight: 600;
+        }
+        .pres-location {
+            color: var(--muted);
+            font-size: 0.88em;
+        }
+        .pres-paper {
+            color: var(--muted);
+            font-size: 0.88em;
+            font-style: italic;
+        }
         .preprint-button {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -281,6 +319,31 @@ class="keyword-tag">laboratory experiments</span>
                     </div>
                 </div>
             </div>
+
+        <hr class="section-divider">
+
+        <div class="section">
+            <h2>Presentations</h2>
+            <!-- PLACEHOLDER — fill in with your actual presentations from CV -->
+            <ul class="pres-list">
+                <li class="pres-entry">
+                    <span class="pres-year">2025</span>
+                    <div class="pres-details">
+                        <span class="pres-venue">Conference / Workshop Name</span>
+                        <span class="pres-location"> · City, Country</span><br>
+                        <span class="pres-paper">Paper title presented</span>
+                    </div>
+                </li>
+                <li class="pres-entry">
+                    <span class="pres-year">2024</span>
+                    <div class="pres-details">
+                        <span class="pres-venue">Conference / Workshop Name</span>
+                        <span class="pres-location"> · City, Country</span><br>
+                        <span class="pres-paper">Paper title presented</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
         </div>
 
         <footer class="site-footer card">

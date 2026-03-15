@@ -12,7 +12,7 @@
     <meta property="og:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 <style>
     /* --- Profile / sidebar ---------------------------------- */
@@ -120,6 +120,75 @@
         margin: 8px 0;
         line-height: 1.8;
     }
+    /* --- JMP feature card ----------------------------------- */
+    .jmp-card {
+        margin: 22px 0 24px;
+        padding: 18px 20px;
+        border-radius: 12px;
+        background: rgba(124, 58, 237, 0.04);
+        border: 1px solid rgba(124, 58, 237, 0.2);
+        border-left: 4px solid #7c3aed;
+    }
+    .jmp-card-label {
+        font-size: 0.72em;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: #7c3aed;
+        margin-bottom: 8px;
+    }
+    [data-theme="dark"] .jmp-card-label { color: #c4b5fd; }
+    @media (prefers-color-scheme: dark) { .jmp-card-label { color: #c4b5fd; } }
+    [data-theme="light"] .jmp-card-label { color: #7c3aed; }
+    .jmp-card-title {
+        font-weight: 600;
+        font-size: 0.97em;
+        color: var(--text);
+        margin: 0 0 5px;
+        line-height: 1.45;
+    }
+    .jmp-card-authors {
+        font-size: 0.85em;
+        color: var(--muted);
+        margin: 0 0 4px;
+        font-style: italic;
+    }
+    .jmp-card-status {
+        font-size: 0.83em;
+        color: var(--muted);
+        margin: 0 0 12px;
+    }
+    .jmp-card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+    }
+    .jmp-card-actions a {
+        font-size: 0.87em;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: var(--radius-soft);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        transition: color 0.2s, border-color 0.2s;
+    }
+    .jmp-card-actions a:hover {
+        color: var(--text);
+        border-color: rgba(124, 58, 237, 0.4);
+    }
+    .jmp-card-actions a.primary {
+        background: rgba(124, 58, 237, 0.08);
+        border-color: rgba(124, 58, 237, 0.35);
+        color: #5b21b6;
+    }
+    [data-theme="dark"] .jmp-card-actions a.primary { color: #c4b5fd; }
+    @media (prefers-color-scheme: dark) { .jmp-card-actions a.primary { color: #c4b5fd; } }
+    [data-theme="light"] .jmp-card-actions a.primary { color: #5b21b6; }
+    .jmp-card-actions a.primary:hover {
+        background: rgba(124, 58, 237, 0.14);
+    }
     /* --- News section (uncomment HTML below to activate) ----
     .news-section {
         margin-top: 28px;
@@ -198,6 +267,13 @@
                     </div>
 
                     <div class="sidebar-section">
+                        <h2>Supervisors</h2>
+                        <p>Steven G.M. Schilizzi<br><span style="font-size:0.85em;color:var(--muted);">Associate Professor, UWA</span></p>
+                        <p>Chi Nguyen<br><span style="font-size:0.85em;color:var(--muted);">Research Fellow, UWA</span></p>
+                        <p>David J. Pannell<br><span style="font-size:0.85em;color:var(--muted);">Professor, UWA</span></p>
+                    </div>
+
+                    <div class="sidebar-section">
                         <h2>Resources</h2>
                         <p><a href="https://www.otree.org/">oTree</a></p>
                         <p><a href="https://cran.r-project.org/">R Project</a> & <a href="https://posit.co/">RStudio</a></p>
@@ -219,6 +295,17 @@
                             <li><strong>Affiliation:</strong> UWA Centre for Environmental Economics & Policy</li>
                         </ul>
                     </div>
+                    <div class="jmp-card">
+                        <div class="jmp-card-label">Job Market Paper</div>
+                        <p class="jmp-card-title">How does experienced behaviour change normative expectations regarding socially beneficial actions?</p>
+                        <p class="jmp-card-authors">with Steven G.M. Schilizzi and Chi Nguyen</p>
+                        <p class="jmp-card-status">Revise &amp; Resubmit · <em>Journal of Behavioral and Experimental Economics</em></p>
+                        <div class="jmp-card-actions">
+                            <a class="primary" href="https://doi.org/10.31235/osf.io/vy6z2_v5">Preprint</a>
+                            <a href="research.html">All Research →</a>
+                        </div>
+                    </div>
+
                     <p>Currently, I am a PhD Candidate in the <a href="https://www.uwaceep.org/research-students">Centre for Environmental Economics & Policy</a> at the UWA School of Agriculture and Environment. I am interested in the economics and underpinnings of voluntary cooperation, and the effectiveness of social incentives as a lever for aligning personal interests with collective interests. My research focuses on studying the role of social norms in enhancing the effects of financial incentives on cooperative behaviour and how social norm enforcement mechanisms should be designed to trigger cooperative normative change.</p>
 
                     <!-- NEWS SECTION — remove the comment tags below to activate
