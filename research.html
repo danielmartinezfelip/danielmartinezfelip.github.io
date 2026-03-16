@@ -126,6 +126,27 @@
             border-color: rgba(15, 23, 42, 0.2);
             text-decoration: none;
         }
+        .replication-button {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-soft);
+            padding: 5px 13px;
+            color: var(--accent);
+            font-family: 'Cambria', 'Times New Roman', serif;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+        .replication-button:hover {
+            background: var(--surface-alt);
+            border-color: var(--accent);
+            text-decoration: none;
+        }
         .abstract-toggle {
             background: var(--surface-alt);
             border: 1px solid var(--border);
@@ -210,6 +231,7 @@
                     </div>
                     <div class="paper-actions">
                         <a class="preprint-button" href="https://doi.org/10.31235/osf.io/vy6z2_v5">Preprint</a>
+                        <a class="replication-button" href="https://osf.io/v4q9b/files/osfstorage" target="_blank" rel="noopener">Replication</a>
                         <button class="abstract-toggle" data-abstract-toggle="abstract-1" type="button">
                             Abstract <span class="toggle-icon">▾</span>
                         </button>
@@ -239,6 +261,7 @@
                     </div>
                     <div class="paper-actions">
                         <a class="preprint-button" href="https://doi.org/10.31235/osf.io/j7usg_v1">Preprint</a>
+                        <a class="replication-button" href="https://osf.io/v4q9b/files/osfstorage" target="_blank" rel="noopener">Replication</a>
                         <button class="abstract-toggle" data-abstract-toggle="abstract-2" type="button">
                             Abstract <span class="toggle-icon">▾</span>
                         </button>
