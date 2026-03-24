@@ -111,9 +111,9 @@ nav ul li a.nav-active {
 
 /* --- Content / Cards -------------------------------------- */
 .content {
-    margin-top: 32px;
+    margin-top: 24px;
     background: var(--surface);
-    padding: 32px;
+    padding: 24px 28px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
@@ -202,8 +202,9 @@ nav ul li a.nav-active {
 h2 {
     color: var(--text);
     border-bottom: 1px solid var(--border);
-    padding-bottom: 6px;
-    margin-top: 24px;
+    padding-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: 14px;
 }
 
 /* --- Links ------------------------------------------------ */
@@ -405,20 +406,20 @@ header {
 .paper-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 10px;
+    gap: 5px;
+    margin-bottom: 7px;
 }
 
 .paper-keywords {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 10px;
+    gap: 5px;
+    margin-top: 8px;
 }
 
 .keyword-tag {
-    font-size: 0.74em;
-    padding: 2px 9px;
+    font-size: 0.7em;
+    padding: 2px 8px;
     border-radius: 99px;
     background: var(--surface-alt);
     border: 1px solid var(--border);
