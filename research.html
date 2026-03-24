@@ -16,38 +16,46 @@
     <style>
         /* --- Research-specific ---------------------------------- */
         h3 {
-            color: var(--text);
-            font-size: 1.1em;
-            margin-top: 20px;
-            margin-bottom: 12px;
+            color: var(--accent);
+            font-size: 1.15em;
+            font-weight: 700;
+            margin-top: 28px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 14px;
+            letter-spacing: 0.01em;
+        }
+        h3::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            display: block;
         }
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 4px 10px;
-            border-radius: var(--radius-soft);
-            font-size: 0.75em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            padding: 3px 10px;
+            border-radius: 99px;
+            font-size: 0.74em;
+            font-weight: 600;
+            letter-spacing: 0.03em;
         }
         .badge-review {
-            background: rgba(59, 130, 246, 0.15);
-            border: 1.5px solid rgba(59, 130, 246, 0.5);
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.4);
             color: #1e40af;
         }
         .badge-prep {
-            background: rgba(245, 158, 11, 0.15);
-            border: 1.5px solid rgba(245, 158, 11, 0.5);
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.4);
             color: #92400e;
         }
         .badge-jmp {
-            background: rgba(124, 58, 237, 0.12);
-            border: 1.5px solid rgba(124, 58, 237, 0.45);
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.4);
             color: #5b21b6;
         }
         @media (prefers-color-scheme: dark) {
@@ -62,29 +70,46 @@
         [data-theme="light"] .badge-prep   { color: #92400e; }
         [data-theme="light"] .badge-jmp    { color: #5b21b6; }
         .paper-entry {
-            margin-bottom: 22px;
-            padding: 16px 18px;
+            margin-bottom: 20px;
+            padding: 20px 22px;
             border-radius: var(--radius-soft);
             border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
             background: var(--surface);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .paper-entry:hover {
+            border-color: rgba(37, 99, 235, 0.3);
+            box-shadow: var(--shadow-hover);
         }
         .paper-entry p {
             margin: 0;
         }
+        .paper-title {
+            font-size: 1.15em;
+            line-height: 1.35;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .paper-authors {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+            font-style: normal;
+            font-size: 0.92em;
+        }
         .paper-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
-            margin-top: 10px;
-            font-size: 0.82em;
-            color: var(--muted);
+            margin-top: 8px;
+            font-size: 0.88em;
         }
         .paper-meta-item {
             display: inline-flex;
             align-items: center;
             gap: 4px;
+            color: var(--muted);
         }
         .paper-meta-item::before {
             content: '·';
@@ -93,68 +118,49 @@
         .paper-meta-item:first-child::before {
             content: none;
         }
+        .paper-status {
+            color: var(--accent);
+            font-weight: 600;
+        }
         .paper-actions {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 12px;
+            margin-top: 14px;
             align-items: center;
         }
-        .section-divider {
-            margin: 30px 0;
-            border: none;
-            border-top: 2px dashed var(--border);
-        }
-        .preprint-button {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-soft);
-            padding: 5px 13px;
-            color: var(--muted);
-            font-family: 'Cambria', 'Times New Roman', serif;
-            font-size: 0.9em;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            transition: color 0.2s ease, border-color 0.2s ease;
-        }
-        .preprint-button:hover {
-            color: var(--text);
-            border-color: rgba(15, 23, 42, 0.2);
-            text-decoration: none;
-        }
+        .preprint-button,
         .replication-button {
-            background: var(--surface);
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: var(--radius-soft);
-            padding: 5px 13px;
+            border-radius: 99px;
+            padding: 5px 14px;
             color: var(--muted);
             font-family: 'Cambria', 'Times New Roman', serif;
-            font-size: 0.9em;
+            font-size: 0.87em;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 6px;
             text-decoration: none;
-            transition: color 0.2s ease, border-color 0.2s ease;
+            transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
         }
+        .preprint-button:hover,
         .replication-button:hover {
             color: var(--text);
-            border-color: rgba(15, 23, 42, 0.2);
+            border-color: var(--accent);
+            background-color: rgba(37, 99, 235, 0.06);
             text-decoration: none;
         }
         .abstract-toggle {
-            background: var(--surface-alt);
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: var(--radius-soft);
-            padding: 5px 13px;
+            border-radius: 99px;
+            padding: 5px 14px;
             color: var(--muted);
             font-family: 'Cambria', 'Times New Roman', serif;
-            font-size: 0.9em;
+            font-size: 0.87em;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
@@ -164,8 +170,8 @@
         }
         .abstract-toggle:hover {
             color: var(--text);
-            border-color: rgba(15, 23, 42, 0.2);
-            background-color: var(--surface);
+            border-color: var(--accent);
+            background-color: rgba(37, 99, 235, 0.06);
         }
         .abstract-toggle .toggle-icon {
             font-size: 0.8em;
@@ -177,7 +183,7 @@
         }
         .abstract-body {
             display: none;
-            margin-top: 12px;
+            margin-top: 14px;
             padding: 14px 16px;
             border-radius: 10px;
             background: var(--surface-alt);
@@ -216,17 +222,18 @@
             <div class="section">
                 <h2>Ongoing work</h2>
 
-                <h3><span class="badge badge-review">Under Review</span></h3>
+                <h3>Under Review</h3>
                 <div class="paper-entry">
                     <div class="paper-badges">
+                        <span class="badge badge-review">Under review</span>
                         <span class="badge badge-jmp">Job Market Paper</span>
                     </div>
                     <p>
-                        <strong>How does experienced behaviour change normative expectations regarding socially beneficial actions?</strong><br>
-                        <em>with Steven G.M. Schilizzi and Chi Nguyen</em>
+                        <strong class="paper-title">How does experienced behaviour change normative expectations regarding socially beneficial actions?</strong>
+                        <em class="paper-authors">with Steven G.M. Schilizzi and Chi Nguyen</em>
                     </p>
                     <div class="paper-meta">
-                        <span class="paper-meta-item">Revise &amp; resubmit · <em>Journal of Behavioral and Experimental Economics</em></span>
+                        <span class="paper-meta-item paper-status">Revise &amp; resubmit · <em>Journal of Behavioral and Experimental Economics</em></span>
                         <span class="paper-meta-item">Submitted 2025</span>
                     </div>
                     <div class="paper-actions">
@@ -248,13 +255,14 @@
                     </div>
                 </div>
 
-                <hr class="section-divider">
-
-                <h3><span class="badge badge-prep">Work in progress</span></h3>
+                <h3>Work in Progress</h3>
                 <div class="paper-entry">
+                    <div class="paper-badges">
+                        <span class="badge badge-prep">Work in progress</span>
+                    </div>
                     <p>
-                        <strong>From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviours</strong><br>
-                        <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
+                        <strong class="paper-title">From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviours</strong>
+                        <em class="paper-authors">with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
                     </p>
                     <div class="paper-meta">
                         <span class="paper-meta-item">Submitted 2026</span>
@@ -280,9 +288,12 @@ class="keyword-tag">laboratory experiments</span>
                 </div>
 
                 <div class="paper-entry">
+                    <div class="paper-badges">
+                        <span class="badge badge-prep">Work in progress</span>
+                    </div>
                     <p>
-                        <strong>Norm heterogeneity and the emergence of cooperation: A spatial agent-based model of conditional cooperation</strong><br>
-                        <em>with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
+                        <strong class="paper-title">Norm heterogeneity and the emergence of cooperation: A spatial agent-based model of conditional cooperation</strong>
+                        <em class="paper-authors">with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
                     </p>
                     <div class="paper-meta">
                         <span class="paper-meta-item">In preparation for submission</span>
