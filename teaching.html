@@ -16,28 +16,33 @@
     <style>
         /* --- Teaching-specific ---------------------------------- */
         .teaching-entry {
-            margin-bottom: 22px;
-            padding: 16px 18px;
+            margin-bottom: 12px;
+            padding: 14px 16px;
             border-radius: var(--radius-soft);
             border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
             background: var(--surface);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .teaching-entry:hover {
+            border-color: rgba(37, 99, 235, 0.3);
+            box-shadow: var(--shadow-hover);
         }
         .course-title {
-            font-weight: bold;
+            font-weight: 700;
             font-size: 1.05em;
+            color: var(--text);
         }
         .course-meta {
-            font-size: 0.82em;
+            font-size: 0.84em;
             color: var(--muted);
-            margin-top: 4px;
-            font-style: italic;
+            margin-top: 3px;
+            font-style: normal;
         }
         .course-responsibilities {
-            margin-top: 10px;
-            font-size: 0.93em;
+            margin-top: 8px;
+            font-size: 0.88em;
             color: var(--muted);
-            line-height: 1.65;
+            line-height: 1.6;
         }
     </style>
 </head>
