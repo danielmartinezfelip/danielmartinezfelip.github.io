@@ -29,6 +29,31 @@
             margin-bottom: 10px;
             letter-spacing: 0.02em;
         }
+
+        /* Academic section divider for status headings */
+        h3.section-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 0;
+            border-radius: 0;
+            font-size: 0.74em;
+            font-weight: 600;
+            font-variant: small-caps;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            background: none;
+            border: none;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+        h3.section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
         .badge {
             display: inline-flex;
             align-items: center;
@@ -262,9 +287,9 @@
             <div class="section">
                 <h2>Ongoing work</h2>
 
-                <h3>Under Review</h3>
+                <h3 class="section-label">Under Review</h3>
 
-                <h3>Work in Progress</h3>
+                <h3 class="section-label">Work in Progress</h3>
                 <div class="paper-entry">
                     <div class="paper-badges">
                         <span class="badge badge-prep">Work in progress</span>
