@@ -27,7 +27,7 @@ html {
 body {
     font-family: 'Cambria', 'Times New Roman', serif;
     font-size: 1rem;
-    font-variant: small-caps;
+    font-weight: 500;
     line-height: 1.7;
     letter-spacing: 0.01em;
     margin: 0;
@@ -88,7 +88,6 @@ nav ul li a {
     color: var(--muted);
     text-decoration: none;
     font-weight: 600;
-    font-variant: small-caps;
     letter-spacing: 0.08em;
     padding: 6px 14px;
     border-radius: 12px;
@@ -203,7 +202,6 @@ h2 {
     gap: 12px;
     font-size: 1.1em;
     font-weight: 700;
-    font-variant: small-caps;
     letter-spacing: 0.12em;
     color: var(--text);
     margin-top: 28px;
@@ -223,7 +221,6 @@ h2::after {
 header h2,
 .cv-modal-title {
     display: block;
-    font-variant: small-caps;
     letter-spacing: 0.08em;
     font-size: 1em;
     font-weight: 600;
@@ -244,7 +241,6 @@ h3 {
     gap: 10px;
     font-size: 0.88em;
     font-weight: 600;
-    font-variant: small-caps;
     letter-spacing: 0.1em;
     color: var(--muted);
     margin-top: 18px;
@@ -264,7 +260,7 @@ input,
 select,
 textarea {
     font-family: inherit;
-    font-variant: inherit;
+    font-variant: normal;
     font-size: inherit;
     letter-spacing: inherit;
 }
