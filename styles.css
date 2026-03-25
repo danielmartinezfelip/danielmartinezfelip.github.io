@@ -206,6 +206,26 @@ h2 {
     margin-bottom: 14px;
 }
 
+h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.74em;
+    font-weight: 600;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+h3::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    display: block;
+}
+
 /* --- Links ------------------------------------------------ */
 a {
     color: var(--accent);
