@@ -26,7 +26,7 @@
         .timeline::before {
             content: '';
             position: absolute;
-            left: 51px; /* 40px year col + 11px = centre of 22px dot col */
+            left: 31px; /* 24px year col + 7px = centre of 14px dot col */
             top: 6px;
             bottom: 6px;
             width: 2px;
@@ -44,7 +44,7 @@
 
         /* Year label — only show on first entry of each year */
         .tl-year {
-            width: 40px;
+            width: 24px;
             flex-shrink: 0;
             text-align: right;
             font-size: 0.78em;
@@ -56,7 +56,7 @@
 
         /* Dot column */
         .tl-dot-col {
-            width: 22px;
+            width: 14px;
             flex-shrink: 0;
             display: flex;
             justify-content: center;
@@ -86,7 +86,7 @@
         /* Content */
         .tl-content {
             flex: 1;
-            padding-left: 12px;
+            padding-left: 8px;
         }
 
         .tl-venue {
