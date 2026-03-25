@@ -2,6 +2,8 @@
    Shared styles — danielmartinezfelip.github.io
    ============================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 /* --- Variables -------------------------------------------- */
 :root {
     color-scheme: light dark;
@@ -25,7 +27,7 @@ html {
 }
 
 body {
-    font-family: 'Cambria', 'Times New Roman', serif;
+    font-family: 'Inter', 'Aptos', 'Segoe UI', sans-serif;
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.7;
