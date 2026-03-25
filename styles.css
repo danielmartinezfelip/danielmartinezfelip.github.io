@@ -26,7 +26,9 @@ html {
 
 body {
     font-family: 'Cambria', 'Times New Roman', serif;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
     margin: 0;
     padding: 0;
     background-color: var(--background);
