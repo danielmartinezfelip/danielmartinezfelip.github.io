@@ -22,69 +22,69 @@
             position: relative;
         }
 
-        /* Vertical connecting line */
+        /*
+         * Vertical line: CSS Grid gives exact track widths regardless of
+         * box-sizing. Tracks: 40px (year) | 20px (dot zone) | 1fr (content)
+         * Line center = 40 + 10 = 50px from left edge.
+         */
         .timeline::before {
             content: '';
             position: absolute;
-            left: 58px; /* 44px year col + 14px gap + centre of 20px dot col */
-            top: 6px;
-            bottom: 6px;
+            left: 50px;
+            top: 9px;
+            bottom: 9px;
             width: 2px;
             background: var(--border);
             border-radius: 1px;
         }
 
         .tl-entry {
-            display: flex;
-            align-items: flex-start;
+            display: grid;
+            grid-template-columns: 40px 20px 1fr;
             padding-bottom: 28px;
-            position: relative;
         }
         .tl-entry:last-child { padding-bottom: 0; }
 
-        /* Year label — only show on first entry of each year */
+        /* Year label */
         .tl-year {
-            width: 44px;
-            flex-shrink: 0;
+            grid-column: 1;
             text-align: right;
-            font-size: 0.78em;
+            padding-right: 6px;
+            font-size: 0.75em;
             font-weight: 700;
             color: var(--accent);
             padding-top: 3px;
-            padding-right: 6px;
             line-height: 1;
         }
 
-        /* Dot column */
+        /* Dot — centered inside its 20px grid track */
         .tl-dot-col {
-            width: 28px;
-            flex-shrink: 0;
+            grid-column: 2;
             display: flex;
             justify-content: center;
-            padding-top: 5px;
+            padding-top: 4px;
             position: relative;
             z-index: 1;
         }
 
-        /* Filled dot — presentation */
         .tl-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: transparent;
-            border: 2.5px solid var(--accent);
+            background: var(--accent);
             flex-shrink: 0;
         }
 
-        /* Hollow dot — attended only */
         .tl-dot.attended {
-            border-color: var(--muted);
+            background: var(--surface);
+            border: 2px solid var(--muted);
         }
 
         /* Content */
         .tl-content {
-            flex: 1;
-            padding-left: 8px;
+            grid-column: 3;
+            padding-left: 10px;
+            padding-top: 1px;
         }
 
         .tl-venue {
