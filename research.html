@@ -58,17 +58,25 @@
             border: 1px solid rgba(124, 58, 237, 0.4);
             color: #5b21b6;
         }
-        @media (prefers-color-scheme: dark) {
-            .badge-review { color: #93c5fd; }
-            .badge-prep   { color: #fcd34d; }
-            .badge-jmp    { color: #c4b5fd; }
+        .badge-accepted {
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #065f46;
         }
-        [data-theme="dark"] .badge-review { color: #93c5fd; }
-        [data-theme="dark"] .badge-prep   { color: #fcd34d; }
-        [data-theme="dark"] .badge-jmp    { color: #c4b5fd; }
-        [data-theme="light"] .badge-review { color: #1e40af; }
-        [data-theme="light"] .badge-prep   { color: #92400e; }
-        [data-theme="light"] .badge-jmp    { color: #5b21b6; }
+        @media (prefers-color-scheme: dark) {
+            .badge-review   { color: #93c5fd; }
+            .badge-prep     { color: #fcd34d; }
+            .badge-jmp      { color: #c4b5fd; }
+            .badge-accepted { color: #6ee7b7; }
+        }
+        [data-theme="dark"] .badge-review   { color: #93c5fd; }
+        [data-theme="dark"] .badge-prep     { color: #fcd34d; }
+        [data-theme="dark"] .badge-jmp      { color: #c4b5fd; }
+        [data-theme="dark"] .badge-accepted { color: #6ee7b7; }
+        [data-theme="light"] .badge-review   { color: #1e40af; }
+        [data-theme="light"] .badge-prep     { color: #92400e; }
+        [data-theme="light"] .badge-jmp      { color: #5b21b6; }
+        [data-theme="light"] .badge-accepted { color: #065f46; }
         .paper-entry {
             margin-bottom: 12px;
             padding: 14px 16px;
@@ -220,12 +228,12 @@
 
         <div class="content card">
             <div class="section">
-                <h2>Ongoing work</h2>
+                <h2>Publications</h2>
 
-                <h3>Under Review</h3>
+                <h3>Accepted</h3>
                 <div class="paper-entry">
                     <div class="paper-badges">
-                        <span class="badge badge-review">Under review</span>
+                        <span class="badge badge-accepted">Accepted</span>
                         <span class="badge badge-jmp">Job Market Paper</span>
                     </div>
                     <p>
@@ -233,11 +241,9 @@
                         <em class="paper-authors">with Steven G.M. Schilizzi and Chi Nguyen</em>
                     </p>
                     <div class="paper-meta">
-                        <span class="paper-meta-item paper-status">Revise &amp; resubmit · <em>Journal of Behavioral and Experimental Economics</em></span>
-                        <span class="paper-meta-item">Submitted 2025</span>
+                        <span class="paper-meta-item paper-status">Accepted · <em>Journal of Behavioral and Experimental Economics</em></span>
                     </div>
                     <div class="paper-actions">
-                        <a class="preprint-button" href="https://doi.org/10.31235/osf.io/vy6z2_v5">Preprint</a>
                         <a class="replication-button" href="https://osf.io/v4q9b/files/osfstorage" target="_blank" rel="noopener">Replication</a>
                         <button class="abstract-toggle" data-abstract-toggle="abstract-1" type="button">
                             Abstract <span class="toggle-icon">▾</span>
@@ -254,6 +260,10 @@
                         <span class="keyword-tag">collective-action problems</span>
                     </div>
                 </div>
+            </div>
+
+            <div class="section">
+                <h2>Ongoing work</h2>
 
                 <h3>Work in Progress</h3>
                 <div class="paper-entry">
