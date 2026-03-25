@@ -68,20 +68,17 @@
 
         /* Filled dot — presentation */
         .tl-dot {
-            width: 8px;
-            height: 8px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background: var(--accent);
-            border: 2px solid var(--surface);
-            box-shadow: 0 0 0 1.5px var(--accent);
+            background: transparent;
+            border: 2.5px solid var(--accent);
             flex-shrink: 0;
         }
 
         /* Hollow dot — attended only */
         .tl-dot.attended {
-            background: var(--surface);
-            border: 2px solid var(--muted);
-            box-shadow: 0 0 0 1.5px var(--muted);
+            border-color: var(--muted);
         }
 
         /* Content */
