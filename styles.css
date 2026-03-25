@@ -258,6 +258,17 @@ h3::after {
     display: block;
 }
 
+/* --- Form elements: force font inheritance ---------------- */
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-variant: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+}
+
 /* --- Links ------------------------------------------------ */
 a {
     color: var(--accent);
