@@ -25,12 +25,12 @@
         /*
          * Vertical line: CSS Grid gives exact track widths regardless of
          * box-sizing. Tracks: 40px (year) | 20px (dot zone) | 1fr (content)
-         * Line center = 40 + 10 = 50px from left edge.
+         * Line center = 40 + 10 = 50px from left edge; adjusted to 45px.
          */
         .timeline::before {
             content: '';
             position: absolute;
-            left: 50px;
+            left: 45px;
             top: 9px;
             bottom: 9px;
             width: 2px;
