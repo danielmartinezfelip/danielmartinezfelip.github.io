@@ -27,6 +27,7 @@ html {
 body {
     font-family: 'Cambria', 'Times New Roman', serif;
     font-size: 1rem;
+    font-variant: small-caps;
     line-height: 1.7;
     letter-spacing: 0.01em;
     margin: 0;
@@ -200,7 +201,7 @@ h2 {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 0.92em;
+    font-size: 1.1em;
     font-weight: 700;
     font-variant: small-caps;
     letter-spacing: 0.12em;
@@ -241,7 +242,7 @@ h3 {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.74em;
+    font-size: 0.88em;
     font-weight: 600;
     font-variant: small-caps;
     letter-spacing: 0.1em;
