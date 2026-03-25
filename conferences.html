@@ -26,7 +26,7 @@
         .timeline::before {
             content: '';
             position: absolute;
-            left: 38px; /* 28px year col + 10px = centre of 20px dot col */
+            left: 58px; /* 44px year col + 14px gap + centre of 20px dot col */
             top: 6px;
             bottom: 6px;
             width: 2px;
@@ -44,19 +44,20 @@
 
         /* Year label — only show on first entry of each year */
         .tl-year {
-            width: 28px;
+            width: 44px;
             flex-shrink: 0;
             text-align: right;
             font-size: 0.78em;
             font-weight: 700;
             color: var(--accent);
             padding-top: 3px;
+            padding-right: 6px;
             line-height: 1;
         }
 
         /* Dot column */
         .tl-dot-col {
-            width: 20px;
+            width: 28px;
             flex-shrink: 0;
             display: flex;
             justify-content: center;
