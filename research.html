@@ -14,76 +14,99 @@
     <link rel="stylesheet" href="styles.css">
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
     <style>
-        /* --- Research-specific ---------------------------------- */
+        /* --- Research section layout ---------------------------- */
+        .research-section {
+            margin-top: 36px;
+        }
+        .research-section:first-child {
+            margin-top: 0;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            padding-bottom: 9px;
+            border-bottom: 1.5px solid var(--text);
+            margin-bottom: 2px;
+        }
+        .section-heading h2 {
+            margin: 0;
+            font-size: 0.72em;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+        .section-empty-note {
+            padding: 14px 0 4px;
+            font-size: 0.88em;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* --- Year label ----------------------------------------- */
+        .year-label {
+            font-size: 0.78em;
+            font-weight: 600;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            margin: 18px 0 0;
+        }
+
+        /* --- Flat paper entries --------------------------------- */
+        .paper-entry {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .paper-entry:last-child {
+            border-bottom: none;
+            padding-bottom: 4px;
+        }
+        .paper-entry p {
+            margin: 0;
+        }
+
+        /* --- Badges --------------------------------------------- */
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 5px;
             padding: 2px 8px;
             border-radius: 99px;
-            font-size: 0.7em;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-        }
-        .badge-review {
-            background: rgba(59, 130, 246, 0.12);
-            border: 1px solid rgba(59, 130, 246, 0.4);
-            color: #1e40af;
-        }
-        .badge-prep {
-            background: rgba(245, 158, 11, 0.12);
-            border: 1px solid rgba(245, 158, 11, 0.4);
-            color: #92400e;
+            font-size: 0.68em;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
         .badge-jmp {
             background: rgba(124, 58, 237, 0.1);
             border: 1px solid rgba(124, 58, 237, 0.4);
             color: #5b21b6;
         }
-        .badge-accepted {
-            background: rgba(16, 185, 129, 0.12);
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            color: #065f46;
-        }
         @media (prefers-color-scheme: dark) {
-            .badge-review   { color: #93c5fd; }
-            .badge-prep     { color: #fcd34d; }
-            .badge-jmp      { color: #c4b5fd; }
-            .badge-accepted { color: #6ee7b7; }
+            .badge-jmp { color: #c4b5fd; }
         }
-        [data-theme="dark"] .badge-review   { color: #93c5fd; }
-        [data-theme="dark"] .badge-prep     { color: #fcd34d; }
-        [data-theme="dark"] .badge-jmp      { color: #c4b5fd; }
-        [data-theme="dark"] .badge-accepted { color: #6ee7b7; }
-        [data-theme="light"] .badge-review   { color: #1e40af; }
-        [data-theme="light"] .badge-prep     { color: #92400e; }
-        [data-theme="light"] .badge-jmp      { color: #5b21b6; }
-        [data-theme="light"] .badge-accepted { color: #065f46; }
+        [data-theme="dark"] .badge-jmp { color: #c4b5fd; }
+        [data-theme="light"] .badge-jmp { color: #5b21b6; }
 
-        .paper-entry {
-            margin-bottom: 12px;
-            padding: 14px 16px;
-            border-radius: var(--radius-soft);
-            border: 1px solid var(--border);
-            background: var(--surface);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        .paper-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 7px;
         }
-        .paper-entry:hover {
-            border-color: rgba(37, 99, 235, 0.3);
-            box-shadow: var(--shadow-hover);
-        }
-        .paper-entry p {
-            margin: 0;
-        }
+
+        /* --- Paper content -------------------------------------- */
         .paper-title {
-            font-size: 1.05em;
-            line-height: 1.35;
+            font-size: 1.02em;
+            line-height: 1.4;
             font-weight: 700;
             color: var(--text);
         }
         .paper-authors {
             display: block;
-            margin-top: 4px;
+            margin-top: 3px;
             color: var(--muted);
             font-style: normal;
             font-size: 0.88em;
@@ -113,6 +136,8 @@
             color: var(--accent);
             font-weight: 600;
         }
+
+        /* --- Action buttons ------------------------------------- */
         .paper-actions {
             display: flex;
             flex-wrap: wrap;
@@ -190,6 +215,23 @@
         @media (prefers-reduced-motion: reduce) {
             .abstract-toggle .toggle-icon { transition: none; }
         }
+
+        /* --- Keywords ------------------------------------------- */
+        .paper-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .keyword-tag {
+            font-size: 0.7em;
+            padding: 2px 8px;
+            border-radius: 99px;
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-family: inherit;
+        }
     </style>
 </head>
 <body>
@@ -210,13 +252,17 @@
         </header>
 
         <div class="content card">
-            <div class="section">
-                <h2>Publications</h2>
 
-                <h3>2026</h3>
+            <!-- ── Publications ─────────────────────────────────── -->
+            <div class="research-section">
+                <div class="section-heading">
+                    <h2>Publications</h2>
+                </div>
+
+                <div class="year-label">2026</div>
+
                 <div class="paper-entry">
                     <div class="paper-badges">
-                        <span class="badge badge-accepted">Peer-reviewed publication</span>
                         <span class="badge badge-jmp">Job Market Paper</span>
                     </div>
                     <p>
@@ -233,7 +279,7 @@
                         </button>
                     </div>
                     <div class="abstract-body" id="abstract-1">
-                        Social norms, understood as shared expectations of appropriate behaviour, can help resolve collective action problems by making salient collectively beneficial equilibria. However, achieving long-lasting behaviour of this type remains challenging, partly because how different social contexts shape individuals’ normative expectations is not well understood. This study uses a controlled laboratory experiment to collect panel data on how individuals’ normative expectations regarding public good (PG) contributions evolve across two sequential social contexts. Using Krupka and Weber’s (2013) method, we elicited expectations at three points: before a repeated PG game, after it, and after a subsequent PG game in which group members can convey a normative signal through a social exclusion mechanism. Participants first experienced declining contributions in the Baseline PG game, followed by higher contributions when the exclusion mechanism was introduced. After the initial decline, participants’ norm profiles in uncooperative scenarios clustered around lower contributions. Conversely, after experiencing higher contributions under the exclusion mechanism—which provided a cooperative normative signal—normative expectations shifted toward favouring greater contributions. This effect was strongest among participants who initially perceived loose norms. Our findings highlight heterogeneity in how norms are perceived and change, offering experimental evidence on the factors that drive beneficial normative change.
+                        Social norms, understood as shared expectations of appropriate behaviour, can help resolve collective action problems by making salient collectively beneficial equilibria. However, achieving long-lasting behaviour of this type remains challenging, partly because how different social contexts shape individuals' normative expectations is not well understood. This study uses a controlled laboratory experiment to collect panel data on how individuals' normative expectations regarding public good (PG) contributions evolve across two sequential social contexts. Using Krupka and Weber's (2013) method, we elicited expectations at three points: before a repeated PG game, after it, and after a subsequent PG game in which group members can convey a normative signal through a social exclusion mechanism. Participants first experienced declining contributions in the Baseline PG game, followed by higher contributions when the exclusion mechanism was introduced. After the initial decline, participants' norm profiles in uncooperative scenarios clustered around lower contributions. Conversely, after experiencing higher contributions under the exclusion mechanism—which provided a cooperative normative signal—normative expectations shifted towards favouring greater contributions. This effect was strongest among participants who initially perceived loose norms. Our findings highlight heterogeneity in how norms are perceived and change, offering experimental evidence on the factors that drive beneficial normative change.
                     </div>
                     <div class="paper-keywords">
                         <span class="keyword-tag">social norms</span>
@@ -245,16 +291,21 @@
                 </div>
             </div>
 
-            <div class="section">
-                <h2>Ongoing work</h2>
+            <!-- ── Under Review ──────────────────────────────────── -->
+            <div class="research-section">
+                <div class="section-heading">
+                    <h2>Under Review</h2>
+                </div>
+                <p class="section-empty-note">Nothing currently under review.</p>
+            </div>
 
-                <h3>Under Review</h3>
+            <!-- ── Work in Progress ──────────────────────────────── -->
+            <div class="research-section">
+                <div class="section-heading">
+                    <h2>Work in Progress</h2>
+                </div>
 
-                <h3>Work in Progress</h3>
                 <div class="paper-entry">
-                    <div class="paper-badges">
-                        <span class="badge badge-prep">Work in progress</span>
-                    </div>
                     <p>
                         <strong class="paper-title">From disapproval to social exclusion: the endogenous formation of non-financial incentives for collectively beneficial behaviours</strong>
                         <em class="paper-authors">with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
@@ -277,15 +328,11 @@
                         <span class="keyword-tag">social dilemmas</span>
                         <span class="keyword-tag">public-goods game</span>
                         <span class="keyword-tag">social exclusion</span>
-                        <span 
-class="keyword-tag">laboratory experiments</span>
+                        <span class="keyword-tag">laboratory experiments</span>
                     </div>
                 </div>
 
                 <div class="paper-entry">
-                    <div class="paper-badges">
-                        <span class="badge badge-prep">Work in progress</span>
-                    </div>
                     <p>
                         <strong class="paper-title">Norm heterogeneity and the emergence of cooperation: A spatial agent-based model of conditional cooperation</strong>
                         <em class="paper-authors">with Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell</em>
@@ -308,10 +355,11 @@ class="keyword-tag">laboratory experiments</span>
                         <span class="keyword-tag">conditional cooperation</span>
                         <span class="keyword-tag">norm strength heterogeneity</span>
                         <span class="keyword-tag">social tipping points</span>
-                        <span class="keyword-tag">spatial agent-baded model</span>
+                        <span class="keyword-tag">spatial agent-based model</span>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <footer class="site-footer card">
