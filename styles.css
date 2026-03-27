@@ -55,10 +55,8 @@ header {
     padding: 24px 28px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: linear-gradient(135deg, #eef2ff 0%, #f0f4ff 40%, #f3f4f6 70%, #e8f0fe 100%);
-    background-size: 300% 300%;
+    background: var(--surface);
     box-shadow: var(--shadow);
-    animation: gradientShift 25s ease-in-out infinite;
     position: sticky;
     top: 16px;
     z-index: 100;
@@ -128,7 +126,6 @@ nav ul li a.nav-active {
 }
 
 .card:hover {
-    transform: translateY(-1px);
     box-shadow: var(--shadow-hover);
 }
 
@@ -386,14 +383,38 @@ body.cv-modal-open .cv-modal {
     transform: translateY(0);
 }
 
-/* --- Animations ------------------------------------------- */
-@keyframes gradientShift {
-    0%   { background-position: 0% 50%; }
-    33%  { background-position: 100% 50%; }
-    66%  { background-position: 50% 100%; }
-    100% { background-position: 0% 50%; }
+/* --- Page sections (shared) ------------------------------- */
+.page-section {
+    margin-top: 36px;
+}
+.page-section:first-child {
+    margin-top: 0;
+}
+.section-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 9px;
+    border-bottom: 1.5px solid var(--text);
+    margin-bottom: 2px;
+}
+.section-heading h2 {
+    margin: 0;
+    font-size: 1.25em;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+.year-label {
+    font-size: 0.78em;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin: 18px 0 0;
 }
 
+/* --- Animations ------------------------------------------- */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(6px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -482,9 +503,6 @@ header {
         --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.45);
     }
 
-    header {
-        background: linear-gradient(135deg, #1e2740 0%, #1a2035 40%, #1e293b 70%, #1a2040 100%);
-    }
 }
 
 /* --- Force light mode (overrides system dark) ------------- */
@@ -499,10 +517,6 @@ header {
     --border: rgba(15, 23, 42, 0.12);
     --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
     --shadow-hover: 0 22px 50px rgba(15, 23, 42, 0.18);
-}
-
-[data-theme="light"] header {
-    background: linear-gradient(135deg, #eef2ff 0%, #f0f4ff 40%, #f3f4f6 70%, #e8f0fe 100%);
 }
 
 [data-theme="light"] .job-market-banner {
@@ -526,11 +540,6 @@ header {
     --border: rgba(255, 255, 255, 0.10);
     --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
     --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.55);
-}
-
-[data-theme="dark"] header {
-    background: linear-gradient(135deg, #1e2740 0%, #1a2035 40%, #1e293b 70%, #1a2040 100%);
-    animation: gradientShift 25s ease-in-out infinite;
 }
 
 [data-theme="dark"] .job-market-banner {

@@ -15,43 +15,11 @@
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
     <style>
         /* --- Research section layout ---------------------------- */
-        .research-section {
-            margin-top: 36px;
-        }
-        .research-section:first-child {
-            margin-top: 0;
-        }
-
-        .section-heading {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            padding-bottom: 9px;
-            border-bottom: 1.5px solid var(--text);
-            margin-bottom: 2px;
-        }
-        .section-heading h2 {
-            margin: 0;
-            font-size: 1.25em;
-            font-weight: 700;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-            color: var(--text);
-        }
         .section-empty-note {
             padding: 14px 0 4px;
             font-size: 0.88em;
             color: var(--muted);
             font-style: italic;
-        }
-
-        /* --- Year label ----------------------------------------- */
-        .year-label {
-            font-size: 0.78em;
-            font-weight: 600;
-            color: var(--muted);
-            letter-spacing: 0.05em;
-            margin: 18px 0 0;
         }
 
         /* --- Flat paper entries --------------------------------- */
@@ -254,7 +222,7 @@
         <div class="content card">
 
             <!-- ── Publications ─────────────────────────────────── -->
-            <div class="research-section">
+            <div class="page-section">
                 <div class="section-heading">
                     <h2>Publications</h2>
                 </div>
@@ -292,7 +260,7 @@
             </div>
 
             <!-- ── Under Review ──────────────────────────────────── -->
-            <div class="research-section">
+            <div class="page-section">
                 <div class="section-heading">
                     <h2>Under Review</h2>
                 </div>
@@ -300,7 +268,7 @@
             </div>
 
             <!-- ── Work in Progress ──────────────────────────────── -->
-            <div class="research-section">
+            <div class="page-section">
                 <div class="section-heading">
                     <h2>Work in Progress</h2>
                 </div>

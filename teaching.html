@@ -14,32 +14,29 @@
     <link rel="stylesheet" href="styles.css">
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
     <style>
-        /* --- Teaching-specific ---------------------------------- */
         .teaching-entry {
-            margin-bottom: 12px;
-            padding: 14px 16px;
-            border-radius: var(--radius-soft);
-            border: 1px solid var(--border);
-            background: var(--surface);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
         }
-        .teaching-entry:hover {
-            border-color: rgba(37, 99, 235, 0.3);
-            box-shadow: var(--shadow-hover);
+        .teaching-entry:last-child {
+            border-bottom: none;
+            padding-bottom: 4px;
         }
         .course-title {
+            display: block;
+            font-size: 1.02em;
             font-weight: 700;
-            font-size: 1.05em;
             color: var(--text);
+            line-height: 1.4;
         }
         .course-meta {
-            font-size: 0.84em;
-            color: var(--muted);
+            display: block;
             margin-top: 3px;
-            font-style: normal;
+            color: var(--muted);
+            font-size: 0.88em;
         }
         .course-responsibilities {
-            margin-top: 8px;
+            margin: 8px 0 0;
             font-size: 0.88em;
             color: var(--muted);
             line-height: 1.6;
@@ -64,19 +61,21 @@
         </header>
 
         <div class="content card">
-            <h2>Teaching experience</h2>
-            <div class="teaching-entry">
-                <div class="course-title">Business and the Environment (ECON 3323)</div>
-                <div class="course-meta">The University of Western Australia · 2025</div>
-                <div class="course-responsibilities">
-                    Collaborated with the unit coordinator (Prof. Steven Schilizzi) to achieve the fifth learning objective of this unit: to understand the experimental design principles needed for investigating business behaviour in environmental contexts.
+            <div class="page-section">
+                <div class="section-heading">
+                    <h2>Teaching Experience</h2>
                 </div>
-            </div>
-            <div class="teaching-entry">
-                <div class="course-title">Environmental Economics (ECON 1120)</div>
-                <div class="course-meta">The University of Western Australia · 2024</div>
-                <div class="course-responsibilities">
-                    Tutor: conducted weekly tutorials guiding undergraduate students through economic problem sets and analytical assignments.
+
+                <div class="teaching-entry">
+                    <strong class="course-title">Business and the Environment (ECON 3323)</strong>
+                    <em class="course-meta">The University of Western Australia · 2025</em>
+                    <p class="course-responsibilities">Collaborated with the unit coordinator (Prof. Steven Schilizzi) to achieve the fifth learning objective of this unit: to understand the experimental design principles needed for investigating business behaviour in environmental contexts.</p>
+                </div>
+
+                <div class="teaching-entry">
+                    <strong class="course-title">Environmental Economics (ECON 1120)</strong>
+                    <em class="course-meta">The University of Western Australia · 2024</em>
+                    <p class="course-responsibilities">Tutor: conducted weekly tutorials guiding undergraduate students through economic problem sets and analytical assignments.</p>
                 </div>
             </div>
         </div>
@@ -91,6 +90,7 @@
             <div>© 2026 Daniel Martínez-Felip</div>
         </footer>
     </div>
+
     <div class="cv-backdrop" data-cv-close></div>
     <div class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
         <div class="cv-modal-header">
@@ -101,6 +101,7 @@
             <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" title="Curriculum Vitae" allowfullscreen loading="lazy"></iframe>
         </div>
     </div>
+
     <script>
         (() => {
             const body = document.body;
@@ -110,28 +111,16 @@
 
             if (triggers.length && modal && backdrop) {
                 const closeButtons = modal.querySelectorAll('[data-cv-close]');
-
                 const openModal = () => body.classList.add('cv-modal-open');
                 const closeModal = () => body.classList.remove('cv-modal-open');
-
-                triggers.forEach((trigger) => {
-                    trigger.addEventListener('click', (event) => {
-                        event.preventDefault();
-                        openModal();
-                    });
-                });
-
+                triggers.forEach(t => t.addEventListener('click', e => { e.preventDefault(); openModal(); }));
                 backdrop.addEventListener('click', closeModal);
-                closeButtons.forEach((button) => button.addEventListener('click', closeModal));
-
-                document.addEventListener('keydown', (event) => {
-                    if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
-                        closeModal();
-                    }
+                closeButtons.forEach(b => b.addEventListener('click', closeModal));
+                document.addEventListener('keydown', e => {
+                    if (e.key === 'Escape' && body.classList.contains('cv-modal-open')) closeModal();
                 });
             }
 
-            // Theme toggle
             const themeToggle = document.getElementById('theme-toggle');
             if (themeToggle) {
                 const root = document.documentElement;
