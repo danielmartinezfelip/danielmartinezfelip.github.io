@@ -80,6 +80,21 @@
             border: 2px solid var(--muted);
         }
 
+        .tl-dot.upcoming {
+            background: var(--surface);
+            border: 2px dashed var(--accent);
+        }
+
+        .tl-tag {
+            display: inline-block;
+            font-size: 0.72em;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: 3px;
+        }
+
         /* Content */
         .tl-content {
             grid-column: 3;
@@ -132,6 +147,16 @@
 
                 <li class="tl-entry">
                     <span class="tl-year">2026</span>
+                    <div class="tl-dot-col"><span class="tl-dot upcoming"></span></div>
+                    <div class="tl-content">
+                        <div class="tl-venue">Presentation at the 7th World Congress of Environmental and Resource Economists (WCERE)</div>
+                        <div class="tl-meta">Carcavelos, Portugal · 29 Jun–3 Jul 2026</div>
+                        <div class="tl-tag">Forthcoming</div>
+                    </div>
+                </li>
+
+                <li class="tl-entry">
+                    <span class="tl-year"></span>
                     <div class="tl-dot-col"><span class="tl-dot"></span></div>
                     <div class="tl-content">
                         <div class="tl-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</div>
