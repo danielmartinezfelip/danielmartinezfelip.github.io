@@ -1,22 +1,9 @@
 /* site.js — shared enhancements
-   #11 Reading progress bar
    #12 Scroll-to-top button
    #17 Mobile hamburger menu
    --------------------------------------------------------- */
 (function () {
     'use strict';
-
-    /* ── Reading progress bar ──────────────────────────────── */
-    var progress = document.createElement('div');
-    progress.className = 'reading-progress';
-    document.body.insertBefore(progress, document.body.firstChild);
-
-    function updateProgress() {
-        var total = document.documentElement.scrollHeight - window.innerHeight;
-        progress.style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + '%';
-    }
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress();
 
     /* ── Scroll-to-top button ──────────────────────────────── */
     var scrollBtn = document.createElement('button');
