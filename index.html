@@ -268,21 +268,6 @@
                         </a>
                     </div>
 
-                    <div class="stat-counters" aria-label="At a glance">
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="3">0</span>
-                            <span class="stat-label">Papers</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="7">0</span>
-                            <span class="stat-label">Conference talks</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="2">0</span>
-                            <span class="stat-label">Courses taught</span>
-                        </div>
-                    </div>
-
                     <!-- Resources section commented out
                     <div class="sidebar-section">
                         <h2>Resources</h2>
@@ -319,10 +304,10 @@
 
                     <div class="statement-card">
                         <div class="statement-card-label">Research Statement</div>
-                        <p class="statement-excerpt">I am a behavioural and experimental economist studying how social norms, beliefs about appropriate behaviour, and non-financial incentives shape cooperation in collective action problems. My research combines controlled laboratory experiments and agent-based simulations to understand how shared expectations form and evolve — and how enforcement mechanisms can be designed to align individual and collective interests, with direct application to environmental and resource economics.</p>
+                        <p class="statement-excerpt">I am a behavioural economist studying how individuals and communities overcome collective action problems. My research examines the institutions and incentive mechanisms — financial and non-financial — that drive behavioural and social change, with applications to environmental and resource economics.</p>
                         <button class="statement-more-btn" type="button">Read full statement →</button>
                         <div class="statement-full">
-                            A central theme of my work is heterogeneity in how people perceive and internalise social norms: this variation critically shapes whether cooperative tipping points can emerge and persist in communities. I study how experienced behaviour and social signals update what people regard as appropriate action, and how non-financial enforcement mechanisms — such as social disapproval and exclusion — can substitute for or complement financial incentives in sustaining cooperation. My theoretical work uses spatial agent-based models to examine how local interactions aggregate into community-level dynamics, while my experimental work investigates the conditions under which shared expectations shift in response to observed behaviour. Beyond my current projects, my interests extend to voluntary conservation programmes, the governance of natural resources and global public goods, and the integration of social-norm-based instruments with conventional policy tools.
+                            A central question in my work is how enforcement mechanisms, incentive design, and broader institutional arrangements shape individuals' willingness to cooperate voluntarily. I study how non-financial disincentives — such as social disapproval and exclusion — emerge endogenously within groups and complement or substitute for financial instruments in sustaining collective action. Social norms figure in my research as a foundational institutional device: shared expectations about appropriate behaviour that coordinate action, evolve under social experience, and vary substantially in how strongly they are internalised across individuals. My experimental work studies how these expectations update in response to observed behaviour, while my theoretical work uses spatial agent-based models to examine how local interactions produce community-level tipping points in cooperation. I am also interested in the economics of artificial intelligence from a behavioural perspective — how people form beliefs, normative expectations, and perceptions about AI behaviour, and how these shape individual and collective responses to AI-driven change.
                         </div>
                     </div>
 
@@ -414,40 +399,6 @@
                 });
             }
 
-        })();
-    </script>
-    <script>
-        /* Animated stat counters — count up when scrolled into view */
-        (function () {
-            var counters = document.querySelectorAll('.stat-number[data-target]');
-            if (!counters.length) return;
-            var animated = false;
-
-            function animate() {
-                if (animated) return;
-                animated = true;
-                counters.forEach(function (el) {
-                    var target = parseInt(el.getAttribute('data-target'), 10);
-                    var duration = 900;
-                    var start = null;
-                    function step(ts) {
-                        if (!start) start = ts;
-                        var pct = Math.min((ts - start) / duration, 1);
-                        el.textContent = Math.round(pct * target);
-                        if (pct < 1) requestAnimationFrame(step);
-                    }
-                    requestAnimationFrame(step);
-                });
-            }
-
-            if ('IntersectionObserver' in window) {
-                var obs = new IntersectionObserver(function (entries) {
-                    if (entries.some(function (e) { return e.isIntersecting; })) animate();
-                }, { threshold: 0.5 });
-                counters.forEach(function (el) { obs.observe(el); });
-            } else {
-                animate();
-            }
         })();
     </script>
     <script>
