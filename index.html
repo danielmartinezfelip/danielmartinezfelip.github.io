@@ -268,6 +268,21 @@
                         </a>
                     </div>
 
+                    <div class="stat-counters" aria-label="At a glance">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="3">0</span>
+                            <span class="stat-label">Papers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="7">0</span>
+                            <span class="stat-label">Conference talks</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="2">0</span>
+                            <span class="stat-label">Courses taught</span>
+                        </div>
+                    </div>
+
                     <!-- Resources section commented out
                     <div class="sidebar-section">
                         <h2>Resources</h2>
@@ -302,6 +317,15 @@
                         </div>
                     </div>
 
+                    <div class="statement-card">
+                        <div class="statement-card-label">Research Statement</div>
+                        <p class="statement-excerpt">My research examines how social norms and non-financial enforcement mechanisms shape cooperative behaviour in collective action settings. I use controlled laboratory experiments and agent-based modelling to identify the conditions under which normative expectations evolve and align individual incentives with collective welfare.</p>
+                        <button class="statement-more-btn" type="button">Read full statement →</button>
+                        <div class="statement-full">
+                            A central focus of my work is understanding norm heterogeneity — how individuals differ in the strength with which they perceive and internalise social norms — and how these differences shape the dynamics of cooperation in communities. My research connects to practical questions in environmental and resource economics: specifically, how policy instruments can be designed to harness social dynamics in promoting sustainable behaviours, without sole reliance on financial incentives.
+                        </div>
+                    </div>
+
                     <p>I am a PhD candidate at the <a href="https://www.uwaceep.org/research-students">UWA Centre for Environmental Economics &amp; Policy</a>, supervised by Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell. Using laboratory experiments and agent-based modelling, I study the role of social norms and incentive mechanisms in shaping cooperative behaviour and collective action. My job market paper has been accepted for publication in the <em>Journal of Behavioral and Experimental Economics</em>.</p>
 
                     <p>I am interested in the economics and underpinnings of voluntary cooperation, and the effectiveness of social incentives as a lever for aligning personal interests with collective interests. My research focuses on studying the role of social norms in enhancing the effects of financial incentives on cooperative behaviour and how social norm enforcement mechanisms should be designed to trigger cooperative normative change.</p>
@@ -327,7 +351,7 @@
                 <a href="https://orcid.org/0009-0000-6979-904X">ORCID</a>
                 <a href="https://bsky.app/profile/dmartinezfelip.bsky.social">Bluesky</a>
             </div>
-            <div>© 2026 Daniel Martínez-Felip</div>
+            <div>© 2026 Daniel Martínez-Felip · <span class="footer-updated">Updated March 2026</span></div>
         </footer>
     </div>
     <div class="cv-backdrop" data-cv-close></div>
@@ -393,6 +417,40 @@
         })();
     </script>
     <script>
+        /* Animated stat counters — count up when scrolled into view */
+        (function () {
+            var counters = document.querySelectorAll('.stat-number[data-target]');
+            if (!counters.length) return;
+            var animated = false;
+
+            function animate() {
+                if (animated) return;
+                animated = true;
+                counters.forEach(function (el) {
+                    var target = parseInt(el.getAttribute('data-target'), 10);
+                    var duration = 900;
+                    var start = null;
+                    function step(ts) {
+                        if (!start) start = ts;
+                        var pct = Math.min((ts - start) / duration, 1);
+                        el.textContent = Math.round(pct * target);
+                        if (pct < 1) requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                });
+            }
+
+            if ('IntersectionObserver' in window) {
+                var obs = new IntersectionObserver(function (entries) {
+                    if (entries.some(function (e) { return e.isIntersecting; })) animate();
+                }, { threshold: 0.5 });
+                counters.forEach(function (el) { obs.observe(el); });
+            } else {
+                animate();
+            }
+        })();
+    </script>
+    <script>
         /* Sync JMP card from research.html — single source of truth */
         (function () {
             fetch('research.html')
@@ -414,5 +472,6 @@
                 .catch(function () {}); /* silently keep static fallback on failure */
         })();
     </script>
+    <script src="site.js"></script>
 </body>
 </html>
