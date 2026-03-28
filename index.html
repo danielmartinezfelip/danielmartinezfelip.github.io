@@ -268,21 +268,6 @@
                         </a>
                     </div>
 
-                    <div class="stat-counters" aria-label="At a glance">
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="3">0</span>
-                            <span class="stat-label">Papers</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="7">0</span>
-                            <span class="stat-label">Conference talks</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="2">0</span>
-                            <span class="stat-label">Courses taught</span>
-                        </div>
-                    </div>
-
                     <!-- Resources section commented out
                     <div class="sidebar-section">
                         <h2>Resources</h2>
@@ -414,40 +399,6 @@
                 });
             }
 
-        })();
-    </script>
-    <script>
-        /* Animated stat counters — count up when scrolled into view */
-        (function () {
-            var counters = document.querySelectorAll('.stat-number[data-target]');
-            if (!counters.length) return;
-            var animated = false;
-
-            function animate() {
-                if (animated) return;
-                animated = true;
-                counters.forEach(function (el) {
-                    var target = parseInt(el.getAttribute('data-target'), 10);
-                    var duration = 900;
-                    var start = null;
-                    function step(ts) {
-                        if (!start) start = ts;
-                        var pct = Math.min((ts - start) / duration, 1);
-                        el.textContent = Math.round(pct * target);
-                        if (pct < 1) requestAnimationFrame(step);
-                    }
-                    requestAnimationFrame(step);
-                });
-            }
-
-            if ('IntersectionObserver' in window) {
-                var obs = new IntersectionObserver(function (entries) {
-                    if (entries.some(function (e) { return e.isIntersecting; })) animate();
-                }, { threshold: 0.5 });
-                counters.forEach(function (el) { obs.observe(el); });
-            } else {
-                animate();
-            }
         })();
     </script>
     <script>
