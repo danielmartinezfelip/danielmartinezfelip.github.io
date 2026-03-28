@@ -551,20 +551,6 @@ header {
 [data-theme="dark"] .job-market-dot { background: #4ade80; }
 [data-theme="dark"] .job-market-text strong { color: #4ade80; }
 
-/* --- Reading progress bar --------------------------------- */
-.reading-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: var(--accent);
-    z-index: 9999;
-    transition: width 0.08s linear;
-    border-radius: 0 2px 2px 0;
-    pointer-events: none;
-}
-
 /* --- Scroll-to-top button --------------------------------- */
 .scroll-top-btn {
     position: fixed;
@@ -667,7 +653,7 @@ header {
 .paper-pipeline {
     display: flex;
     align-items: center;
-    margin: 8px 0 4px;
+    margin: 6px 0 2px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -681,37 +667,40 @@ header {
     flex-shrink: 0;
 }
 .pipeline-stage {
-    font-size: 0.66em;
+    font-size: 0.62em;
     font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 4px;
+    padding: 1px 6px;
+    border-radius: 3px;
     color: var(--muted);
-    background: var(--surface-alt);
+    background: transparent;
     border: 1px solid var(--border);
     white-space: nowrap;
     letter-spacing: 0.02em;
+    opacity: 0.65;
 }
 .pipeline-stage.done {
-    background: rgba(22, 163, 74, 0.07);
-    border-color: rgba(22, 163, 74, 0.25);
+    background: transparent;
+    border-color: rgba(22, 163, 74, 0.35);
     color: #15803d;
+    opacity: 1;
 }
 [data-theme="dark"] .pipeline-stage.done { color: #4ade80; }
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) .pipeline-stage.done { color: #4ade80; }
 }
 .pipeline-stage.active {
-    background: rgba(37, 99, 235, 0.09);
-    border-color: rgba(37, 99, 235, 0.35);
+    background: rgba(37, 99, 235, 0.08);
+    border-color: rgba(37, 99, 235, 0.4);
     color: var(--accent);
     font-weight: 700;
+    opacity: 1;
 }
 .pipeline-connector {
-    width: 14px;
+    width: 10px;
     height: 1px;
     background: var(--border);
     flex-shrink: 0;
-    margin: 0 1px;
+    opacity: 0.5;
 }
 
 /* --- BibTeX cite button ----------------------------------- */
@@ -837,7 +826,6 @@ header {
     header { animation: none; }
     .container { animation: none; }
     .card { transition: none; }
-    .reading-progress { transition: none; }
     .scroll-top-btn { transition: none; }
     .hamburger-line { transition: none; }
 }
