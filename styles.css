@@ -7,7 +7,7 @@
 /* --- Variables -------------------------------------------- */
 :root {
     color-scheme: light dark;
-    --background: #e5e7eb;
+    --background: #f5f3ef;
     --surface: #ffffff;
     --surface-alt: #f3f4f6;
     --text: #1f2937;
@@ -51,8 +51,11 @@ body {
 
 /* --- Header / Nav ----------------------------------------- */
 header {
-    text-align: center;
-    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    padding: 14px 28px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--surface);
@@ -62,9 +65,14 @@ header {
     z-index: 100;
 }
 
+.header-brand {
+    flex-shrink: 0;
+    margin-right: auto;
+}
+
 h1 {
     font-family: 'Inter', 'Aptos', 'Segoe UI', sans-serif;
-    font-size: 2.1em;
+    font-size: 1.65em;
     font-variant: normal;
     letter-spacing: 0.01em;
     margin: 0;
@@ -73,7 +81,7 @@ h1 {
 
 
 nav {
-    margin-top: 15px;
+    margin-top: 0;
 }
 
 nav ul {
@@ -143,9 +151,9 @@ nav ul li a.nav-active {
 
 .profile-sidebar img {
     max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    object-fit: contain;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
     border: 1px solid var(--border);
 }
 
@@ -201,7 +209,7 @@ nav ul li a.nav-active {
 
 h2 {
     font-family: 'Inter', 'Aptos', 'Segoe UI', sans-serif;
-    font-size: 1.1em;
+    font-size: 1.25em;
     font-weight: 700;
     font-variant: normal;
     letter-spacing: 0.01em;
@@ -215,10 +223,10 @@ header h2,
 .cv-modal-title {
     font-variant: normal;
     letter-spacing: 0.01em;
-    font-size: 1em;
-    font-weight: 600;
+    font-size: 0.88em;
+    font-weight: 500;
     color: var(--muted);
-    margin-top: 5px;
+    margin-top: 2px;
     margin-bottom: 0;
 }
 
@@ -400,7 +408,7 @@ body.cv-modal-open .cv-modal {
 }
 .section-heading h2 {
     margin: 0;
-    font-size: 1.25em;
+    font-size: 1.35em;
     font-weight: 700;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -421,20 +429,14 @@ body.cv-modal-open .cv-modal {
 }
 
 /* --- Theme toggle button ---------------------------------- */
-header {
-    position: relative;
-}
-
 .theme-toggle {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
+    position: static;
     background: transparent;
     border: 1px solid var(--border);
     border-radius: 50%;
     width: 34px;
     height: 34px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -507,7 +509,7 @@ header {
 
 /* --- Force light mode (overrides system dark) ------------- */
 [data-theme="light"] {
-    --background: #e5e7eb;
+    --background: #f5f3ef;
     --surface: #ffffff;
     --surface-alt: #f3f4f6;
     --text: #1f2937;
@@ -600,11 +602,7 @@ header {
     gap: 5px;
     cursor: pointer;
     padding: 0;
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
+    flex-shrink: 0;
     transition: background-color 0.2s, border-color 0.2s;
 }
 .hamburger:hover {
@@ -628,7 +626,9 @@ header {
 
     nav.nav-collapsible {
         display: none;
-        margin-top: 10px;
+        width: 100%;
+        order: 10;
+        margin-top: 4px;
     }
     nav.nav-collapsible.open { display: block; }
 
