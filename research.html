@@ -48,15 +48,10 @@
             text-transform: uppercase;
         }
         .badge-jmp {
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.4);
-            color: #5b21b6;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            color: var(--accent);
         }
-        @media (prefers-color-scheme: dark) {
-            .badge-jmp { color: #c4b5fd; }
-        }
-        [data-theme="dark"] .badge-jmp { color: #c4b5fd; }
-        [data-theme="light"] .badge-jmp { color: #5b21b6; }
 
         .paper-badges {
             display: flex;
@@ -205,8 +200,10 @@
 <body>
     <div class="container">
         <header class="card">
-            <h1>Daniel Martínez-Felip</h1>
-            <h2>Research</h2>
+            <div class="header-brand">
+                <h1>Daniel Martínez-Felip</h1>
+                <h2>Research</h2>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
