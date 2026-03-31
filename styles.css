@@ -493,11 +493,11 @@ body.cv-modal-open .cv-modal {
 /* --- Dark mode (system preference) ------------------------ */
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #0f172a;
-        --surface: #1e293b;
-        --surface-alt: #273348;
-        --text: #f1f5f9;
-        --muted: #94a3b8;
+        --background: #111111;
+        --surface: #1e1e1e;
+        --surface-alt: #282828;
+        --text: #f0f0f0;
+        --muted: #9a9a9a;
         --accent: #60a5fa;
         --accent-strong: #93c5fd;
         --border: rgba(255, 255, 255, 0.10);
@@ -532,11 +532,11 @@ body.cv-modal-open .cv-modal {
 
 /* --- Force dark mode -------------------------------------- */
 [data-theme="dark"] {
-    --background: #0f172a;
-    --surface: #1e293b;
-    --surface-alt: #273348;
-    --text: #f1f5f9;
-    --muted: #94a3b8;
+    --background: #111111;
+    --surface: #1e1e1e;
+    --surface-alt: #282828;
+    --text: #f0f0f0;
+    --muted: #9a9a9a;
     --accent: #60a5fa;
     --accent-strong: #93c5fd;
     --border: rgba(255, 255, 255, 0.10);
