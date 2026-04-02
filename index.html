@@ -141,6 +141,13 @@
         margin: 0 0 4px;
         line-height: 1.4;
     }
+    .jmp-card-title a {
+        color: #7c3aed;
+        text-decoration: none;
+    }
+    .jmp-card-title a:hover {
+        text-decoration: underline;
+    }
     .jmp-card-authors {
         font-size: 0.84em;
         color: var(--muted);
@@ -149,7 +156,7 @@
     }
     .jmp-card-status {
         font-size: 0.84em;
-        color: #7c3aed;
+        color: var(--muted);
         font-weight: 600;
         margin: 0 0 10px;
     }
@@ -290,7 +297,7 @@
                     </div>
                     <div class="jmp-card">
                         <div class="jmp-card-label">Job Market Paper</div>
-                        <p class="jmp-card-title">How does experienced behaviour change normative expectations regarding socially beneficial actions?</p>
+                        <p class="jmp-card-title"><a href="https://doi.org/10.1016/j.socec.2026.102559" target="_blank" rel="noopener">How does experienced behaviour change normative expectations regarding socially beneficial actions?</a></p>
                         <p class="jmp-card-authors">with Steven G.M. Schilizzi and Chi Nguyen</p>
                         <p class="jmp-card-status">Published · <em>Journal of Behavioral and Experimental Economics</em></p>
                         <div class="jmp-card-actions">
@@ -416,7 +423,7 @@
                     var authors = jmpEntry.querySelector('.paper-authors');
                     var status  = jmpEntry.querySelector('.paper-status');
 
-                    if (title)   document.querySelector('.jmp-card-title').textContent    = title.textContent;
+                    if (title)   document.querySelector('.jmp-card-title').innerHTML      = title.innerHTML;
                     if (authors) document.querySelector('.jmp-card-authors').textContent  = authors.textContent;
                     if (status)  document.querySelector('.jmp-card-status').innerHTML     = status.innerHTML;
                 })
