@@ -10,8 +10,15 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://danielmartinezfelip.github.io/conferences.html">
     <meta property="og:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="800">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Conferences & Seminars — Daniel Martínez-Felip">
+    <meta name="twitter:description" content="Conference presentations and seminar talks on social norms, cooperative behaviour, and behavioural economics.">
+    <meta name="twitter:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
     <style>
         /* ── Timeline ─────────────────────────────────────────── */
@@ -119,6 +126,89 @@
             color: var(--muted);
             margin-top: 2px;
         }
+
+        /* ── Two-column layout ────────────────────────────────── */
+        .conf-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            align-items: start;
+        }
+
+        /* ── Map column ───────────────────────────────────────── */
+        .map-col {
+            position: sticky;
+            top: 110px;
+        }
+
+        #conf-map {
+            height: 460px;
+            border-radius: var(--radius-soft);
+            border: 1px solid var(--border);
+            background: var(--surface-alt);
+            /* Do NOT set overflow:hidden — Leaflet needs to overflow internally */
+        }
+
+        /* Dark mode: invert+hue-rotate OSM tiles so they look dark naturally */
+        [data-theme="dark"] #conf-map .leaflet-tile-pane {
+            filter: invert(100%) hue-rotate(180deg) saturate(0.75) brightness(0.88);
+        }
+
+        /* Leaflet popup styled to match site */
+        .leaflet-popup-content-wrapper {
+            border-radius: 10px !important;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.14) !important;
+            font-family: 'Inter', 'Aptos', 'Segoe UI', sans-serif !important;
+            border: 1px solid rgba(15, 23, 42, 0.08) !important;
+        }
+        .leaflet-popup-content {
+            margin: 12px 14px !important;
+            line-height: 1.5 !important;
+        }
+        .leaflet-popup-tip-container {
+            display: none;
+        }
+
+        /* Map legend */
+        .map-legend {
+            display: flex;
+            gap: 18px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78em;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .legend-dot.presented { background: var(--accent); }
+        .legend-dot.upcoming  { background: var(--surface); border: 2px dashed var(--accent); }
+        .legend-dot.attended  { background: var(--surface); border: 2px solid var(--muted); }
+
+        /* Marker base class (no Leaflet default icon styling) */
+        .conf-map-marker { background: none; border: none; }
+
+        @media (max-width: 820px) {
+            .conf-layout {
+                grid-template-columns: 1fr;
+            }
+            .map-col {
+                position: static;
+                order: -1;
+            }
+            #conf-map { height: 300px; }
+        }
     </style>
 </head>
 <body>
@@ -145,82 +235,100 @@
             <div class="section-heading">
                 <h2>Presentations &amp; Seminars</h2>
             </div>
-            <ul class="timeline">
 
-                <li class="tl-entry">
-                    <span class="tl-year">2026</span>
-                    <div class="tl-dot-col"><span class="tl-dot upcoming"></span></div>
-                    <div class="tl-content">
-                        <div class="tl-venue">Presentation at the 7th World Congress of Environmental and Resource Economists (WCERE)</div>
-                        <div class="tl-meta">Carcavelos, Portugal · July 2026</div>
-                        <div class="tl-tag">Forthcoming</div>
+            <div class="conf-layout">
+
+                <!-- ── Timeline column ────────────────────────── -->
+                <div class="timeline-col">
+                    <ul class="timeline">
+
+                        <li class="tl-entry">
+                            <span class="tl-year">2026</span>
+                            <div class="tl-dot-col"><span class="tl-dot upcoming"></span></div>
+                            <div class="tl-content">
+                                <div class="tl-venue">Presentation at the 7th World Congress of Environmental and Resource Economists (WCERE)</div>
+                                <div class="tl-meta">Carcavelos, Portugal · July 2026</div>
+                                <div class="tl-tag">Forthcoming</div>
+                            </div>
+                        </li>
+
+                        <li class="tl-entry">
+                            <span class="tl-year"></span>
+                            <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                            <div class="tl-content">
+                                <div class="tl-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</div>
+                                <div class="tl-meta">Adelaide, Australia · Feb 2026</div>
+                            </div>
+                        </li>
+
+                        <li class="tl-entry">
+                            <span class="tl-year">2025</span>
+                            <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                            <div class="tl-content">
+                                <div class="tl-venue">Presentation at the Department of Economics, Universitat Jaume I</div>
+                                <div class="tl-meta">Castellón de la Plana, Spain · Oct 2025</div>
+                            </div>
+                        </li>
+
+                        <li class="tl-entry">
+                            <span class="tl-year"></span>
+                            <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                            <div class="tl-content">
+                                <div class="tl-venue">Presentation at the 14th Behavioral and Experimental Economics Network (BEEN) Meeting</div>
+                                <div class="tl-meta">University of Cagliari, Italy · Sep 2025</div>
+                            </div>
+                        </li>
+
+                        <li class="tl-entry">
+                            <span class="tl-year"></span>
+                            <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                            <div class="tl-content">
+                                <div class="tl-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</div>
+                                <div class="tl-meta">Brisbane, Australia · Feb 2025</div>
+                            </div>
+                        </li>
+
+                        <li class="tl-entry">
+                            <span class="tl-year">2024</span>
+                            <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                            <div class="tl-content">
+                                <div class="tl-venue">Presentation at the REECAP Webinar</div>
+                                <div class="tl-meta">Online · Nov 2024</div>
+                            </div>
+                        </li>
+
+                        <li class="tl-entry">
+                            <span class="tl-year"></span>
+                            <div class="tl-dot-col"><span class="tl-dot"></span></div>
+                            <div class="tl-content">
+                                <div class="tl-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</div>
+                                <div class="tl-meta">Canberra, Australia · Feb 2024</div>
+                            </div>
+                        </li>
+
+                        <li class="tl-entry">
+                            <span class="tl-year">2022</span>
+                            <div class="tl-dot-col"><span class="tl-dot attended"></span></div>
+                            <div class="tl-content">
+                                <div class="tl-venue attended">Attended the International Conference on Human Capital Investments</div>
+                                <div class="tl-meta">Loyola University, Spain · Jun 2022</div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div><!-- /.timeline-col -->
+
+                <!-- ── Map column ─────────────────────────────── -->
+                <div class="map-col">
+                    <div id="conf-map" aria-label="Interactive map of conference locations"></div>
+                    <div class="map-legend" aria-hidden="true">
+                        <span class="legend-item"><span class="legend-dot presented"></span>Presented</span>
+                        <span class="legend-item"><span class="legend-dot upcoming"></span>Forthcoming</span>
+                        <span class="legend-item"><span class="legend-dot attended"></span>Attended</span>
                     </div>
-                </li>
+                </div><!-- /.map-col -->
 
-                <li class="tl-entry">
-                    <span class="tl-year"></span>
-                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
-                    <div class="tl-content">
-                        <div class="tl-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</div>
-                        <div class="tl-meta">Adelaide, Australia · Feb 2026</div>
-                    </div>
-                </li>
-
-                <li class="tl-entry">
-                    <span class="tl-year">2025</span>
-                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
-                    <div class="tl-content">
-                        <div class="tl-venue">Presentation at the Department of Economics, Universitat Jaume I</div>
-                        <div class="tl-meta">Castellón de la Plana, Spain · Oct 2025</div>
-                    </div>
-                </li>
-
-                <li class="tl-entry">
-                    <span class="tl-year"></span>
-                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
-                    <div class="tl-content">
-                        <div class="tl-venue">Presentation at the 14th Behavioral and Experimental Economics Network (BEEN) Meeting</div>
-                        <div class="tl-meta">University of Cagliari, Italy · Sep 2025</div>
-                    </div>
-                </li>
-
-                <li class="tl-entry">
-                    <span class="tl-year"></span>
-                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
-                    <div class="tl-content">
-                        <div class="tl-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</div>
-                        <div class="tl-meta">Brisbane, Australia · Feb 2025</div>
-                    </div>
-                </li>
-
-                <li class="tl-entry">
-                    <span class="tl-year">2024</span>
-                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
-                    <div class="tl-content">
-                        <div class="tl-venue">Presentation at the REECAP Webinar</div>
-                        <div class="tl-meta">Online · Nov 2024</div>
-                    </div>
-                </li>
-
-                <li class="tl-entry">
-                    <span class="tl-year"></span>
-                    <div class="tl-dot-col"><span class="tl-dot"></span></div>
-                    <div class="tl-content">
-                        <div class="tl-venue">Presentation at the Australasian Agricultural and Resource Economics Society (AARES) Conference</div>
-                        <div class="tl-meta">Canberra, Australia · Feb 2024</div>
-                    </div>
-                </li>
-
-                <li class="tl-entry">
-                    <span class="tl-year">2022</span>
-                    <div class="tl-dot-col"><span class="tl-dot attended"></span></div>
-                    <div class="tl-content">
-                        <div class="tl-venue attended">Attended the International Conference on Human Capital Investments</div>
-                        <div class="tl-meta">Loyola University, Spain · Jun 2022</div>
-                    </div>
-                </li>
-
-            </ul>
+            </div><!-- /.conf-layout -->
             </div>
         </div>
 
@@ -279,6 +387,124 @@
             }
         })();
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+    (function () {
+        'use strict';
+
+        /* Guard: bail out if Leaflet failed to load for any reason */
+        if (typeof L === 'undefined') return;
+
+        var map = L.map('conf-map', {
+            scrollWheelZoom: false,
+            zoomControl: true,
+            attributionControl: true
+        });
+
+        /* OSM tiles — no API key, no subdomains, universally reliable.
+           Dark mode is handled by CSS filter on .leaflet-tile-pane. */
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        /* Custom SVG markers matching the timeline dots */
+        function makeIcon(type) {
+            var cfg = {
+                presented: { fill: '#2563eb', stroke: '#1d4ed8', dash: '' },
+                upcoming:  { fill: 'none',    stroke: '#2563eb', dash: 'stroke-dasharray="3 2"' },
+                attended:  { fill: 'none',    stroke: '#9ca3af', dash: '' }
+            }[type] || { fill: '#2563eb', stroke: '#1d4ed8', dash: '' };
+
+            var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">'
+                + '<circle cx="7" cy="7" r="5" fill="' + cfg.fill + '" stroke="' + cfg.stroke + '" stroke-width="2" ' + cfg.dash + '/>'
+                + '</svg>';
+
+            return L.divIcon({
+                html: svg,
+                className: 'conf-map-marker',
+                iconSize: [14, 14],
+                iconAnchor: [7, 7],
+                popupAnchor: [0, -10]
+            });
+        }
+
+        /* Conference data — Online events are omitted from the map */
+        var venues = [
+            {
+                lat: 38.688, lng: -9.333,
+                type: 'upcoming',
+                title: '7th World Congress of Environmental and Resource Economists (WCERE)',
+                meta: 'Carcavelos, Portugal · July 2026',
+                tag: 'Forthcoming'
+            },
+            {
+                lat: -34.929, lng: 138.601,
+                type: 'presented',
+                title: 'Australasian Agricultural and Resource Economics Society (AARES) Conference',
+                meta: 'Adelaide, Australia · Feb 2026'
+            },
+            {
+                lat: 39.986, lng: -0.051,
+                type: 'presented',
+                title: 'Department of Economics, Universitat Jaume I',
+                meta: 'Castellón de la Plana, Spain · Oct 2025'
+            },
+            {
+                lat: 39.224, lng: 9.122,
+                type: 'presented',
+                title: '14th Behavioral and Experimental Economics Network (BEEN) Meeting',
+                meta: 'University of Cagliari, Italy · Sep 2025'
+            },
+            {
+                lat: -27.470, lng: 153.025,
+                type: 'presented',
+                title: 'Australasian Agricultural and Resource Economics Society (AARES) Conference',
+                meta: 'Brisbane, Australia · Feb 2025'
+            },
+            {
+                lat: -35.281, lng: 149.130,
+                type: 'presented',
+                title: 'Australasian Agricultural and Resource Economics Society (AARES) Conference',
+                meta: 'Canberra, Australia · Feb 2024'
+            },
+            {
+                lat: 37.388, lng: -5.975,
+                type: 'attended',
+                title: 'International Conference on Human Capital Investments',
+                meta: 'Loyola University, Spain · Jun 2022'
+            }
+        ];
+
+        var bounds = [];
+
+        venues.forEach(function (v) {
+            var labelColor = v.type === 'attended' ? '#9ca3af' : '#2563eb';
+            var label = v.tag ? v.tag : (v.type === 'attended' ? 'Attended' : 'Presented');
+            var html = '<div style="max-width:210px">'
+                + '<strong style="font-size:0.84em;line-height:1.4;display:block;margin-bottom:3px">' + v.title + '</strong>'
+                + '<span style="color:#6b7280;font-size:0.79em">' + v.meta + '</span><br>'
+                + '<span style="color:' + labelColor + ';font-size:0.74em;font-weight:700;text-transform:uppercase;letter-spacing:0.05em">' + label + '</span>'
+                + '</div>';
+
+            L.marker([v.lat, v.lng], { icon: makeIcon(v.type) })
+                .addTo(map)
+                .bindPopup(html, { maxWidth: 240 });
+
+            bounds.push([v.lat, v.lng]);
+        });
+
+        if (bounds.length) {
+            map.fitBounds(bounds, { padding: [32, 32] });
+        }
+
+        /* Force Leaflet to recalculate tile positions after the sticky
+           column layout has fully settled (avoids the grey-square bug). */
+        setTimeout(function () { map.invalidateSize(); }, 150);
+    })();
+    </script>
+
     <script src="site.js"></script>
 </body>
 </html>
