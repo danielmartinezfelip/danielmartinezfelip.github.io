@@ -393,29 +393,26 @@
     (function () {
         'use strict';
 
-        function isDarkMode() {
-            var t = document.documentElement.getAttribute('data-theme');
-            if (t === 'dark') return true;
-            if (t === 'light') return false;
-            return window.matchMedia('(prefers-color-scheme: dark)').matches;
-        }
-
-        var TILES = {
-            light: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-            dark:  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-        };
-        var ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+        /* Guard: bail out if Leaflet failed to load for any reason */
+        if (typeof L === 'undefined') return;
 
         var map = L.map('conf-map', {
             scrollWheelZoom: false,
             zoomControl: true,
-            attributionControl: true
+            attributionControl: true,
+            /* worldCopyJump: when panning past the antimeridian Leaflet snaps
+               the viewport back to the original world, so markers always show
+               and the map still feels like a continuous loop. */
+            worldCopyJump: true
         });
+
+        /* Remove the "Leaflet" self-promotion prefix; keep OSM credit (required). */
+        map.attributionControl.setPrefix('');
 
         /* OSM tiles — no API key, no subdomains, universally reliable.
            Dark mode is handled by CSS filter on .leaflet-tile-pane. */
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
             maxZoom: 19
         }).addTo(map);
 
