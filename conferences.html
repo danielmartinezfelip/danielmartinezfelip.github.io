@@ -393,8 +393,18 @@
     (function () {
         'use strict';
 
-        /* Guard: bail out if Leaflet failed to load for any reason */
-        if (typeof L === 'undefined') return;
+        function isDarkMode() {
+            var t = document.documentElement.getAttribute('data-theme');
+            if (t === 'dark') return true;
+            if (t === 'light') return false;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+
+        var TILES = {
+            light: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+            dark:  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+        };
+        var ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
         var map = L.map('conf-map', {
             scrollWheelZoom: false,
