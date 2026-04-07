@@ -18,7 +18,7 @@
     <meta name="twitter:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
     <style>
         /* ── Timeline ─────────────────────────────────────────── */
@@ -145,8 +145,13 @@
             height: 460px;
             border-radius: var(--radius-soft);
             border: 1px solid var(--border);
-            overflow: hidden;
             background: var(--surface-alt);
+            /* Do NOT set overflow:hidden — Leaflet needs to overflow internally */
+        }
+
+        /* Dark mode: invert+hue-rotate OSM tiles so they look dark naturally */
+        [data-theme="dark"] #conf-map .leaflet-tile-pane {
+            filter: invert(100%) hue-rotate(180deg) saturate(0.75) brightness(0.88);
         }
 
         /* Leaflet popup styled to match site */
@@ -383,7 +388,7 @@
         })();
     </script>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLI=" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
     (function () {
         'use strict';
@@ -407,16 +412,12 @@
             attributionControl: true
         });
 
-        var tileLayer = L.tileLayer(isDarkMode() ? TILES.dark : TILES.light, {
-            attribution: ATTR,
-            maxZoom: 18,
-            subdomains: 'abcd'
+        /* OSM tiles — no API key, no subdomains, universally reliable.
+           Dark mode is handled by CSS filter on .leaflet-tile-pane. */
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19
         }).addTo(map);
-
-        /* Swap tile layer when user toggles dark/light mode */
-        new MutationObserver(function () {
-            tileLayer.setUrl(isDarkMode() ? TILES.dark : TILES.light);
-        }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
         /* Custom SVG markers matching the timeline dots */
         function makeIcon(type) {
@@ -507,6 +508,10 @@
         if (bounds.length) {
             map.fitBounds(bounds, { padding: [32, 32] });
         }
+
+        /* Force Leaflet to recalculate tile positions after the sticky
+           column layout has fully settled (avoids the grey-square bug). */
+        setTimeout(function () { map.invalidateSize(); }, 150);
     })();
     </script>
 
