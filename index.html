@@ -253,7 +253,7 @@
                     <li><a href="research.html">Research</a></li>
                     <li><a href="conferences.html">Conferences &amp; Seminars</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
-                    <li><a href="curriculum_vitae.html" data-cv-trigger>CV</a></li>
+                    <li><a href="curriculum_vitae.html" data-modal-trigger data-modal-src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" data-modal-title="Curriculum Vitae">CV</a></li>
                 </ul>
             </nav>
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
@@ -307,7 +307,7 @@
                 <div class="profile-main">
                     <div class="job-market-banner">
                         <span class="job-market-dot" aria-hidden="true"></span>
-                        <span class="job-market-text"><strong>On the job market</strong> · Available for positions starting 2026. <a href="curriculum_vitae.html" data-cv-trigger>View CV</a></span>
+                        <span class="job-market-text"><strong>On the job market</strong> · Available for positions starting 2026. <a href="curriculum_vitae.html" data-modal-trigger data-modal-src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" data-modal-title="Curriculum Vitae">View CV</a></span>
                     </div>
                     <h2>About Me</h2>
                     <div class="quick-facts card">
@@ -340,7 +340,7 @@
                     </div>
                     -->
 
-                    <p>I completed my PhD at the University of Western Australia (UWA), supervised by Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell. Using laboratory experiments and agent-based modelling, my PhD focused on studying the role of social norms and incentive mechanisms in shaping cooperative behaviour and collective action. My job market paper has been published in the <em>Journal of Behavioral and Experimental Economics</em>. For a summary of the thesis and the main findings of each chapter, see <a href="https://drive.google.com/file/d/1LxNRl7lVHPPFE7lAjOc9lXdyblffRMGb/view?usp=drivesdk" target="_blank" rel="noopener">this document</a>.</p>
+                    <p>I completed my PhD at the University of Western Australia (UWA), supervised by Steven G.M. Schilizzi, Chi Nguyen, and David J. Pannell. Using laboratory experiments and agent-based modelling, my PhD focused on studying the role of social norms and incentive mechanisms in shaping cooperative behaviour and collective action. My job market paper has been published in the <em>Journal of Behavioral and Experimental Economics</em>. For a summary of the thesis and the main findings of each chapter, see <a href="https://drive.google.com/file/d/1LxNRl7lVHPPFE7lAjOc9lXdyblffRMGb/view?usp=drivesdk" data-modal-trigger data-modal-src="https://drive.google.com/file/d/1LxNRl7lVHPPFE7lAjOc9lXdyblffRMGb/preview" data-modal-title="PhD Thesis Summary">this document</a>.</p>
 
                     <h2>Research Interests</h2>
                     <p> My research interests include the economics of behaviour and behavioural change, collective action, and social change<!-- , and the role of AI in shaping economic and social dynamics -->. More specifically, my current work focuses on the modelling and experimental study of the interplay between actual behaviour and normative expectations in collective action problems: which norms emerge and under what conditions, how they are sustained or destabilised, and when prosocial norms can arise endogenously without continuous external enforcement. I am also particularly interested in the drivers of endogenous behavioural change, both prosocial and antisocial, and the social enforcement mechanisms behind such dynamics, including norm breakdown and polarisation. <!-- A related interest is how AI transforms the contexts in which norms form, and how people revise their sense of appropriate behaviour as AI systems become embedded in economic and social life. -->
@@ -382,15 +382,24 @@
     </div>
     <script>
         (() => {
-            const triggers = document.querySelectorAll('[data-cv-trigger]');
+            const triggers = document.querySelectorAll('[data-modal-trigger]');
             const modal = document.querySelector('.cv-modal');
             const backdrop = document.querySelector('.cv-backdrop');
+            const modalTitle = document.getElementById('cv-modal-title');
+            const modalFrame = modal ? modal.querySelector('iframe') : null;
             const body = document.body;
 
             if (triggers.length && modal && backdrop) {
                 const closeButtons = modal.querySelectorAll('[data-cv-close]');
 
-                const openModal = () => {
+                const openModal = (trigger) => {
+                    const src = trigger.getAttribute('data-modal-src');
+                    const title = trigger.getAttribute('data-modal-title') || 'Document';
+                    if (src && modalFrame) {
+                        modalFrame.src = src;
+                        modalFrame.title = title;
+                    }
+                    if (modalTitle) modalTitle.textContent = title;
                     body.classList.add('cv-modal-open');
                 };
 
@@ -401,7 +410,7 @@
                 triggers.forEach((trigger) => {
                     trigger.addEventListener('click', (event) => {
                         event.preventDefault();
-                        openModal();
+                        openModal(trigger);
                     });
                 });
 
