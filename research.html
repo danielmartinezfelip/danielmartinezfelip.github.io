@@ -16,9 +16,65 @@
     <meta name="twitter:title" content="Research — Daniel Martínez-Felip">
     <meta name="twitter:description" content="Working papers and research on social norms, cooperative behaviour, and behavioural economics.">
     <meta name="twitter:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
+    <link rel="canonical" href="https://danielmartinezfelip.github.io/research.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "ScholarlyArticle",
+                "@id": "https://doi.org/10.1016/j.socec.2026.102559",
+                "headline": "How does experienced behaviour change normative expectations regarding socially beneficial actions?",
+                "name": "How does experienced behaviour change normative expectations regarding socially beneficial actions?",
+                "author": [
+                    { "@type": "Person", "name": "Daniel Martínez-Felip", "url": "https://danielmartinezfelip.github.io/" },
+                    { "@type": "Person", "name": "Steven G.M. Schilizzi" },
+                    { "@type": "Person", "name": "Chi Nguyen" }
+                ],
+                "datePublished": "2026",
+                "isPartOf": {
+                    "@type": "Periodical",
+                    "name": "Journal of Behavioral and Experimental Economics",
+                    "issn": "2214-8043"
+                },
+                "volumeNumber": "122",
+                "pagination": "102559",
+                "identifier": "https://doi.org/10.1016/j.socec.2026.102559",
+                "sameAs": "https://www.sciencedirect.com/science/article/pii/S2214804326000509",
+                "isAccessibleForFree": true,
+                "keywords": [
+                    "Social norms",
+                    "Normative expectations",
+                    "Normative change",
+                    "Laboratory experiments",
+                    "Collective action problems"
+                ]
+            },
+            {
+                "@type": "Thesis",
+                "@id": "https://doi.org/10.26182/nr7e-j345",
+                "name": "The interaction of non-financial incentives and normative expectations in the dynamics of cooperative behaviour",
+                "inSupportOf": "Doctor of Philosophy",
+                "author": {
+                    "@type": "Person",
+                    "name": "Daniel Martínez-Felip",
+                    "url": "https://danielmartinezfelip.github.io/"
+                },
+                "datePublished": "2026-07-27",
+                "publisher": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "The University of Western Australia",
+                    "url": "https://www.uwa.edu.au/"
+                },
+                "identifier": "https://doi.org/10.26182/nr7e-j345",
+                "url": "https://research-repository.uwa.edu.au/en/publications/the-interaction-of-non-financial-incentives-and-normative-expecta/"
+            }
+        ]
+    }
+    </script>
     <style>
         /* --- Research section layout ---------------------------- */
         .section-empty-note {
@@ -215,6 +271,7 @@
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="container">
         <header class="card">
             <div class="header-brand">
@@ -233,7 +290,7 @@
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
         </header>
 
-        <div class="content card">
+        <main class="content card" id="main-content">
 
             <!-- ── Publications ─────────────────────────────────── -->
             <div class="page-section">
@@ -432,7 +489,7 @@ abstract = {Social norms, understood as shared expectations of appropriate behav
                 </div>
             </div>
 
-        </div>
+        </main>
 
         <footer class="site-footer card">
             <div class="footer-links">
@@ -441,110 +498,10 @@ abstract = {Social norms, understood as shared expectations of appropriate behav
                 <a href="https://orcid.org/0009-0000-6979-904X">ORCID</a>
                 <a href="https://bsky.app/profile/dmartinezfelip.bsky.social">Bluesky</a>
             </div>
-            <div>© 2026 Daniel Martínez-Felip · <span class="footer-updated">Updated July 2026</span></div>
+            <div>© 2026 Daniel Martínez-Felip · <span class="footer-updated">Updated August 2026</span></div>
         </footer>
     </div>
 
-    <div class="cv-backdrop" data-cv-close></div>
-    <div class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
-        <div class="cv-modal-header">
-            <h2 class="cv-modal-title" id="cv-modal-title">Curriculum Vitae</h2>
-            <button class="cv-close" type="button" data-cv-close>Close</button>
-        </div>
-        <div class="cv-modal-body">
-            <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" title="Curriculum Vitae" allowfullscreen loading="lazy"></iframe>
-        </div>
-    </div>
-
-    <script>
-        (() => {
-            const body = document.body;
-
-            // CV modal
-            const cvTriggers = document.querySelectorAll('[data-cv-trigger]');
-            const cvModal = document.querySelector('.cv-modal');
-            const cvBackdrop = document.querySelector('.cv-backdrop');
-
-            if (cvTriggers.length && cvModal && cvBackdrop) {
-                const cvCloseButtons = cvModal.querySelectorAll('[data-cv-close]');
-
-                const openCvModal = () => body.classList.add('cv-modal-open');
-                const closeCvModal = () => body.classList.remove('cv-modal-open');
-
-                cvTriggers.forEach((trigger) => {
-                    trigger.addEventListener('click', (event) => {
-                        event.preventDefault();
-                        openCvModal();
-                    });
-                });
-
-                cvBackdrop.addEventListener('click', closeCvModal);
-                cvCloseButtons.forEach((button) => button.addEventListener('click', closeCvModal));
-
-                document.addEventListener('keydown', (event) => {
-                    if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
-                        closeCvModal();
-                    }
-                });
-            }
-
-            // Theme toggle
-            const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                const root = document.documentElement;
-                themeToggle.addEventListener('click', () => {
-                    const isDark = root.getAttribute('data-theme') === 'dark'
-                        || (!root.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                    const next = isDark ? 'light' : 'dark';
-                    root.setAttribute('data-theme', next);
-                    localStorage.setItem('theme', next);
-                });
-            }
-
-            // Abstract toggles
-            document.querySelectorAll('[data-abstract-toggle]').forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    const targetId = btn.getAttribute('data-abstract-toggle');
-                    const abstractBody = document.getElementById(targetId);
-                    if (!abstractBody) return;
-                    const isOpen = abstractBody.classList.contains('open');
-                    abstractBody.classList.toggle('open', !isOpen);
-                    btn.classList.toggle('open', !isOpen);
-                    btn.setAttribute('aria-expanded', String(!isOpen));
-                });
-            });
-
-            // BibTeX cite buttons
-            document.querySelectorAll('.cite-btn').forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    const bib = btn.getAttribute('data-bib');
-                    const copy = (text) => {
-                        btn.textContent = 'Copied!';
-                        btn.classList.add('copied');
-                        setTimeout(() => {
-                            btn.textContent = 'Cite';
-                            btn.classList.remove('copied');
-                        }, 2000);
-                    };
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText(bib).then(() => copy()).catch(() => fallback(bib, copy));
-                    } else {
-                        fallback(bib, copy);
-                    }
-                });
-            });
-
-            function fallback(text, cb) {
-                const ta = document.createElement('textarea');
-                ta.value = text;
-                ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
-                document.body.appendChild(ta);
-                ta.select();
-                try { document.execCommand('copy'); cb(); } catch (e) {}
-                document.body.removeChild(ta);
-            }
-        })();
-    </script>
     <script src="site.js"></script>
 </body>
 </html>

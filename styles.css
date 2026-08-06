@@ -252,6 +252,28 @@ textarea {
     letter-spacing: inherit;
 }
 
+/* --- Skip link -------------------------------------------- */
+/* Off-screen until focused, so keyboard users can jump the nav. */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1100;
+    padding: 10px 18px;
+    background: var(--surface);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-soft);
+    font-weight: 600;
+    box-shadow: var(--shadow);
+}
+
+.skip-link:focus {
+    left: 12px;
+    top: 12px;
+    text-decoration: none;
+}
+
 /* --- Links ------------------------------------------------ */
 a {
     color: var(--accent);
@@ -308,11 +330,16 @@ button:focus-visible {
     position: fixed;
     inset: 0;
     background: rgba(15, 23, 42, 0.55);
-    backdrop-filter: blur(6px);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease;
     z-index: 1000;
+}
+
+/* backdrop-filter only while open: a live full-viewport backdrop layer
+   costs compositing work on every page, modal or not. */
+body.cv-modal-open .cv-backdrop {
+    backdrop-filter: blur(6px);
 }
 
 .cv-modal {
@@ -819,6 +846,106 @@ body.cv-modal-open .cv-modal {
     font-size: 0.82em;
     color: var(--muted);
     opacity: 0.65;
+}
+
+/* --- Print ------------------------------------------------- */
+/* Academic pages get printed. Drop the chrome, keep the content,
+   and spell out link targets that would otherwise be lost on paper. */
+@media print {
+    :root {
+        --text: #000;
+        --muted: #333;
+        --border: #bbb;
+        --surface: #fff;
+        --surface-alt: #fff;
+        --accent: #000;
+        --accent-strong: #000;
+        --shadow: none;
+        --shadow-hover: none;
+    }
+
+    body {
+        background: #fff;
+        color: #000;
+        font-size: 11pt;
+    }
+
+    .container {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        animation: none;
+    }
+
+    .card,
+    .content,
+    .site-footer {
+        background: #fff;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0 0 12pt;
+        animation: none;
+    }
+
+    /* Interactive-only chrome has no meaning on paper. */
+    header nav,
+    .hamburger,
+    .theme-toggle,
+    .scroll-top-btn,
+    .skip-link,
+    .cv-backdrop,
+    .cv-modal,
+    .abstract-toggle,
+    .cite-btn,
+    .statement-more-btn,
+    #conf-map,
+    .map-legend,
+    .job-market-banner a {
+        display: none !important;
+    }
+
+    /* Collapsed sections must print open — otherwise the page is empty. */
+    .abstract-body,
+    .statement-full {
+        display: block !important;
+        border: 1px solid #ccc;
+        background: #fff;
+    }
+
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    /* Show real destinations for external links only. */
+    .content a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.82em;
+        color: #444;
+        word-break: break-all;
+    }
+
+    .paper-entry,
+    .teaching-entry,
+    .tl-entry {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    .profile-layout {
+        display: block;
+    }
+
+    .profile-sidebar {
+        width: 100%;
+    }
 }
 
 /* --- Reduced motion --------------------------------------- */

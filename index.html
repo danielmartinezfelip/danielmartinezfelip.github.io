@@ -16,10 +16,50 @@
     <meta name="twitter:title" content="Daniel Martínez-Felip">
     <meta name="twitter:description" content="PhD, University of Western Australia (UWA). Research on behavioural economics, social norms, and cooperative behaviour.">
     <meta name="twitter:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
+    <link rel="canonical" href="https://danielmartinezfelip.github.io/">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Daniel Martínez-Felip",
+        "givenName": "Daniel",
+        "familyName": "Martínez-Felip",
+        "url": "https://danielmartinezfelip.github.io/",
+        "image": "https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg",
+        "email": "mailto:martinezfelipd@gmail.com",
+        "jobTitle": "Behavioural and Experimental Economist",
+        "description": "PhD, University of Western Australia (UWA). Research on behavioural economics, social norms, and cooperative behaviour.",
+        "identifier": "https://orcid.org/0009-0000-6979-904X",
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "The University of Western Australia",
+            "url": "https://www.uwa.edu.au/"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Perth",
+            "addressRegion": "Western Australia",
+            "addressCountry": "AU"
+        },
+        "knowsAbout": [
+            "Behavioural economics",
+            "Experimental economics",
+            "Social norms",
+            "Collective action",
+            "Agent-based modelling",
+            "Environmental economics"
+        ],
+        "sameAs": [
+            "https://orcid.org/0009-0000-6979-904X",
+            "https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en",
+            "https://research-repository.uwa.edu.au/en/persons/daniel-martinez-felip",
+            "https://bsky.app/profile/dmartinezfelip.bsky.social"
+        ]
+    }
+    </script>
 <style>
     /* --- Profile / sidebar ---------------------------------- */
     .profile-photo {
@@ -48,10 +88,6 @@
     }
     .contact-link:hover {
         color: var(--accent-strong) !important;
-    }
-    .contact-link i {
-        font-size: 1em;
-        margin-bottom: 4px;
     }
     .contact-link svg {
         margin-bottom: 4px;
@@ -242,6 +278,7 @@
 </style>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="container">
         <header class="card">
             <div class="header-brand">
@@ -258,7 +295,7 @@
             </nav>
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
         </header>
-        <div class="content card">
+        <main class="content card" id="main-content">
             <div class="profile-layout">
                 <div class="profile-sidebar">
                     <figure class="profile-photo">
@@ -268,15 +305,21 @@
 
                     <div class="contact-icons">
                         <a href="mailto:martinezfelipd@gmail.com" class="contact-link">
-                            <i class="fas fa-envelope"></i>
+                            <svg viewBox="0 0 24 24" aria-hidden="true" height="1.1em" fill="currentColor">
+                                <path d="M2 6.2A2.2 2.2 0 0 1 4.2 4h15.6A2.2 2.2 0 0 1 22 6.2v.5l-9.51 5.33a1 1 0 0 1-.98 0L2 6.7v-.5zm0 2.79 9.03 5.06a2 2 0 0 0 1.94 0L22 8.99v8.81A2.2 2.2 0 0 1 19.8 20H4.2A2.2 2.2 0 0 1 2 17.8V8.99z"/>
+                            </svg>
                             <span>Email</span>
                         </a>
                         <a href="https://research-repository.uwa.edu.au/en/persons/daniel-martinez-felip" class="contact-link">
-                            <i class="fas fa-graduation-cap"></i>
+                            <svg viewBox="0 0 24 24" aria-hidden="true" height="1.1em" fill="currentColor">
+                                <path d="M12 3 1 8l11 5 9-4.09V15a1 1 0 0 0 2 0V8L12 3zM5 13.18V17c0 1.66 3.13 3 7 3s7-1.34 7-3v-3.82l-6.16 2.8a2 2 0 0 1-1.68 0L5 13.18z"/>
+                            </svg>
                             <span>UWA</span>
                         </a>
                         <a href="https://orcid.org/0009-0000-6979-904X" class="contact-link">
-                            <i class="fab fa-orcid"></i>
+                            <svg viewBox="0 0 24 24" aria-hidden="true" height="1.1em" fill="currentColor">
+                                <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947 0 .525-.422.947-.947.947-.525 0-.946-.422-.946-.947 0-.516.421-.947.946-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.588-1.444 3.588-3.722 0-2.016-1.088-3.722-3.588-3.722h-2.297z"/>
+                            </svg>
                             <span>ORCiD</span>
                         </a>
                         <a href="https://bsky.app/profile/dmartinezfelip.bsky.social" class="contact-link">
@@ -286,7 +329,7 @@
                             <span>Bluesky</span>
                         </a>
                         <a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en" class="contact-link">
-                            <svg viewBox="0 0 24 24" aria-hidden="true" height="1.1em" width="auto" fill="currentColor">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" height="1.1em" fill="currentColor">
                                 <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
                             </svg>
                             <span>Scholar</span>
@@ -359,7 +402,7 @@
                     -->
                 </div>
             </div>
-        </div>
+        </main>
         <footer class="site-footer card">
             <div class="footer-links">
                 <a href="mailto:martinezfelipd@gmail.com">Email</a>
@@ -367,80 +410,9 @@
                 <a href="https://orcid.org/0009-0000-6979-904X">ORCID</a>
                 <a href="https://bsky.app/profile/dmartinezfelip.bsky.social">Bluesky</a>
             </div>
-            <div>© 2026 Daniel Martínez-Felip · <span class="footer-updated">Updated July 2026</span></div>
+            <div>© 2026 Daniel Martínez-Felip · <span class="footer-updated">Updated August 2026</span></div>
         </footer>
     </div>
-    <div class="cv-backdrop" data-cv-close></div>
-    <div class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
-        <div class="cv-modal-header">
-            <h2 class="cv-modal-title" id="cv-modal-title">Curriculum Vitae</h2>
-            <button class="cv-close" type="button" data-cv-close>Close</button>
-        </div>
-        <div class="cv-modal-body">
-            <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" title="Curriculum Vitae" allowfullscreen loading="lazy"></iframe>
-        </div>
-    </div>
-    <script>
-        (() => {
-            const triggers = document.querySelectorAll('[data-modal-trigger]');
-            const modal = document.querySelector('.cv-modal');
-            const backdrop = document.querySelector('.cv-backdrop');
-            const modalTitle = document.getElementById('cv-modal-title');
-            const modalFrame = modal ? modal.querySelector('iframe') : null;
-            const body = document.body;
-
-            if (triggers.length && modal && backdrop) {
-                const closeButtons = modal.querySelectorAll('[data-cv-close]');
-
-                const openModal = (trigger) => {
-                    const src = trigger.getAttribute('data-modal-src');
-                    const title = trigger.getAttribute('data-modal-title') || 'Document';
-                    if (src && modalFrame) {
-                        modalFrame.src = src;
-                        modalFrame.title = title;
-                    }
-                    if (modalTitle) modalTitle.textContent = title;
-                    body.classList.add('cv-modal-open');
-                };
-
-                const closeModal = () => {
-                    body.classList.remove('cv-modal-open');
-                };
-
-                triggers.forEach((trigger) => {
-                    trigger.addEventListener('click', (event) => {
-                        event.preventDefault();
-                        openModal(trigger);
-                    });
-                });
-
-                backdrop.addEventListener('click', closeModal);
-                closeButtons.forEach((button) => {
-                    button.addEventListener('click', closeModal);
-                });
-
-                document.addEventListener('keydown', (event) => {
-                    if (event.key === 'Escape' && body.classList.contains('cv-modal-open')) {
-                        closeModal();
-                    }
-                });
-            }
-
-            // Theme toggle
-            const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                const root = document.documentElement;
-                themeToggle.addEventListener('click', () => {
-                    const isDark = root.getAttribute('data-theme') === 'dark'
-                        || (!root.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                    const next = isDark ? 'light' : 'dark';
-                    root.setAttribute('data-theme', next);
-                    localStorage.setItem('theme', next);
-                });
-            }
-
-        })();
-    </script>
     <script>
         /* Sync JMP card from research.html — single source of truth */
         (function () {
