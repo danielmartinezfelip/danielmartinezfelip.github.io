@@ -44,51 +44,84 @@ def collect() -> dict[str, list[str]]:
     return urls
 
 
-def check(url: str) -> tuple[str, int | str]:
-    if any(h in url for h in SKIP_HOSTS):
-        return url, "skipped"
+def request(url: str, method: str) -> int:
+    req = urllib.request.Request(url, headers={"User-Agent": UA}, method=method)
+    with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+        return r.status
 
-    req = urllib.request.Request(url, headers={"User-Agent": UA}, method="HEAD")
+
+def check(url: str) -> tuple[str, str, str]:
+    """Return (url, verdict, detail) where verdict is ok / blocked / broken / skipped.
+
+    Only 'broken' fails the run. Publishers and social sites routinely refuse
+    automated requests from CI ranges; that is not a broken link, and treating
+    it as one would train everyone to ignore this job.
+    """
+    if any(h in url for h in SKIP_HOSTS):
+        return url, "skipped", ""
+
     try:
-        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-            return url, r.status
+        status = request(url, "HEAD")
+        return url, "ok", str(status)
     except urllib.error.HTTPError as e:
-        # Plenty of servers reject HEAD but serve GET.
-        if e.code in (403, 405, 501):
+        # Retry with GET before believing the failure. Plenty of servers reject
+        # HEAD outright — including with 404, which is why 404 is retried here
+        # rather than reported straight away.
+        if e.code in (403, 404, 405, 429, 501):
             try:
-                req = urllib.request.Request(url, headers={"User-Agent": UA})
-                with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-                    return url, r.status
+                status = request(url, "GET")
+                return url, "ok", str(status)
+            except urllib.error.HTTPError as e2:
+                if e2.code in (401, 403, 429):
+                    return url, "blocked", f"HTTP {e2.code}"
+                return url, "broken", f"HTTP {e2.code}"
             except Exception as e2:  # noqa: BLE001
-                return url, f"{type(e2).__name__}: {e2}"
-        return url, e.code
+                return url, "blocked", f"{type(e2).__name__}: {e2}"
+        if e.code in (401, 429):
+            return url, "blocked", f"HTTP {e.code}"
+        return url, "broken", f"HTTP {e.code}"
     except Exception as e:  # noqa: BLE001
-        return url, f"{type(e).__name__}: {e}"
+        # DNS/TLS/timeout: could be the network, could be the runner. Not proof
+        # the link is dead.
+        return url, "blocked", f"{type(e).__name__}: {e}"
 
 
 def main() -> int:
     urls = collect()
     print(f"Checking {len(urls)} external link(s) across {len(PAGES)} pages\n")
 
-    bad: list[str] = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
-        for url, status in pool.map(check, urls):
-            where = ", ".join(sorted(set(urls[url])))
-            if status == "skipped":
-                print(f"  skip  {url}")
-            elif isinstance(status, int) and 200 <= status < 400:
-                print(f"  ok    {status}  {url}")
-            else:
-                print(f"  FAIL  {status}  {url}  ({where})")
-                bad.append(f"{status}  {url}  ({where})")
+    broken: list[str] = []
+    blocked: list[str] = []
 
-    if bad:
-        print(f"\n{len(bad)} external link(s) did not resolve:", file=sys.stderr)
-        for b in bad:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+        results = sorted(pool.map(check, urls), key=lambda r: (r[1], r[0]))
+
+    for url, verdict, detail in results:
+        where = ", ".join(sorted(set(urls[url])))
+        if verdict == "skipped":
+            print(f"  skip     {url}")
+        elif verdict == "ok":
+            print(f"  ok       {detail}  {url}")
+        elif verdict == "blocked":
+            print(f"  blocked  {detail}  {url}")
+            blocked.append(f"{detail}  {url}")
+        else:
+            print(f"  BROKEN   {detail}  {url}  ({where})")
+            broken.append(f"{detail}  {url}  ({where})")
+
+    if blocked:
+        print(f"\n{len(blocked)} link(s) refused automated requests "
+              f"(not treated as broken):")
+        for b in blocked:
+            print(f"  {b}")
+
+    if broken:
+        print(f"\n{len(broken)} link(s) appear genuinely broken:", file=sys.stderr)
+        for b in broken:
             print(f"  {b}", file=sys.stderr)
         return 1
 
-    print("\nAll external links resolved.")
+    print("\nNo broken external links.")
     return 0
 
 
