@@ -16,6 +16,7 @@
     <meta name="twitter:title" content="CV — Daniel Martínez-Felip">
     <meta name="twitter:description" content="Curriculum Vitae of Daniel Martínez-Felip, PhD, University of Western Australia (UWA).">
     <meta name="twitter:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
+    <link rel="canonical" href="https://danielmartinezfelip.github.io/curriculum_vitae.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
@@ -67,6 +68,7 @@
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="container">
         <header class="card">
             <div class="header-brand">
@@ -85,25 +87,9 @@
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
         </header>
 
-        <script>
-            (() => {
-                const themeToggle = document.getElementById('theme-toggle');
-                if (themeToggle) {
-                    const root = document.documentElement;
-                    themeToggle.addEventListener('click', () => {
-                        const isDark = root.getAttribute('data-theme') === 'dark'
-                            || (!root.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                        const next = isDark ? 'light' : 'dark';
-                        root.setAttribute('data-theme', next);
-                        localStorage.setItem('theme', next);
-                    });
-                }
-            })();
-        </script>
-        <script src="site.js"></script>
-        <div class="pdf-container">
-            <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" allowfullscreen></iframe>
-        </div>
+        <main class="pdf-container" id="main-content">
+            <iframe src="https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview" title="Curriculum Vitae" allowfullscreen></iframe>
+        </main>
         <footer class="site-footer card">
             <div class="footer-links">
                 <a href="mailto:martinezfelipd@gmail.com">Email</a>
@@ -111,8 +97,9 @@
                 <a href="https://orcid.org/0009-0000-6979-904X">ORCID</a>
                 <a href="https://bsky.app/profile/dmartinezfelip.bsky.social">Bluesky</a>
             </div>
-            <div>© 2026 Daniel Martínez-Felip · <span class="footer-updated">Updated July 2026</span></div>
+            <div>© 2026 Daniel Martínez-Felip · <span class="footer-updated">Updated August 2026</span></div>
         </footer>
     </div>
+    <script src="site.js"></script>
 </body>
 </html>

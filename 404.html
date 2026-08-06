@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found — Daniel Martínez-Felip</title>
+    <meta name="description" content="The page you were looking for could not be found.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/styles.css">
+    <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+    <style>
+        .notfound {
+            text-align: center;
+            padding: 40px 0 24px;
+        }
+        .notfound-code {
+            font-size: 3.6em;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--accent);
+            margin: 0;
+        }
+        .notfound-title {
+            margin: 12px 0 6px;
+            font-size: 1.25em;
+            color: var(--text);
+        }
+        .notfound-text {
+            margin: 0 auto 22px;
+            max-width: 46ch;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+        .notfound-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .notfound-links a {
+            font-size: 0.9em;
+            font-weight: 600;
+            padding: 6px 15px;
+            border-radius: 99px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+        }
+        .notfound-links a:hover {
+            color: var(--text);
+            border-color: var(--accent);
+            background-color: rgba(37, 99, 235, 0.06);
+            text-decoration: none;
+        }
+        .notfound-links a.primary {
+            background: rgba(37, 99, 235, 0.08);
+            border-color: rgba(37, 99, 235, 0.3);
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="container">
+        <header class="card">
+            <div class="header-brand">
+                <h1>Daniel Martínez-Felip</h1>
+                <h2>Page not found</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/research.html">Research</a></li>
+                    <li><a href="/conferences.html">Conferences &amp; Seminars</a></li>
+                    <li><a href="/teaching.html">Teaching</a></li>
+                    <li><a href="/curriculum_vitae.html" data-cv-trigger>CV</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+        </header>
+
+        <main class="content card" id="main-content">
+            <div class="notfound">
+                <p class="notfound-code">404</p>
+                <h2 class="notfound-title">This page doesn't exist</h2>
+                <p class="notfound-text">The link may be out of date, or the page may have moved. The sections below cover everything on the site.</p>
+                <div class="notfound-links">
+                    <a class="primary" href="/index.html">Home</a>
+                    <a href="/research.html">Research</a>
+                    <a href="/conferences.html">Conferences &amp; Seminars</a>
+                    <a href="/teaching.html">Teaching</a>
+                    <a href="/curriculum_vitae.html">CV</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer card">
+            <div class="footer-links">
+                <a href="mailto:martinezfelipd@gmail.com">Email</a>
+                <a href="https://scholar.google.com/citations?user=IZFSPNoAAAAJ&hl=en">Google Scholar</a>
+                <a href="https://orcid.org/0009-0000-6979-904X">ORCID</a>
+                <a href="https://bsky.app/profile/dmartinezfelip.bsky.social">Bluesky</a>
+            </div>
+            <div>© 2026 Daniel Martínez-Felip · <span class="footer-updated">Updated August 2026</span></div>
+        </footer>
+    </div>
+    <script src="/site.js"></script>
+</body>
+</html>
