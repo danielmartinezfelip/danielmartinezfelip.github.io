@@ -9,17 +9,18 @@
     <meta property="og:description" content="Conference presentations and seminar talks on social norms, cooperative behaviour, and behavioural economics.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://danielmartinezfelip.github.io/conferences.html">
-    <meta property="og:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
-    <meta property="og:image:width" content="800">
-    <meta property="og:image:height" content="800">
+    <meta property="og:image" content="https://danielmartinezfelip.github.io/og-card.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Daniel Martínez-Felip — PhD, University of Western Australia. Behavioural and experimental economics.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Conferences & Seminars — Daniel Martínez-Felip">
     <meta name="twitter:description" content="Conference presentations and seminar talks on social norms, cooperative behaviour, and behavioural economics.">
-    <meta name="twitter:image" content="https://danielmartinezfelip.github.io/Daniel_MartinezFelip.jpg">
+    <meta name="twitter:image" content="https://danielmartinezfelip.github.io/og-card.jpg">
     <link rel="canonical" href="https://danielmartinezfelip.github.io/conferences.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
     <style>
         /* ── Timeline ─────────────────────────────────────────── */
@@ -148,6 +149,18 @@
             border: 1px solid var(--border);
             background: var(--surface-alt);
             /* Do NOT set overflow:hidden — Leaflet needs to overflow internally */
+        }
+
+        /* Shown only when Leaflet is unavailable, so the empty box explains itself */
+        #conf-map.map-unavailable {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+            font-size: 0.86em;
+            color: var(--muted);
+            line-height: 1.6;
         }
 
         /* Dark mode: invert+hue-rotate OSM tiles so they look dark naturally */
@@ -345,13 +358,23 @@
         </footer>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="vendor/leaflet/leaflet.js"></script>
     <script>
     (function () {
         'use strict';
 
-        /* Guard: bail out if Leaflet failed to load for any reason */
-        if (typeof L === 'undefined') return;
+        /* Guard: if Leaflet failed to load, say so instead of leaving an
+           unexplained empty box where the map should be. */
+        if (typeof L === 'undefined') {
+            var el = document.getElementById('conf-map');
+            if (el) {
+                el.classList.add('map-unavailable');
+                el.textContent = 'The map could not be loaded. All locations are listed in the timeline.';
+            }
+            var legend = document.querySelector('.map-legend');
+            if (legend) legend.style.display = 'none';
+            return;
+        }
 
         var map = L.map('conf-map', {
             scrollWheelZoom: false,

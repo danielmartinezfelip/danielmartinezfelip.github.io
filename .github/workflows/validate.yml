@@ -1,0 +1,41 @@
+name: Validate site
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Structure, links and metadata
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Stdlib only, so there is nothing to install.
+      - name: Run site checks
+        run: python3 scripts/validate_site.py
+
+  external-links:
+    name: External links
+    runs-on: ubuntu-latest
+    # Third-party sites go down, rate-limit, and block CI runners. A failure
+    # here is a signal to look, not a reason to block a merge.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check external links resolve
+        run: python3 scripts/check_links.py
