@@ -15,7 +15,7 @@
     'use strict';
 
     /* Single source of truth for the footer date — edit this one line. */
-    var SITE_UPDATED = 'August 2026';
+    var SITE_UPDATED = 'October 2026';
 
     /* Fallback document shown by triggers that don't name their own. */
     var CV_SRC = 'https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview';
