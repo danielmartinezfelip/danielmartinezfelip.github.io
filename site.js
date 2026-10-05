@@ -18,7 +18,7 @@
     var SITE_UPDATED = 'October 2026';
 
     /* Fallback document shown by triggers that don't name their own. */
-    var CV_SRC = 'https://drive.google.com/file/d/14yQ4v4fANxc674NiDEIoY8fFCZTq3TPw/preview';
+    var CV_SRC = 'https://drive.google.com/file/d/1HTuruDMdp6QatJ5qTcgGjcNrlW6KJuzP/preview';
     var CV_TITLE = 'Curriculum Vitae';
 
     /* ── Footer "last updated" stamp ───────────────────────── */
